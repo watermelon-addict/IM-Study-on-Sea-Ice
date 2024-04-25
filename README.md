@@ -4,10 +4,8 @@
 </figure>
 
 
-<!---
-!["Figure 1: Arctic sea ice and the focus area"](/images/Figure1.jpg)
--->
 
+# !["Figure 1: Arctic sea ice and the focus area"](/images/Figure1.jpg)
 
 
 1. Full list of the Python code files
