@@ -1,4 +1,7 @@
-!["Figure 1: Arctic sea ice and the focus area"](/images/Figure1.jpg)
+<figure>
+    <img src="/images/Figure1.jpg">
+    <figcaption>Figure 1: Arctic sea ice and the focus area</figcaption>
+</figure>
 
 1. Full list of the Python code files
 The code files this project uses when employing an innovative Continuous Spin Ising Model and Convolutional Neural Networks to study the dynamics of Arctic Sea Ice include:  
