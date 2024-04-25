@@ -9,7 +9,8 @@
 </figure>
 
 
-
+<br/><br/>
+<br/><br/>
 
 1. Full list of the Python code files
 The code files this project uses when employing an innovative Continuous Spin Ising Model and Convolutional Neural Networks to study the dynamics of Arctic Sea Ice include:  
