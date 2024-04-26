@@ -8,8 +8,10 @@
     <figcaption>Figure 1: Arctic sea ice and the focus area</figcaption>
 </figure>
 
-
 <br/><br/>
+
+![IIM_CNN](https://github.com/Watermelon-Addict/IM-Study-on-Sea-Ice/assets/160803085/f472882a-8849-41d6-b456-130cac58b860)
+
 <br/><br/>
 
 1. Full list of the Python code files
