@@ -6,7 +6,7 @@
 
 <figure>
     <img src="/images/Figure1.jpg" width="400" height="250">
-    <figcaption>Figure 1: Arctic sea ice and the focus area</figcaption>
+    <figcaption> Figure 1: (a) Arctic sea ice NRTSI image on Sept 16, 2022 and (b) the focus area of 1,500km X 1,500km </figcaption>
 </figure>
 
 <br/><br/>
