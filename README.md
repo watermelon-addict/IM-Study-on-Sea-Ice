@@ -18,15 +18,15 @@
 <br/><br/>
 
 The code files this project uses when employing the noval Continuous Spin Ising Model and Convolutional Neural Networks to study the dynamics of Arctic Sea Ice include:  
-•	download_NSIDC.py
-•	ReadSeaIce.py
-•	IIMConstants.py
-•	IceIsingCont.py
-•	IIMCNNModel.py
-•	IIMCNNRun.py
-•	IIM_CNN_Results.py
-•	IIMSimul.py
-•	Gen_Figures.py.
+•	download_NSIDC.py<br/>
+•	ReadSeaIce.py<br/>
+•	IIMConstants.py<br/>
+•	IceIsingCont.py<br/>
+•	IIMCNNModel.py<br/>
+•	IIMCNNRun.py<br/>
+•	IIM_CNN_Results.py<br/>
+•	IIMSimul.py<br/>
+•	Gen_Figures.py.<br/>
 <br/>
 Detailed desription of the code is in CodeList.txt
 <br/><br/>
