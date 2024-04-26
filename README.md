@@ -27,11 +27,13 @@ The code files this project uses when employing the noval Continuous Spin Ising 
 •	IIM_CNN_Results.py
 •	IIMSimul.py
 •	Gen_Figures.py.
+<br/><br/>
 Detailed desription of the code is in CodeList.txt
 
 <br/><br/>
 <br/><br/>
 Copyright for download_NSIDC.py:
+<br/><br/>
 Copyright (c) 2023 Regents of the University of Colorado
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the "Software"),
