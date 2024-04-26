@@ -11,7 +11,8 @@
 
 <br/><br/>
 
-![IIM CNN](https://github.com/Watermelon-Addict/IM-Study-on-Sea-Ice/assets/160803085/f472882a-8849-41d6-b456-130cac58b860)
+![CNN_Architecture](https://github.com/Watermelon-Addict/IM-Study-on-Sea-Ice/assets/160803085/a573a168-5530-4ee0-9103-0bad447cb3cc)
+<br/><br/>
 *Figure 2: CNN Architecture*
 
 <br/><br/>
