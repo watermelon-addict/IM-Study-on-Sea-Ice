@@ -4,13 +4,14 @@
 -->
 
 <figure>
-    <img src="/images/Figure1.jpg">
+    <img src="/images/Figure1.jpg" width="200" height="100">
     <figcaption>Figure 1: Arctic sea ice and the focus area</figcaption>
 </figure>
 
 <br/><br/>
 
-!["Figure 2: CNN architecture"](https://github.com/Watermelon-Addict/IM-Study-on-Sea-Ice/assets/160803085/f472882a-8849-41d6-b456-130cac58b860)
+![IIM CNN](https://github.com/Watermelon-Addict/IM-Study-on-Sea-Ice/assets/160803085/f472882a-8849-41d6-b456-130cac58b860)
+*Figure 2: CNN Architecture*
 
 <br/><br/>
 
