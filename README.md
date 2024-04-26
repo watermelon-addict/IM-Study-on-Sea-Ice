@@ -4,7 +4,7 @@
 -->
 
 <figure>
-    <img src="/images/Figure1.jpg" width="200" height="100">
+    <img src="/images/Figure1.jpg" width="400" height="250">
     <figcaption>Figure 1: Arctic sea ice and the focus area</figcaption>
 </figure>
 
