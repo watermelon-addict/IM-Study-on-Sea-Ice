@@ -1,3 +1,4 @@
+[Hidden comment]: # 
 
 <!---
 !["Figure 1: Arctic sea ice and the focus area"](/images/Figure1.jpg)
