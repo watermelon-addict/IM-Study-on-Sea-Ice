@@ -36,6 +36,11 @@ and
 ![image](https://github.com/Watermelon-Addict/IM-Study-on-Sea-Ice/assets/160803085/86e2baa8-fcec-4fbb-97d2-96a360444b21)
 <br/><br/>
 
+
+<br/><br/>
+# Convolutional Neural Network
+<br/>
+
 ![CNN_Architecture](https://github.com/Watermelon-Addict/IM-Study-on-Sea-Ice/assets/160803085/a573a168-5530-4ee0-9103-0bad447cb3cc)
 <br/><br/>
 *Figure 2: CNN Architecture*
