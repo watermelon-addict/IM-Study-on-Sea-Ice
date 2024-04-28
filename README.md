@@ -83,34 +83,40 @@ The training data for this CNN are generated following the Metropolis MCMC simul
 
 ### Simulation results for 2022
 
+Figure 3 shows the semi-monthly NRTSI sea ice images in the focus area from June 16th, 2022 to Jan 1st, 2023. <br/>
 ![image](https://github.com/Watermelon-Addict/IM-Study-on-Sea-Ice/assets/160803085/3d981b64-3b10-42e9-a6e9-709d24295919)
 <br/>
 *Figure 3: The actual semi-monthly sea ice evolution in the focus area in 2022*
 <br/><br/>
 
-![image](https://github.com/Watermelon-Addict/IM-Study-on-Sea-Ice/assets/160803085/584d70e9-a89f-4de2-9a1a-7750f7baf1ec)
-<br/>
-*Figure 4: The simulated semi-monthly sea ice evolution in the focus area in 2022*
-<br/><br/>
-
+The CNN-predicted Ising parameters (J, B_0,B_x, B_y, I) for each simulation period in 2022 are shown in Table 1. <br/>
 ![image](https://github.com/Watermelon-Addict/IM-Study-on-Sea-Ice/assets/160803085/2e80a462-0299-4775-9786-4b5ccb5d822a)
 <br/>
 *Table 1: CNN predicted Ising parameters for the 2022 sea ice evolution*
 <br/><br/>
 
+The simulated sea ice images for each 2022 period are shown in Figure 4 utilizing the CNN predicted Ising parameters in Table 1. These images exhibit excellent similarity to Figure 3, demonstrating the strong explanatory power of our Ising model.  <br/>
+![image](https://github.com/Watermelon-Addict/IM-Study-on-Sea-Ice/assets/160803085/584d70e9-a89f-4de2-9a1a-7750f7baf1ec)
+<br/>
+*Figure 4: The simulated semi-monthly sea ice evolution in the focus area in 2022*
+<br/><br/>
+
+
+The differences in ice coverages across the entire focus area for each of the simulation period in Figure 3 and Figure 4 are calculated; the results are illustrated as the heatmaps in Figure 5. <br/>
 ![image](https://github.com/Watermelon-Addict/IM-Study-on-Sea-Ice/assets/160803085/b8f58896-f807-4cf8-bb93-91783beb31a8)
 <br/>
 *Figure 5: Heatmaps illustrating the absolute difference (between 0 and 1) in ice coverages between Figure 3 and Figure 4 for each semi-monthly period*
 <br/><br/>
 
+Figure 6 shows two key numerical measures based on both actual observations and the simulation results for our focus area: the ice coverage percentage, i.e., the mean of the ice coverage across the entire lattice, and the ice extent, i.e., the percentage of areas that are covered by at least 15% ice. <br/>
 ![image](https://github.com/Watermelon-Addict/IM-Study-on-Sea-Ice/assets/160803085/0a1e7d88-6dca-4edd-88f4-bd73f6556f4b)
 <br/>
 *Figure 6: (a) The ice coverage percentage in the focus area in 2022. (b) The ice extent for the same period. Blue curves are the actual measures from the NRTSI data; orange ones show the IM simulation results.*
 <br/><br/>
 
-### Results for other years
+### Other results
 
-More results for 2023 and other years can be found in: E. Wang, "Deep Learning on a Novel Ising Model to Study Arctic Sea Ice Dynamics", 2024. <br/>
+More results, including the daily sea ice evolution, and simulation resutls for 2023 and other years, can be found in: E. Wang, "Deep Learning on a Novel Ising Model to Study Arctic Sea Ice Dynamics", 2024. <br/>
 
 <br/><br/>
 # Code files
