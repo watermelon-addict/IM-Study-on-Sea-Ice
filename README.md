@@ -43,7 +43,7 @@ Moreover, we incorporate an innovative inertia factor I, and the probability of 
 ![image](https://github.com/Watermelon-Addict/IM-Study-on-Sea-Ice/assets/160803085/d2ce424e-7772-4a88-9584-ca15272a8c84)
 
 The newly added ![image](https://github.com/Watermelon-Addict/IM-Study-on-Sea-Ice/assets/160803085/750d0eff-7b45-4cba-b36e-ca77d7ca9590)
- -I|σ'_i_i - σ_i |  accounts for the energy needed to overcome the inertia of the spin change.
+ accounts for the energy needed to overcome the inertia of the spin change.
 
 <br/><br/>
 # Convolutional Neural Network
