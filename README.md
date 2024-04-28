@@ -72,7 +72,7 @@ The architecture of our CNN is illustrated in Figure 2. The total number of trai
 <br/>
 ![CNN_Architecture](https://github.com/Watermelon-Addict/IM-Study-on-Sea-Ice/assets/160803085/a573a168-5530-4ee0-9103-0bad447cb3cc)
 <br/>
-*Figure 2: CNN Architecture*
+*Figure 2: The actual semi-monthly sea ice evolution in the focus area in 2022*
 <br/><br/>
 
 The training data for this CNN are generated following the Metropolis MCMC simulation steps described previously. To be specific, we start with the Ising lattice at the initial state of a simulation period and randomly select 10,000 set of parameters (J, B_0,B_x, B_y, I); for each set of parameters, we run the Metropolis simulation steps. As a result, we generate 10,000 sets of training samples corresponding to each of the initial states. We combine such training data for the full year as the input for CNN training.
@@ -84,6 +84,9 @@ The training data for this CNN are generated following the Metropolis MCMC simul
 
 ![image](https://github.com/Watermelon-Addict/IM-Study-on-Sea-Ice/assets/160803085/3d981b64-3b10-42e9-a6e9-709d24295919)
 <br/>
+*Figure 3: CNN Architecture*
+<br/><br/>
+
 ![image](https://github.com/Watermelon-Addict/IM-Study-on-Sea-Ice/assets/160803085/584d70e9-a89f-4de2-9a1a-7750f7baf1ec)
 <br/>
 ![image](https://github.com/Watermelon-Addict/IM-Study-on-Sea-Ice/assets/160803085/2e80a462-0299-4775-9786-4b5ccb5d822a)
@@ -93,9 +96,9 @@ The training data for this CNN are generated following the Metropolis MCMC simul
 ![image](https://github.com/Watermelon-Addict/IM-Study-on-Sea-Ice/assets/160803085/0a1e7d88-6dca-4edd-88f4-bd73f6556f4b)
 <br/>
 
-### Results of other years
+### Results for other years
 
-More results can be found in: E. Wang, "Deep Learning on a Novel Ising Model to Study Arctic Sea Ice Dynamics", 2024. <br/>
+More results for 2023 and other years can be found in: E. Wang, "Deep Learning on a Novel Ising Model to Study Arctic Sea Ice Dynamics", 2024. <br/>
 
 <br/><br/>
 # Code files
