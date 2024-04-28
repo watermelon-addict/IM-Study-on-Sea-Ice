@@ -17,6 +17,21 @@ Our study uses the “Near-Real-Time DMSP SSMIS Daily Polar Gridded Sea Ice Conc
     <figcaption> Figure 1: (a) Arctic sea ice NRTSI image on Sept 16, 2022 and (b) the focus area of 1,500km X 1,500km </figcaption>
 </figure>
 
+
+<br/><br/>
+# Continuous spin Ising model with inertia factor
+<br/>
+The Hamiltonian function for the lattice σ in a standard IM is given as 
+![image](https://github.com/Watermelon-Addict/IM-Study-on-Sea-Ice/assets/160803085/3f3c8459-1bc8-49b1-be18-acdf041b7676)
+
+the configuration probability of lattice σ follows the Boltzmann distribution
+![image](https://github.com/Watermelon-Addict/IM-Study-on-Sea-Ice/assets/160803085/ca5f010f-1672-4d0d-b045-2ffb32348df5)
+
+where Z is the partition function:
+![image](https://github.com/Watermelon-Addict/IM-Study-on-Sea-Ice/assets/160803085/bde41b65-a38b-4ad6-a56f-61f525a37bf4)
+
+and
+![image](https://github.com/Watermelon-Addict/IM-Study-on-Sea-Ice/assets/160803085/86e2baa8-fcec-4fbb-97d2-96a360444b21)
 <br/><br/>
 
 ![CNN_Architecture](https://github.com/Watermelon-Addict/IM-Study-on-Sea-Ice/assets/160803085/a573a168-5530-4ee0-9103-0bad447cb3cc)
