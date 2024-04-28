@@ -56,7 +56,6 @@ The newly added ![image](https://github.com/Watermelon-Addict/IM-Study-on-Sea-Ic
 <br/>
 
 ### Metropolis Markov Chain Monte Carlo (MCMC) simulation:
-<br/>
 In our study, we follow the Metropolis MCMC process for the simulation of the IM lattice evolution:
 <figure>
     <img src="https://github.com/Watermelon-Addict/IM-Study-on-Sea-Ice/assets/160803085/eac18e98-3770-4736-9d9c-9d3adf0a1edf" width="500" height="400">
