@@ -23,8 +23,7 @@ Our study uses the “Near-Real-Time DMSP SSMIS Daily Polar Gridded Sea Ice Conc
 <br/>
 The Hamiltonian function for the lattice σ in a standard IM is given as:
 <figure>
-    <img src="https://github.com/Watermelon-Addict/IM-Study-on-Sea-Ice/assets/160803085/b9cbaf41-2590-46f0-9473-45629398363d)" width="400" height="150">
-    <figcaption> Figure 1: (a) Arctic sea ice NRTSI image on Sept 16, 2022 and (b) the focus area of 1,500km X 1,500km </figcaption>
+    <img src="https://github.com/Watermelon-Addict/IM-Study-on-Sea-Ice/assets/160803085/b9cbaf41-2590-46f0-9473-45629398363d)" width="400" height="80">
 </figure>
 
 the configuration probability of lattice σ follows the Boltzmann distribution
