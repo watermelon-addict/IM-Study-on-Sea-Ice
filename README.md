@@ -62,7 +62,7 @@ Detailed desription of the code is in CodeList.txt
 <br/><br/>
 
 
-Key references: <br/>
+# Key references: <br/>
 E. Ising, "Beitrag zur Theorie des Ferromagnetismus," Z. Phys, vol. 31, no. 1, p. 2530258, 1925. <br />
 Y.-P. Ma, I. Sudakov, C. Strong and K. Golden, "Ising model for melt ponds on Arctic sea ice," New Journal of Physics, vol. 21, p. 063029, 2019. <br />
 M. Krasnytska, B. Berche, Y. YuHolovatch and R. Kenna, "Ising model with variable spin/agent strengths," Journal of Physics: Complexity, vol. 1, p. 035008, 2020.
@@ -74,7 +74,7 @@ W. N. Meier, J. S. Stewart, H. Wilcox, M. A. Hardman and S. D. J., "Near-Real-Ti
 
 <br/><br/>
 <br/><br/>
-Copyright for download_NSIDC.py:
+# Copyright for download_NSIDC.py:
 <br/><br/>
 Copyright (c) 2023 Regents of the University of Colorado
 Permission is hereby granted, free of charge, to any person obtaining
