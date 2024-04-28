@@ -22,6 +22,7 @@ Our study uses the “Near-Real-Time DMSP SSMIS Daily Polar Gridded Sea Ice Conc
 # Continuous spin Ising model with inertia factor
 <br/>
 ### Ising model
+<br/>
 The Hamiltonian function for the lattice σ in a standard IM is given as: <br/>
 <figure>
     <img src="https://github.com/Watermelon-Addict/IM-Study-on-Sea-Ice/assets/160803085/b9cbaf41-2590-46f0-9473-45629398363d)" width="250" height="50">
@@ -57,7 +58,6 @@ The newly added ![image](https://github.com/Watermelon-Addict/IM-Study-on-Sea-Ic
 ### Metropolis Markov Chain Monte Carlo (MCMC) simulation:
 <br/>
 In our study, we follow the Metropolis MCMC process for the simulation of the IM lattice evolution:
-<br/>
 <figure>
     <img src="https://github.com/Watermelon-Addict/IM-Study-on-Sea-Ice/assets/160803085/eac18e98-3770-4736-9d9c-9d3adf0a1edf" width="500" height="400">
 </figure>
