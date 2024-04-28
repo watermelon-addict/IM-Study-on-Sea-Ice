@@ -21,6 +21,7 @@ Our study uses the “Near-Real-Time DMSP SSMIS Daily Polar Gridded Sea Ice Conc
 <br/><br/>
 # Continuous spin Ising model with inertia factor
 <br/>
+
 ### Ising model
 <br/>
 The Hamiltonian function for the lattice σ in a standard IM is given as: <br/>
