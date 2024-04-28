@@ -49,12 +49,19 @@ The newly added ![image](https://github.com/Watermelon-Addict/IM-Study-on-Sea-Ic
 # Convolutional Neural Network
 <br/>
 
+The inverse Ising problem [20]: given the start and end state images of the Ising lattices, how do we determine the IM interaction parameters (J, B, I)? In this study, we will train a Convolutional Neural Network (CNN) deep learning model for this task.
+<br/>
+
+The architecture of our CNN is illustrated in Figure 2. The total number of trainable parameters stays at 213,101, making this a relatively small deep learning algorithm that can be trained on the CPU of a personal computer.
+<br/>
 ![CNN_Architecture](https://github.com/Watermelon-Addict/IM-Study-on-Sea-Ice/assets/160803085/a573a168-5530-4ee0-9103-0bad447cb3cc)
 <br/><br/>
 *Figure 2: CNN Architecture*
-
 <br/><br/>
 
+
+
+# Code files
 The code files this project uses when employing the noval Continuous Spin Ising Model and Convolutional Neural Networks to study the dynamics of Arctic Sea Ice include:  
 •	download_NSIDC.py<br/>
 •	ReadSeaIce.py<br/>
