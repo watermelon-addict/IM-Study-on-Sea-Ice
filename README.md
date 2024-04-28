@@ -121,7 +121,7 @@ W. N. Meier, J. S. Stewart, H. Wilcox, M. A. Hardman and S. D. J., "Near-Real-Ti
 
 <br/><br/>
 <br/><br/>
-# Copyright for download_NSIDC.py:
+# Copyright from NSIDC on using their sea ice data and code:
 <br/><br/>
 Copyright (c) 2023 Regents of the University of Colorado
 Permission is hereby granted, free of charge, to any person obtaining
