@@ -44,8 +44,22 @@ Moreover, we incorporate an innovative inertia factor I, and the probability of 
 
 The newly added ![image](https://github.com/Watermelon-Addict/IM-Study-on-Sea-Ice/assets/160803085/750d0eff-7b45-4cba-b36e-ca77d7ca9590)
  accounts for the energy needed to overcome the inertia of the spin change.
-
 <br/><br/>
+
+### Ising parameter setup
+𝐽_𝑖𝑗 and I set to be constant each period<br/>
+![image](https://github.com/Watermelon-Addict/IM-Study-on-Sea-Ice/assets/160803085/1f44feee-9413-49b0-8902-5872157912ab)
+<br/>
+𝛽=1
+<br/>
+
+### Metropolis Markov Chain Monte Carlo (MCMC) simulation:
+<br/>
+In our study, we follow the Metropolis MCMC process for the simulation of the IM lattice evolution:
+<br/>
+![image](https://github.com/Watermelon-Addict/IM-Study-on-Sea-Ice/assets/160803085/eac18e98-3770-4736-9d9c-9d3adf0a1edf)
+<br/><br/>
+
 # Convolutional Neural Network
 <br/>
 
