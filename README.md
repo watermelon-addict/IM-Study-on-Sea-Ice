@@ -71,8 +71,9 @@ The inverse Ising problem [20]: given the start and end state images of the Isin
 The architecture of our CNN is illustrated in Figure 2. The total number of trainable parameters stays at 213,101, making this a relatively small deep learning algorithm that can be trained on the CPU of a personal computer.
 <br/>
 ![CNN_Architecture](https://github.com/Watermelon-Addict/IM-Study-on-Sea-Ice/assets/160803085/a573a168-5530-4ee0-9103-0bad447cb3cc)
+*Figure 2: CNN Architecture*
 <br/>
-*Figure 2: The actual semi-monthly sea ice evolution in the focus area in 2022*
+
 <br/><br/>
 
 The training data for this CNN are generated following the Metropolis MCMC simulation steps described previously. To be specific, we start with the Ising lattice at the initial state of a simulation period and randomly select 10,000 set of parameters (J, B_0,B_x, B_y, I); for each set of parameters, we run the Metropolis simulation steps. As a result, we generate 10,000 sets of training samples corresponding to each of the initial states. We combine such training data for the full year as the input for CNN training.
@@ -84,17 +85,28 @@ The training data for this CNN are generated following the Metropolis MCMC simul
 
 ![image](https://github.com/Watermelon-Addict/IM-Study-on-Sea-Ice/assets/160803085/3d981b64-3b10-42e9-a6e9-709d24295919)
 <br/>
-*Figure 3: CNN Architecture*
+*Figure 3: The actual semi-monthly sea ice evolution in the focus area in 2022*
 <br/><br/>
 
 ![image](https://github.com/Watermelon-Addict/IM-Study-on-Sea-Ice/assets/160803085/584d70e9-a89f-4de2-9a1a-7750f7baf1ec)
 <br/>
+*Figure 4: The simulated semi-monthly sea ice evolution in the focus area in 2022*
+<br/><br/>
+
 ![image](https://github.com/Watermelon-Addict/IM-Study-on-Sea-Ice/assets/160803085/2e80a462-0299-4775-9786-4b5ccb5d822a)
 <br/>
+*Table 1: CNN predicted Ising parameters for the 2022 sea ice evolution*
+<br/><br/>
+
 ![image](https://github.com/Watermelon-Addict/IM-Study-on-Sea-Ice/assets/160803085/b8f58896-f807-4cf8-bb93-91783beb31a8)
 <br/>
+*Figure 5: Heatmaps illustrating the absolute difference (between 0 and 1) in ice coverages between Figure 3 and Figure 4 for each semi-monthly period*
+<br/><br/>
+
 ![image](https://github.com/Watermelon-Addict/IM-Study-on-Sea-Ice/assets/160803085/0a1e7d88-6dca-4edd-88f4-bd73f6556f4b)
 <br/>
+*Figure 5: (a) The ice coverage percentage in the focus area in 2022. (b) The ice extent for the same period. Blue curves are the actual measures from the NRTSI data; orange ones show the IM simulation results.*
+<br/><br/>
 
 ### Results for other years
 
