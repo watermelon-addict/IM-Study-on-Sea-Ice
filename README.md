@@ -59,10 +59,8 @@ The newly added ![image](https://github.com/Watermelon-Addict/IM-Study-on-Sea-Ic
 In our study, we follow the Metropolis MCMC process for the simulation of the IM lattice evolution:
 <br/>
 <figure>
-    <img src="https://github.com/Watermelon-Addict/IM-Study-on-Sea-Ice/assets/160803085/eac18e98-3770-4736-9d9c-9d3adf0a1edf" width="400" height="300">
+    <img src="https://github.com/Watermelon-Addict/IM-Study-on-Sea-Ice/assets/160803085/eac18e98-3770-4736-9d9c-9d3adf0a1edf" width="500" height="400">
 </figure>
-
-![image](https://github.com/Watermelon-Addict/IM-Study-on-Sea-Ice/assets/160803085/eac18e98-3770-4736-9d9c-9d3adf0a1edf) #
 <br/><br/>
 
 # Convolutional Neural Network
