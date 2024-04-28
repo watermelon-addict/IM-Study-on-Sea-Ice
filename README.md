@@ -21,8 +21,8 @@ Our study uses the “Near-Real-Time DMSP SSMIS Daily Polar Gridded Sea Ice Conc
 <br/><br/>
 # Continuous spin Ising model with inertia factor
 <br/>
-The Hamiltonian function for the lattice σ in a standard IM is given as 
-![image](https://github.com/Watermelon-Addict/IM-Study-on-Sea-Ice/assets/160803085/3f3c8459-1bc8-49b1-be18-acdf041b7676)
+The Hamiltonian function for the lattice σ in a standard IM is given as:
+![image](https://github.com/Watermelon-Addict/IM-Study-on-Sea-Ice/assets/160803085/b9cbaf41-2590-46f0-9473-45629398363d)
 
 the configuration probability of lattice σ follows the Boltzmann distribution
 ![image](https://github.com/Watermelon-Addict/IM-Study-on-Sea-Ice/assets/160803085/ca5f010f-1672-4d0d-b045-2ffb32348df5)
