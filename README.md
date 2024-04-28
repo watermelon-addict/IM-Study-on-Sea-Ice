@@ -64,7 +64,6 @@ In our study, we follow the Metropolis MCMC process for the simulation of the IM
 <br/><br/>
 
 # Convolutional Neural Network
-<br/>
 
 The inverse Ising problem [20]: given the start and end state images of the Ising lattices, how do we determine the IM interaction parameters (J, B, I)? In this study, we will train a Convolutional Neural Network (CNN) deep learning model for this task.
 <br/>
@@ -78,6 +77,10 @@ The architecture of our CNN is illustrated in Figure 2. The total number of trai
 
 The training data for this CNN are generated following the Metropolis MCMC simulation steps described previously. To be specific, we start with the Ising lattice at the initial state of a simulation period and randomly select 10,000 set of parameters (J, B_0,B_x, B_y, I); for each set of parameters, we run the Metropolis simulation steps. As a result, we generate 10,000 sets of training samples corresponding to each of the initial states. We combine such training data for the full year as the input for CNN training.
 <br/><br/>
+
+# Code files
+
+
 
 # Code files
 The code files this project uses when employing the noval Continuous Spin Ising Model and Convolutional Neural Networks to study the dynamics of Arctic Sea Ice include:  
