@@ -65,7 +65,7 @@ In our study, we follow the Metropolis MCMC process for the simulation of the IM
 
 # Convolutional Neural Network
 
-The inverse Ising problem [20]: given the start and end state images of the Ising lattices, how do we determine the IM interaction parameters (J, B, I)? In this study, we will train a Convolutional Neural Network (CNN) deep learning model for this task.
+The inverse Ising problem: given the start and end state images of the Ising lattices, how do we determine the IM interaction parameters (J, B, I)? In this study, we will train a Convolutional Neural Network (CNN) deep learning model for this task.
 <br/>
 
 The architecture of our CNN is illustrated in Figure 2. The total number of trainable parameters stays at 213,101, making this a relatively small deep learning algorithm that can be trained on the CPU of a personal computer.
