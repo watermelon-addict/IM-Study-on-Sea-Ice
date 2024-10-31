@@ -64,7 +64,18 @@ where Z is the partition function: <br/>
 and <br/>
 ![image](https://github.com/Watermelon-Addict/IM-Study-on-Sea-Ice/assets/160803085/86e2baa8-fcec-4fbb-97d2-96a360444b21)
 <br/><br/>
-    
+
+
+Most studies of the IM focus on binary values of the spins, i.e., σ_i takes values of +1 or -1 only. However, the sea ice data for each location takes varying values between 0 and 1 that represent the percentage of ice coverage. Therefore, we generalize the IM to allow for continuous spin values that can take any real number between -1 and +1.
+<br/>
+
+Moreover, we incorporate an innovative inertia factor I, and the probability of each flip is determined by  <br/>
+![image](https://github.com/Watermelon-Addict/IM-Study-on-Sea-Ice/assets/160803085/d2ce424e-7772-4a88-9584-ca15272a8c84)
+
+The newly added ![image](https://github.com/Watermelon-Addict/IM-Study-on-Sea-Ice/assets/160803085/750d0eff-7b45-4cba-b36e-ca77d7ca9590)
+ accounts for the energy needed to overcome the inertia of the spin change.
+<br/><br/>
+
 <br/>
 <br/>
 
@@ -96,15 +107,6 @@ The Hamiltonian function for the lattice σ in a standard IM is given as: <br/>
 the configuration probability of lattice σ follows the Boltzmann distribution <br/>
 
 
-Most studies of the IM focus on binary values of the spins, i.e., σ_i takes values of +1 or -1 only. However, the sea ice data for each location takes varying values between 0 and 1 that represent the percentage of ice coverage. Therefore, we generalize the IM to allow for continuous spin values that can take any real number between -1 and +1.
-<br/>
-
-Moreover, we incorporate an innovative inertia factor I, and the probability of each flip is determined by  <br/>
-![image](https://github.com/Watermelon-Addict/IM-Study-on-Sea-Ice/assets/160803085/d2ce424e-7772-4a88-9584-ca15272a8c84)
-
-The newly added ![image](https://github.com/Watermelon-Addict/IM-Study-on-Sea-Ice/assets/160803085/750d0eff-7b45-4cba-b36e-ca77d7ca9590)
- accounts for the energy needed to overcome the inertia of the spin change.
-<br/><br/>
 
 ### Ising parameter setup
 𝐽_𝑖𝑗 and I set to be constant each period<br/>
