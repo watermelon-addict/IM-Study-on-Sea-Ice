@@ -53,7 +53,8 @@ where σ_i represents the spin variables at site i and takes the value of +1 or 
 <br/>
 In statistical physics, the configuration probability of lattice σ follows the Boltzmann distribution 
 <br/>
-![image](https://github.com/Watermelon-Addict/IM-Study-on-Sea-Ice/assets/160803085/ca5f010f-1672-4d0d-b045-2ffb32348df5)
+![image](https://github.com/user-attachments/assets/f11f42a4-1a7e-4f27-b589-c25c7e6af47e)
+
 
 where Z is the partition function: <br/>
 ![image](https://github.com/Watermelon-Addict/IM-Study-on-Sea-Ice/assets/160803085/bde41b65-a38b-4ad6-a56f-61f525a37bf4)
