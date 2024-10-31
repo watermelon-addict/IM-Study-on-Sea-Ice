@@ -51,7 +51,8 @@ The system described by an IM is a set of lattice sites, each having a spin that
 </figure>
 where σ_i represents the spin variables at site i and takes the value of +1 or -1; J_ij represents the interaction between sites i and j and can take positive values for ferromagnetic and paramagnetic materials, or negative for antiferromagnetic materials; B_i captures the interaction between the external field and site i. i and j range across the full lattice, which can be one, two or higher dimensions, and <i, j> represents pairs of spins at sites i and j that interact with each other. In a simple setup, each spin may only interact with its nearest neighbors, so <i, j> sums over adjacent sites only. For example, in a simple 2-D IM, each spin interacts only with the sites positioned immediately left, right, above, and below. 
 <br/>
-In statistical physics, the configuration probability of lattice σ follows the Boltzmann distribution <br/>
+In statistical physics, the configuration probability of lattice σ follows the Boltzmann distribution 
+<br/>
 ![image](https://github.com/Watermelon-Addict/IM-Study-on-Sea-Ice/assets/160803085/ca5f010f-1672-4d0d-b045-2ffb32348df5)
 
 where Z is the partition function: <br/>
