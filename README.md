@@ -63,9 +63,13 @@ where Z is the partition function: <br/>
 
 and <br/>
 ![image](https://github.com/Watermelon-Addict/IM-Study-on-Sea-Ice/assets/160803085/86e2baa8-fcec-4fbb-97d2-96a360444b21)
+<br/>
+β is the inverse temperature; 
+$k_B$ is the Boltzmann constant; T is the IM temperature, which differentiates from the ambient temperature discussed later.
+<br/>
+The evolution of the kinetic IM runs through a series of spin flips over the lattice. The probability of each spin flip depends on whether such a flip increases or reduces the Hamiltonian of the system. Mathematically the probability is determined by min⁡(1,e^(-β(H_ν-H_μ ) )) [64], where Hv and Hµ represent the Hamiltonian of the system before and after the flip. It can be easily seen that higher IM temperatures lead to greater thermal fluctuations and larger variances in the spin value distribution, while lower IM temperatures result in fewer fluctuations.
+
 <br/><br/>
-
-
 Most studies of the IM focus on binary values of the spins, i.e., σ_i takes values of +1 or -1 only. However, the sea ice data for each location takes varying values between 0 and 1 that represent the percentage of ice coverage. Therefore, we generalize the IM to allow for continuous spin values that can take any real number between -1 and +1.
 <br/>
 
