@@ -43,7 +43,7 @@ Data recorded by the National Aeronautics and Space Administration (NASA) and th
 
 # 2.	Theoretical framework
 <br/>
-## 2.1	Classical Ising model
+<h2> 2.1	Classical Ising model </h2>
 <br/>
 The system described by an IM is a set of lattice sites, each having a spin that interacts with its neighbors. The Hamiltonian function [4] for the lattice σ in a standard IM is given as 
 <br/>
@@ -81,7 +81,7 @@ $k_B$ is the Boltzmann constant; T is the IM temperature, which differentiates f
 The evolution of the kinetic IM runs through a series of spin flips over the lattice. The probability of each spin flip depends on whether such a flip increases or reduces the Hamiltonian of the system. Mathematically the probability is determined by $min⁡(1,e^{(-β(H_ν-H_μ ) )})$ [64], where Hv and Hµ represent the Hamiltonian of the system before and after the flip. It can be easily seen that higher IM temperatures lead to greater thermal fluctuations and larger variances in the spin value distribution, while lower IM temperatures result in fewer fluctuations.
 
 <br/>
-## 2.2 Continuous spin Ising model
+<h2> 2.2 Continuous spin Ising model </h2>
 <br/>
 Most studies of the IM focus on binary values of the spins, i.e., σ_i takes values of +1 or -1 only. However, the sea ice data for each location takes varying values between 0 and 1 that represent the percentage of ice coverage. Therefore, we generalize the IM to allow for continuous spin values that can take any real number between -1 and +1. This generalization enables the IM to examine more realistic systems, but also adds a high degree of complexity to the mathematical solutions. Past research has studied phase transitions and critical behaviors of the continuous IM [65] [66], and recently, an IM with variable power-law spin strengths is studied with its rich phase diagrams [67].
 <br/>
@@ -89,7 +89,7 @@ Most studies of the IM focus on binary values of the spins, i.e., σ_i takes val
 The Hamiltonian function of the continuous spin IM is represented by the same Equation (1). However, σ_i now takes continuous values between +1 and -1; $-J_{ij} σ_i σ_j$ reaches the minimum energy state if σ_i=σ_j=+1, or σ_i=σ_j=-1, as the energy of any other value pair is higher. The highest energy is observed when σ_i=+1, σ_j=-1, or vice versa. This numeric feature works ideally for an ice/water lattice: the most stable low energy state is either 100% water or ice across two adjacent locations, whereas full ice next to full water displays the most unstable high energy state.
 <br/><br/>
 
-## 2.3 Monte Carlo simulation and inertia factor
+<h2> 2.3 Monte Carlo simulation and inertia factor </h2>
 <br/>
 The incorporation of the continuous spins also adds to the complexity of the Monte Carlo (MC) simulation of the IM lattice. In the classical binary spin IM, σ_i can only flip to -σ_i in each simulation step, and therefore the absolute value of the change is always 2 no matter if the flip goes from -1 to +1 or from +1 to -1. In a continuous spin IM, the challenge of determining the post-flip numeric value of the new spin arises. In our approach, this new spin value is implemented through a random number $σ'_i$ uniformly distributed between -1 and +1, which will be explained in greater details in Section 4.4. Moreover, we incorporate an innovative inertia factor I, and the probability of each flip is determined by   <br/>
 ![image](https://github.com/Watermelon-Addict/IM-Study-on-Sea-Ice/assets/160803085/d2ce424e-7772-4a88-9584-ca15272a8c84)
@@ -103,7 +103,7 @@ Here is an example to illustrate the inertia effect. Starting with an initial sp
 In summary, we introduce to the classical IM the continuous spin values and a novel inertia factor. These mathematical additions prepare us to study real-world Arctic sea ice dynamics while keeping the computational complexity tractable.
 <br/><br/>
 
-## 2.4 The inverse Ising problem: solved with deep neural networks
+<h2> 2.4 The inverse Ising problem: solved with deep neural networks </h2>
 <br/>
 There has been various machine learning research on the IM, many of which employes CNN due to the tremendous power of CNN on image recognition. These studies focus on exploring the phase transitions near a critical temperature [68], while some of them involve generative neural networks such as variational autoencoders [69] or normalizing flows [70]. My task in this study is different, which is to solve the so-called inverse Ising problem [71]: given the start and end state images of the Ising lattices, how do we determine the IM interaction parameters (J, B, I)? In this paper, we will train a few different deep learning models including CNN and ViT for this task, with detailed steps to be explained in Section 4.5.
 <br/>
