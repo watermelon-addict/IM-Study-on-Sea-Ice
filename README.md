@@ -11,14 +11,14 @@ This study models Arctic Sea Ice dynamics at a large scale by innovating on the 
 This  research report starts with a brief review on Ising model and neural network literature, and an introduction of the significance of Arctic sea ice in Section 1; Section 2 lays out the theoretical framework of our generalized Ising model and the neural networks; Section 3 describes the Arctic sea ice data; Section 4 illustrates the computational setups; Section 5 presents the results and analysis, followed by discussions in Section 6 at the end. A previous paper of this research was published on Journal of Applied Physics [3] recently; this research report is an enhancement based on that paper.
 
 <br/>
-# 1.1	Ising model
+## 1.1	Ising model
 <br/>
 The classical Ising model (IM) is the backbone of this study. It was first formalized by physicists Ernst Ising and Wilhelm Lenz to explain the equilibrium and phase transition in magnetic systems. The one-dimensional (1-D) IM was solved by Ising in his 1924 thesis [4] [5] [6], which proves the non-existence of phase transition in the 1-D IM. In 1944, Lars Onsager [7] was able to solve the two-dimensional (2-D) square-lattice IM analytically. Contradictory to the 1-D case, Onsager identified that there exists a critical temperature Tc = 2.27 J/kB when the phase transition happens in a 2-D IM. Later studies of IM in higher dimensions have been closely associated with various developments in advanced 20th-century physics and mathematical theories, including the transfer-matrix method [8] [9], quantum field theory [10], mean-field theory [11], etc.
 <br/>
 Over the years, the IM has found wide success beyond physics. Specifically, the Kinetic IM [11] [12] [13], built upon the equilibrium version, has been proposed to analyze biology, environmental science, machine learning [14] [15], social science, and economic and financial systems. These applications are usually implemented as a discrete time Markov chain of the spin lattice, with spin interactions bounded to finite distance. In biology and neuroscience, IM applications include but are not limited to the condensation of DNA [16], genetics [17], neural networks [18] [19], neuron spike [20], neuron activity in cell assemblies [21], and ligands to receptors binding in cells [22]. In environmental science, the IM has been employed to investigate land pattern dynamics [23] [24]. A few years ago, Ma, Sudakov, Strong and Golden have successfully used the 2-D IM to capture the essential mechanism of the ice melt ponds equilibrium configuration [25]. In social science and economics, the IM has been applied to research in urban segregation [26], crisis study [27], stability of money [28], etc.
 
 <br/><br/>
-# 1.2	Deep learning with convolutional neural networks and transformers
+## 1.2	Deep learning with convolutional neural networks and transformers
 <br/>
 My study falls into a broad body of literature that employs artificial neural networks (ANNs), or neural networks (NNs), a branch of artificial intelligence and machine learning inspired by the structure and functioning of the human brain [29] [30]. Most modern deep learning models are based on multi-layered ANNs. Interestingly, Ising model is considered as the first non-learning recurrent neural network (RNN) architecture [31], which laid the foundation for the 2024 Nobel Prize winning Hopfield network [32].
 <br/>
@@ -28,7 +28,7 @@ Transformer is a groundbreaking deep learning architecture proposed by Google in
 The images of 2-D IM lattices are well-qualified candidates for CNN and ViT, which are explored in this study. The architecture of CNN and ViT models will be described in Section 4.
 <br/><br/>
 
-# 1.3	Arctic sea ice
+## 1.3	Arctic sea ice
 <br/>
 The reversible phase transition between water and ice makes the IM a great tool to study the dynamics of a surface region with the co-existence of both states. In this study, we apply a 2-D IM lattice to study the dynamics of Arctic sea ice melting and freezing cycles, a major climate change indicator that is of significant environmental, economic and social significance [58].
 <br/>
@@ -43,7 +43,7 @@ Data recorded by the National Aeronautics and Space Administration (NASA) and th
 
 # 2.	Theoretical framework
 <br/>
-# 2.1	Classical Ising model
+## 2.1	Classical Ising model
 <br/>
 The system described by an IM is a set of lattice sites, each having a spin that interacts with its neighbors. The Hamiltonian function [4] for the lattice σ in a standard IM is given as 
 <br/>
@@ -81,7 +81,7 @@ $k_B$ is the Boltzmann constant; T is the IM temperature, which differentiates f
 The evolution of the kinetic IM runs through a series of spin flips over the lattice. The probability of each spin flip depends on whether such a flip increases or reduces the Hamiltonian of the system. Mathematically the probability is determined by $min⁡(1,e^{(-β(H_ν-H_μ ) )})$ [64], where Hv and Hµ represent the Hamiltonian of the system before and after the flip. It can be easily seen that higher IM temperatures lead to greater thermal fluctuations and larger variances in the spin value distribution, while lower IM temperatures result in fewer fluctuations.
 
 <br/>
-# 2.2 Continuous spin Ising model
+## 2.2 Continuous spin Ising model
 <br/>
 Most studies of the IM focus on binary values of the spins, i.e., σ_i takes values of +1 or -1 only. However, the sea ice data for each location takes varying values between 0 and 1 that represent the percentage of ice coverage. Therefore, we generalize the IM to allow for continuous spin values that can take any real number between -1 and +1. This generalization enables the IM to examine more realistic systems, but also adds a high degree of complexity to the mathematical solutions. Past research has studied phase transitions and critical behaviors of the continuous IM [65] [66], and recently, an IM with variable power-law spin strengths is studied with its rich phase diagrams [67].
 <br/>
@@ -89,7 +89,7 @@ Most studies of the IM focus on binary values of the spins, i.e., σ_i takes val
 The Hamiltonian function of the continuous spin IM is represented by the same Equation (1). However, σ_i now takes continuous values between +1 and -1; $-J_{ij} σ_i σ_j$ reaches the minimum energy state if σ_i=σ_j=+1, or σ_i=σ_j=-1, as the energy of any other value pair is higher. The highest energy is observed when σ_i=+1, σ_j=-1, or vice versa. This numeric feature works ideally for an ice/water lattice: the most stable low energy state is either 100% water or ice across two adjacent locations, whereas full ice next to full water displays the most unstable high energy state.
 <br/><br/>
 
-# 2.3 Monte Carlo simulation and inertia factor
+## 2.3 Monte Carlo simulation and inertia factor
 <br/>
 The incorporation of the continuous spins also adds to the complexity of the Monte Carlo (MC) simulation of the IM lattice. In the classical binary spin IM, σ_i can only flip to -σ_i in each simulation step, and therefore the absolute value of the change is always 2 no matter if the flip goes from -1 to +1 or from +1 to -1. In a continuous spin IM, the challenge of determining the post-flip numeric value of the new spin arises. In our approach, this new spin value is implemented through a random number $σ'_i$ uniformly distributed between -1 and +1, which will be explained in greater details in Section 4.4. Moreover, we incorporate an innovative inertia factor I, and the probability of each flip is determined by   <br/>
 ![image](https://github.com/Watermelon-Addict/IM-Study-on-Sea-Ice/assets/160803085/d2ce424e-7772-4a88-9584-ca15272a8c84)
@@ -103,7 +103,7 @@ Here is an example to illustrate the inertia effect. Starting with an initial sp
 In summary, we introduce to the classical IM the continuous spin values and a novel inertia factor. These mathematical additions prepare us to study real-world Arctic sea ice dynamics while keeping the computational complexity tractable.
 <br/><br/>
 
-# 2.4 The inverse Ising problem: solved with deep neural networks
+## 2.4 The inverse Ising problem: solved with deep neural networks
 <br/>
 There has been various machine learning research on the IM, many of which employes CNN due to the tremendous power of CNN on image recognition. These studies focus on exploring the phase transitions near a critical temperature [68], while some of them involve generative neural networks such as variational autoencoders [69] or normalizing flows [70]. My task in this study is different, which is to solve the so-called inverse Ising problem [71]: given the start and end state images of the Ising lattices, how do we determine the IM interaction parameters (J, B, I)? In this paper, we will train a few different deep learning models including CNN and ViT for this task, with detailed steps to be explained in Section 4.5.
 <br/>
