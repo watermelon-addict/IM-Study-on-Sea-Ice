@@ -110,7 +110,7 @@ There has been various machine learning research on the IM, many of which employ
 <br/>
 The key to CNN is convolutional layers, which employ a mathematical operation called convolution. A convolutional layer consists of kernels, or filters. The kernels slide along the input grid and compute the weighted sums, as shown below:
 <br/>
-
+![image](https://github.com/user-attachments/assets/e1f0b6f4-9ca7-4163-bd22-6e46a1b59c09)
 <br/>
 Where i is the two-dimensional image; K represents the kernel; the convolution operator is typically denoted as an asterisk *. 
 <br/>
@@ -118,17 +118,17 @@ In most CNNs, the convolutional layers are followed by pooling layers, which red
 <br/>
 AlexNet [40], a CNN network comprising 5 convolutional layers, demonstrated that the depth of neural networks were essential to their performance by winning the ImageNet Large Scale Visual Recognition Challenge in 2012 [72]. Since then, deeper networks gained popularity as they outperform the shallower ones [73]. However, deeper networks are more difficult to train due to vanishing/exploding gradients [74] [75] and the degradation [76] problems, which were overcome by the breakthrough of the residual network in 2015 [43]. Specifically, for a subnetwork with input x and the underlying network function H(x), instead of directly learning H(x), the corresponding residual network learns a new function F(x) defined as:
 <br/>
-
+![image](https://github.com/user-attachments/assets/2a36a7d4-e0f5-4c8f-ab8c-882aa8d2ca26)
 <br/>
 F(x), called residual function, is implemented as short skip connections. ResNet [43], a residual network as deep as over 100 layers, achieved superior performance in  image classification than any previous models.
 <br/>
 Vision transformer (ViT) [57] was developed as alternatives to CNN in computer vision tasks. The core of the transformer architecture is the self-attention mechanism. Long range dependencies and relationships between the inputs, either a sequence of texts in NLP or image patches in ViT, are captured via scaled dot-product attention [46] as illustrated below, which is one of the most influential formulas in deep learning:
 <br/>
-
+![image](https://github.com/user-attachments/assets/82af217f-0304-461f-b987-716b6d23998b)
 <br/>
 Where Q represents the query matrix, K the key matrix, V the value matrix; K^Tis the transpose of K; QK^Tis the matrix multiplication; d_k is the dimension of the keys. Softmax function for any vector x=(x1,x2,…,xn) is defined as:
 <br/>
-
+![image](https://github.com/user-attachments/assets/acf62a19-2bcd-4493-b3bb-3dccdd97ec07)
 <br/>
 The weights of Q, K, V are trained to learn the relationship between different parts of the inputs; the transformer outputs can be fed to various downstream task, e.g. a multi-layer perceptron (MLP) [77] for image classification.
 <br/>
