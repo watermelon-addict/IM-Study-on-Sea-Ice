@@ -180,12 +180,17 @@ Figure 2 (a) and (b) display an example of the initial and the final target stat
 <br/>
 In the IM Hamiltonian function, i.e., Equation (1), We set the following:
 <br/>
-- σ_i is a real number between -1 and +1 for any cell i in the focus area.
-- <i, j> sums over all adjacent cells, so each spin interacts only with four sites that are positioned immediately left, right, above and below.
-- J_ij  is set to be constant within each simulation period across all cells.
-- Bi is set to be time-invariant within each simulation period. However, in order to capture the real-world external force variation across locations, especially the environmental differences from the coast area to the north pole, Bi is set to be a linear function of x_i (the row) and y_i (the column) coordinates of cell i, i.e., Bi = B_0+B_x (x_i-x_0 )+B_y (y_i-y_0), where B_0 is the average B over the lattice, and x_0 and y_0 are the coordinates of the lattice center.
-- I, the inertia factor, is set to be constant within each simulation period.
-- β, the inverse Boltzmann temperature, is set to 1 without loss of generality.
+* σ_i is a real number between -1 and +1 for any cell i in the focus area.
+<br/>
+* <i, j> sums over all adjacent cells, so each spin interacts only with four sites that are positioned immediately left, right, above and below.
+<br/>
+* J_ij  is set to be constant within each simulation period across all cells.
+<br/>
+* Bi is set to be time-invariant within each simulation period. However, in order to capture the real-world external force variation across locations, especially the environmental differences from the coast area to the north pole, Bi is set to be a linear function of x_i (the row) and y_i (the column) coordinates of cell i, i.e., Bi = B_0+B_x (x_i-x_0 )+B_y (y_i-y_0), where B_0 is the average B over the lattice, and x_0 and y_0 are the coordinates of the lattice center.
+<br/>
+* I, the inertia factor, is set to be constant within each simulation period.
+<br/>
+* β, the inverse Boltzmann temperature, is set to 1 without loss of generality.
 <br/><br/>
 
 <h2> 4.4	Metropolis simulation setps </h2>
