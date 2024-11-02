@@ -171,7 +171,7 @@ Figure 2 (a) and (b) display an example of the initial and the final target stat
 <br/>
 
 <figure>
-    <img src="/images/Figure2.png" width="400" height="250">
+    <img src="/images/Figure2.png" width="480" height="250">
     <figcaption> Figure 2: The initial and the final target states of an IM lattice simulation run. (a) shows the actual configuration observed in the focus area on Sept 16th, 2022 and (b) on Oct 1st, 2022. Each full simulation period is half a month. Blue color indicates water; white indicates ice. The darker the color on each cell, the higher the water concentration, as shown by the scale on the right. </figcaption>
 </figure>
 
@@ -216,7 +216,7 @@ In this research, we apply deep neural network models to solve the inverse Ising
 The architecture of my first simple CNN is illustrated in Figure 3, which is similar to AlexNet [40]. It starts with the input layer, which consists of two images of shape (60, 60, 2), representing the start and end state images respectively. It is followed by four convolutional layers with a kernel shape (3, 3). The kernel counts from 16 in the first convolutional layer to 32, 64, and 128 in the last layer. Zero padding and strides (1, 1) are used to ensure coverage of the entire input grid. Each of the convolutional layers applies a Leaky Rectified Linear Unit (LeakyReLU) activation function.  Every convolutional layer is followed by a max pooling layer of pool size (2, 2) that summarizes the crucial features and reduces the layer size. The outputs of the last max pooling layer are flattened and followed by a fully connected dense layer and a dropout layer to avoid overfitting. The outputs are fed to the final dense layer with 5 neurons. It is worth noting that our CNN model differs from most of the CNNs used for classification tasks, as our targets are the continuous Ising parameters instead of discrete categorical labels. Therefore, a linear activation function is chosen for the final layer, rather than other popular choices such as Sigmoid in classification tasks.  The total number of trainable parameters stays at 213,101, making this a small deep learning algorithm that can be trained very fast on an Intel i7-11700F CPU. This CNN model is implemented with the Tensorflow/Keras [80] package in Python; more details including the code can be found on GitHub [81].
 <br/>
 <figure>
-    <img src="/images/Figure3.png" width="500" height="300">
+    <img src="/images/Figure3.png" width="650" height="400">
     <figcaption> Figure 3: Architecture diagram of the simple CNN model to solve the inverse Ising problem </figcaption>
 </figure>
 <br/><br/>
@@ -226,7 +226,7 @@ Our second network is a much deeper ResNet with weights pretrained on the large 
 The last network in this study is a fine-tuned ViT with weights also pretrained on the ImageNet dataset. Since the original paper by Dosovitskiy et al. [57], various ViT implementations have been developed, including Data-efficient Image Transformers (DeiT) [85] by Meta, BERT Pre-training of Image Transformers (BEiT) [86] by Microsoft, etc. In this research, we fine-tune the pretrained google/vit-base-patch16-224 model [87], available in the Transformer package [88] as implemented by Hugging Face [89], a collaboration platform which warehouses a collection of open-source machine learning models. as illustrated in Figure 4(b), this base ViT network consists of 12 sequential transformer encoder blocks, each of which consists of a layer-norm (LN), a multi-head self-attention network, a multi-layer perceptron with Gaussian Error Linear Unit (GELU) activation, and residual connections. In this research, the model is customized for inputs of patches of 60x60 images with 2 channels, and the final output is converted to a 5-neuron fully connected linear layer. The total number of trainable parameters is 85,259,525; the network is more compute-heavy due to the quadratic complexity when calculating the attention matrices. It takes about 70 hours to train this transformer model on an RTX3060 GPU.
 <br/>
 <figure>
-    <img src="/images/Figure4.png" width="500" height="300">
+    <img src="/images/Figure4.png" width="500" height="500">
     <figcaption> Figure 4: (a) Architecture of the customized (a) ResNet50, and (b) ViT networks used in this research. Bulk of the architecture diagrams are taken from He et al. [43] and Dosovitskiy et al. [57] </figcaption>
 </figure>
 <br/><br/>
@@ -235,7 +235,7 @@ The last network in this study is a fine-tuned ViT with weights also pretrained 
 Training neural networks requires a substantial amount of data. In my study, these data are generated following the simulation steps described in previous subsections. To be specific, we start with the Ising lattice at the initial state of a simulation period and randomly select 10,000 set of parameters (J, B_0,〖 B〗_x 〖,B〗_y, I); for each set of parameters, we run the Metropolis simulation steps as described in section 4.4. As a result, we generate 10,000 sets of training samples corresponding to each of the initial states. An example of the training sample corresponding to the initial state of the focus area on Sept 16th, 2022 and Ising parameters (J = 2.31, B_0=-14.5,〖 B〗_x=-6.15〖,B〗_y=0.07, I = 9.93) is illustrated in Figure 5. Compared with Figure 2, this training sample apparently happens to correspond to a much faster freezing cycle than the actual observation.
 <br/>
 <figure>
-    <img src="/images/Figure5.png" width="500" height="500">
+    <img src="/images/Figure5.png" width="500" height="300">
     <figcaption> Figure 5: A training sample pair. (a) is the initial observed state on Sept 16th, 2022 and (b) the final simulated state on Oct 1st, 2022 based on Ising parameters (J=2.31, B0=-14.5, Bx=-6.15, By=0.07, I=9.93). </figcaption>
 </figure>
 <br/><br/>
