@@ -151,13 +151,17 @@ The NRTSI files are in netCDF format. Each file of the Arctic region contains a 
     <figcaption> Figure 1: (a) Arctic sea ice NRTSI image on Sept 16, 2022 and (b) the focus area of 1,500km X 1,500km </figcaption>
 </figure>
 
-<br/>
+<br/><br/>
 For this research paper, we focus on studying a specific geographic region bounded by the black square in Figure 1(a), ranging from the East Siberian Sea (to the top of the box) and the Beaufort Sea (to the left of the box) to near the polar point, and the red oval marks the Canadian Arctic Archipelago area to be discussed later. A zoom-in image of this focus area is shown in Figure 1(b) . This large square area is unobstructed by land or the north pole mask, making it an ideal field for the IM lattice setup. The area contains 60 rows and 60 columns in the data file, covering approximately 1500km x 1500km, or about 2.25 million square kilometers.
 
 <br/><br/>
 
 
 
+
+
+
+<!---
 ### Ising parameter setup
 𝐽_𝑖𝑗 and I set to be constant each period<br/>
 ![image](https://github.com/Watermelon-Addict/IM-Study-on-Sea-Ice/assets/160803085/1f44feee-9413-49b0-8902-5872157912ab)
@@ -186,6 +190,12 @@ The architecture of our CNN is illustrated in Figure 2. The total number of trai
 <br/><br/>
 
 The training data for this CNN are generated following the Metropolis MCMC simulation steps described previously. To be specific, we start with the Ising lattice at the initial state of a simulation period and randomly select 10,000 set of parameters (J, B_0,B_x, B_y, I); for each set of parameters, we run the Metropolis simulation steps. As a result, we generate 10,000 sets of training samples corresponding to each of the initial states. We combine such training data for the full year as the input for CNN training.
+--->
+
+
+
+
+
 <br/><br/>
 
 # Results
