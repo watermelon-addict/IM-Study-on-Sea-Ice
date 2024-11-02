@@ -180,17 +180,17 @@ Figure 2 (a) and (b) display an example of the initial and the final target stat
 <br/>
 In the IM Hamiltonian function, i.e., Equation (1), We set the following:
 <br/>
-* σ_i is a real number between -1 and +1 for any cell i in the focus area.
+● σ_i is a real number between -1 and +1 for any cell i in the focus area.
 <br/>
-* <i, j> sums over all adjacent cells, so each spin interacts only with four sites that are positioned immediately left, right, above and below.
+● <i, j> sums over all adjacent cells, so each spin interacts only with four sites that are positioned immediately left, right, above and below.
 <br/>
-* J_ij  is set to be constant within each simulation period across all cells.
+● J_ij  is set to be constant within each simulation period across all cells.
 <br/>
-* Bi is set to be time-invariant within each simulation period. However, in order to capture the real-world external force variation across locations, especially the environmental differences from the coast area to the north pole, Bi is set to be a linear function of x_i (the row) and y_i (the column) coordinates of cell i, i.e., Bi = B_0+B_x (x_i-x_0 )+B_y (y_i-y_0), where B_0 is the average B over the lattice, and x_0 and y_0 are the coordinates of the lattice center.
+● Bi is set to be time-invariant within each simulation period. However, in order to capture the real-world external force variation across locations, especially the environmental differences from the coast area to the north pole, Bi is set to be a linear function of x_i (the row) and y_i (the column) coordinates of cell i, i.e., Bi = B_0+B_x (x_i-x_0 )+B_y (y_i-y_0), where B_0 is the average B over the lattice, and x_0 and y_0 are the coordinates of the lattice center.
 <br/>
-* I, the inertia factor, is set to be constant within each simulation period.
+● I, the inertia factor, is set to be constant within each simulation period.
 <br/>
-* β, the inverse Boltzmann temperature, is set to 1 without loss of generality.
+● β, the inverse Boltzmann temperature, is set to 1 without loss of generality.
 <br/><br/>
 
 <h2> 4.4	Metropolis simulation setps </h2>
@@ -210,7 +210,8 @@ Various Monte Carlo (MC) methods have been developed for the IM simulation. Amon
 6. (a) If ∆E is negative, the energy change is favorable since the energy is reduced. The spin value change is therefore accepted to 〖σ^'〗_i.
 <br/>
    (b) If ∆E is positive, the probability of the spin flip is determined by the Boltzmann distribution. In this case, another uniform random variable r between 0 and 1 is generated. If r is less than P = e^(-β∆E), the spin value change is accepted; otherwise, the change is rejected and the spin value at i stays at σ_i.
-<br/>
+<br/><br/>
+
 For each semi-monthly simulation period, we repeat the above MC steps 50,000 times. As the lattice of our focus area has 3,600 cells, this repetition allows approximately 14 flip tries for each cell, or roughly once per day. This specific repetition number is chosen by taking into account the computational complexity of the algorithm and also making sure that each cell of the Ising lattice gets sufficient attempts to be changed. Other choices of the repetition number can be considered, which may result in different fitted parameter values. What is important is to ensure the number of repetitions for each period proportional to its duration, so the time unit of each Metropolis step is the same across the full simulation process [79].
 <br/><br/>
 
