@@ -132,7 +132,8 @@ The weights of Q, K, V are trained to learn the relationship between different p
 <br/>
 In this study, we will build three neural networks—a simple CNN from scratch, a much deeper fine-tuned ResNet, and a ViT—and apply each of them to solve the inverse Ising problem independently.
 <br/><br/>
-# Data description
+
+# 3. Data description
 <br/>
 
 Our study uses the “Near-Real-Time DMSP SSMIS Daily Polar Gridded Sea Ice Concentrations” (NRTSI) dataset collected by the National Snow and Ice Data Center (NSIDC), as shown in Figure 1 (a). For this research paper, we focus on studying a specific geographic region bounded by the black square. A zoom-in image of this focus area is shown in Figure 1(b) . The area contains 60 rows and 60 columns in the data file, covering approximately 1500km x 1500km.
