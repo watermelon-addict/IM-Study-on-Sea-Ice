@@ -46,9 +46,13 @@ Data recorded by the National Aeronautics and Space Administration (NASA) and th
 2.1	Classical Ising model
 <br/>
 The system described by an IM is a set of lattice sites, each having a spin that interacts with its neighbors. The Hamiltonian function [4] for the lattice σ in a standard IM is given as <br/>
+<!---
 <figure>
     <img src="https://github.com/Watermelon-Addict/IM-Study-on-Sea-Ice/assets/160803085/b9cbaf41-2590-46f0-9473-45629398363d)" width="250" height="50">
 </figure>
+-->
+![image](https://github.com/user-attachments/assets/dee81799-e014-4984-adeb-0a8a3df9398e)
+
 <br/>
 where σ_i represents the spin variables at site i and takes the value of +1 or -1; J_ij represents the interaction between sites i and j and can take positive values for ferromagnetic and paramagnetic materials, or negative for antiferromagnetic materials; B_i captures the interaction between the external field and site i. i and j range across the full lattice, which can be one, two or higher dimensions, and <i, j> represents pairs of spins at sites i and j that interact with each other. In a simple setup, each spin may only interact with its nearest neighbors, so <i, j> sums over adjacent sites only. For example, in a simple 2-D IM, each spin interacts only with the sites positioned immediately left, right, above, and below. 
 <br/>
