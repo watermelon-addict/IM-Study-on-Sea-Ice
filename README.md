@@ -74,9 +74,15 @@ $k_B$ is the Boltzmann constant; T is the IM temperature, which differentiates f
 <br/>
 The evolution of the kinetic IM runs through a series of spin flips over the lattice. The probability of each spin flip depends on whether such a flip increases or reduces the Hamiltonian of the system. Mathematically the probability is determined by $min⁡(1,e^{(-β(H_ν-H_μ ) )})$ [64], where Hv and Hµ represent the Hamiltonian of the system before and after the flip. It can be easily seen that higher IM temperatures lead to greater thermal fluctuations and larger variances in the spin value distribution, while lower IM temperatures result in fewer fluctuations.
 
-<br/><br/>
-Most studies of the IM focus on binary values of the spins, i.e., σ_i takes values of +1 or -1 only. However, the sea ice data for each location takes varying values between 0 and 1 that represent the percentage of ice coverage. Therefore, we generalize the IM to allow for continuous spin values that can take any real number between -1 and +1.
 <br/>
+2.2 Continuous spin Ising model
+<br/>
+Most studies of the IM focus on binary values of the spins, i.e., σ_i takes values of +1 or -1 only. However, the sea ice data for each location takes varying values between 0 and 1 that represent the percentage of ice coverage. Therefore, we generalize the IM to allow for continuous spin values that can take any real number between -1 and +1. This generalization enables the IM to examine more realistic systems, but also adds a high degree of complexity to the mathematical solutions. Past research has studied phase transitions and critical behaviors of the continuous IM [65] [66], and recently, an IM with variable power-law spin strengths is studied with its rich phase diagrams [67].
+<br/>
+
+The Hamiltonian function of the continuous spin IM is represented by the same Equation (1). However, σ_i now takes continuous values between +1 and -1; 〖-J〗_ij σ_i σ_j reaches the minimum energy state if σ_i=σ_j=+1, or σ_i=σ_j=-1, as the energy of any other value pair is higher. The highest energy is observed when σ_i=+1, σ_j=-1, or vice versa. This numeric feature works ideally for an ice/water lattice: the most stable low energy state is either 100% water or ice across two adjacent locations, whereas full ice next to full water displays the most unstable high energy state.
+<br/><br/>
+
 
 Moreover, we incorporate an innovative inertia factor I, and the probability of each flip is determined by  <br/>
 ![image](https://github.com/Watermelon-Addict/IM-Study-on-Sea-Ice/assets/160803085/d2ce424e-7772-4a88-9584-ca15272a8c84)
@@ -85,10 +91,20 @@ The newly added ![image](https://github.com/Watermelon-Addict/IM-Study-on-Sea-Ic
  accounts for the energy needed to overcome the inertia of the spin change.
 <br/><br/>
 
+2.3 Monte Carlo simulation and inertia factor
 <br/>
+The incorporation of the continuous spins also adds to the complexity of the Monte Carlo (MC) simulation of the IM lattice. In the classical binary spin IM, σ_i can only flip to -σ_i in each simulation step, and therefore the absolute value of the change is always 2 no matter if the flip goes from -1 to +1 or from +1 to -1. In a continuous spin IM, the challenge of determining the post-flip numeric value of the new spin arises. In our approach, this new spin value is implemented through a random number 〖σ^'〗_i uniformly distributed between -1 and +1, which will be explained in greater details in Section 4.4. Moreover, we incorporate an innovative inertia factor I, and the probability of each flip is determined by   <br/>
+![image](https://github.com/Watermelon-Addict/IM-Study-on-Sea-Ice/assets/160803085/d2ce424e-7772-4a88-9584-ca15272a8c84)
 <br/>
-
+where σ_i represents the original spin value before the change, 〖σ^'〗_i the new attempted value, and H_ν and H_μ the system Hamiltonian before and after as described in Equation (1) and Section 2.1. 
+<br/>
+The newly added -I|〖σ^'〗_i-σ_i |  accounts for the energy needed to overcome the inertia of the spin change, and I is an IM parameter to be fitted. Intuitively, this term represents the natural resistance to any state change and can also be thought of as an analog to the latent heat needed for the ice/water phase transition in classical thermodynamics. Motivated by the fact that the total energy change for water/ice phase transition at constant temperature and pressure is proportional to mass, we choose a linear functional form for the inertia term as the simplest and most sensible assumption. Therefore, the total energy required for a spin flip is ∆E=H_ν-H_μ+I〖〖|σ〗^'〗_i-σ_i |, which consists of two parts: the system Hamiltonian change plus the inertia term. The probability of spin value change follows the Boltzmann distribution as Equation (5). 
+<br/>
+Here is an example to illustrate the inertia effect. Starting with an initial spin value of 0.8, a flip to either 0.7 or 0.6 may result in the same system Hamiltonian value for the new lattice. However, we differentiate these two new states by assigning higher probability for the flip to 0.7 because the spin change is smaller. In Equation (5), -I|〖σ^'〗_i-σ_i | influences the distribution of new spin values, and in practice, it significantly improves the simulation results to better match the observations.
+<br/>
+In summary, we introduce to the classical IM the continuous spin values and a novel inertia factor. These mathematical additions prepare us to study real-world Arctic sea ice dynamics while keeping the computational complexity tractable.
 <br/><br/>
+
 # Data description
 <br/>
 
