@@ -104,7 +104,36 @@ Here is an example to illustrate the inertia effect. Starting with an initial sp
 <br/>
 In summary, we introduce to the classical IM the continuous spin values and a novel inertia factor. These mathematical additions prepare us to study real-world Arctic sea ice dynamics while keeping the computational complexity tractable.
 <br/><br/>
+2.4 The inverse Ising problem: solved with deep neural networks
+<br/>
+There has been various machine learning research on the IM, many of which employes CNN due to the tremendous power of CNN on image recognition. These studies focus on exploring the phase transitions near a critical temperature [68], while some of them involve generative neural networks such as variational autoencoders [69] or normalizing flows [70]. My task in this study is different, which is to solve the so-called inverse Ising problem [71]: given the start and end state images of the Ising lattices, how do we determine the IM interaction parameters (J, B, I)? In this paper, we will train a few different deep learning models including CNN and ViT for this task, with detailed steps to be explained in Section 4.5.
+<br/>
+The key to CNN is convolutional layers, which employ a mathematical operation called convolution. A convolutional layer consists of kernels, or filters. The kernels slide along the input grid and compute the weighted sums, as shown below:
+<br/>
 
+<br/>
+Where i is the two-dimensional image; K represents the kernel; the convolution operator is typically denoted as an asterisk *. 
+<br/>
+In most CNNs, the convolutional layers are followed by pooling layers, which reduce the network size and generate a summary statistic from the outputs of the convolutional layers. For instance, max pooling is one of the most popularly used techniques, which calculates the maximum value within a neighboring rectangular area. 
+<br/>
+AlexNet [40], a CNN network comprising 5 convolutional layers, demonstrated that the depth of neural networks were essential to their performance by winning the ImageNet Large Scale Visual Recognition Challenge in 2012 [72]. Since then, deeper networks gained popularity as they outperform the shallower ones [73]. However, deeper networks are more difficult to train due to vanishing/exploding gradients [74] [75] and the degradation [76] problems, which were overcome by the breakthrough of the residual network in 2015 [43]. Specifically, for a subnetwork with input x and the underlying network function H(x), instead of directly learning H(x), the corresponding residual network learns a new function F(x) defined as:
+<br/>
+
+<br/>
+F(x), called residual function, is implemented as short skip connections. ResNet [43], a residual network as deep as over 100 layers, achieved superior performance in  image classification than any previous models.
+<br/>
+Vision transformer (ViT) [57] was developed as alternatives to CNN in computer vision tasks. The core of the transformer architecture is the self-attention mechanism. Long range dependencies and relationships between the inputs, either a sequence of texts in NLP or image patches in ViT, are captured via scaled dot-product attention [46] as illustrated below, which is one of the most influential formulas in deep learning:
+<br/>
+
+<br/>
+Where Q represents the query matrix, K the key matrix, V the value matrix; K^Tis the transpose of K; QK^Tis the matrix multiplication; d_k is the dimension of the keys. Softmax function for any vector x=(x1,x2,…,xn) is defined as:
+<br/>
+
+<br/>
+The weights of Q, K, V are trained to learn the relationship between different parts of the inputs; the transformer outputs can be fed to various downstream task, e.g. a multi-layer perceptron (MLP) [77] for image classification.
+<br/>
+In this study, we will build three neural networks—a simple CNN from scratch, a much deeper fine-tuned ResNet, and a ViT—and apply each of them to solve the inverse Ising problem independently.
+<br/><br/>
 # Data description
 <br/>
 
