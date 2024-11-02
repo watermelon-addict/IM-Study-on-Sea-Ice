@@ -41,7 +41,7 @@ Albedo, the percentage of incident light reflected from the surface of the earth
 Data recorded by the National Aeronautics and Space Administration (NASA) and the National Snow and Ice Data Center (NSIDC) since 1979 has shown substantial declines in both ice extent and thickness in the Arctic, despite the year-over-year fluctuations in either direction. The lowest Arctic sea ice extent was observed in September of 2012 [1] [61]; between 2013 and 2022, the ice extent was higher than the 2012 minimum, but still much lower than the average of the past four decades. 2023 has recorded the hottest year by a significant margin so far [2] [62], and 2024 might break the record again [63]. Some questions then come to us naturally: how does the Artic sea ice extent in the most recent years compare to the 2012 level? Can our model simulations closely match the observations in the real data? These questions will be addressed in Section 5 and 6.
 <br/><br/>
 
-# 2	Theoretical framework
+# 2.	Theoretical framework
 <br/>
 2.1	Classical Ising model
 <br/>
