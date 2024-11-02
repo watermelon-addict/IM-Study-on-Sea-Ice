@@ -156,6 +156,93 @@ For this research paper, we focus on studying a specific geographic region bound
 
 <br/><br/>
 
+# 4.    Ising model and neural network setup
+<br/>
+The methodology of our study on sea ice dynamics is outlined as follows: we first normalize the NRSTI data to a continuous Ising lattice, carefully choose the simulation periods, and set up the Ising parameters (J, B, I) to be fitted. Then given the initial lattice of each simulation period, we run the Metropolis MC simulation based on the values of (J, B, I) to generate a final state of the Ising lattice for this period. The full Metropolis simulation procedure is passed into a neural network to solve the inverse Ising problem, i.e., to find the Ising parameters after training so that the simulated final Ising lattice matches the observed NRSTI data as closely as possible.
+<br/>
+<h2> 4.1	Ising model lattice </h2>
+<br/>
+We first transform the NRTSI data of the focus region as shown in Figure 1 (b) to Ising-style data. A simple linear mapping is applied to convert integers from 0 to 250 to real numbers from -1 to +1. -1 indicates the cell is 100% ice; +1 indicates 100% water; 0 indicates 50%/50% coverage of water/ice. Each cell covers 25km x 25km of the total 1500km x 1500km focus region, and therefore a 60x60 matrix is initialized as the 2-D IM lattice for our study. 
+<br/><br/>
+
+<h2> 4.2	Simulation periods </h2>
+<br/>
+Figure 2 (a) and (b) display an example of the initial and the final target states of an IM lattice simulation run. The simulation periods are chosen to be consistently half a month apart, for example, Sept 16th, 2022 in Figure 2 (a) and Oct 1st, 2022 in Figure 2 (b). This semi-monthly frequency is chosen to balance two considerations. First, the period is sufficiently long to allow for sizable differentiation in the ice/water configurations between the start and the end dates; second, the period is not excessively too long and allows the IM simulation to mimic the daily water/ice evolution on the interim dates between the start and the end, which is to be illustrated in Section 5.3. 
+<br/>
+
+<figure>
+    <img src="/images/Figure2.png" width="400" height="250">
+    <figcaption> Figure 2: The initial and the final target states of an IM lattice simulation run. (a) shows the actual configuration observed in the focus area on Sept 16th, 2022 and (b) on Oct 1st, 2022. Each full simulation period is half a month. Blue color indicates water; white indicates ice. The darker the color on each cell, the higher the water concentration, as shown by the scale on the right. </figcaption>
+</figure>
+
+<br/><br/>
+<h2> 4.3	Ising model parameters </h2>
+<br/>
+In the IM Hamiltonian function, i.e., Equation (1), We set the following:
+<br/>
+- σ_i is a real number between -1 and +1 for any cell i in the focus area.
+- <i, j> sums over all adjacent cells, so each spin interacts only with four sites that are positioned immediately left, right, above and below.
+- J_ij  is set to be constant within each simulation period across all cells.
+- Bi is set to be time-invariant within each simulation period. However, in order to capture the real-world external force variation across locations, especially the environmental differences from the coast area to the north pole, Bi is set to be a linear function of x_i (the row) and y_i (the column) coordinates of cell i, i.e., Bi = B_0+B_x (x_i-x_0 )+B_y (y_i-y_0), where B_0 is the average B over the lattice, and x_0 and y_0 are the coordinates of the lattice center.
+- I, the inertia factor, is set to be constant within each simulation period.
+- β, the inverse Boltzmann temperature, is set to 1 without loss of generality.
+<br/><br/>
+
+<h2> 4.4	Metropolis simulation setps </h2>
+<br/>
+Various Monte Carlo (MC) methods have been developed for the IM simulation. Among them the most widely used are the Glauber dynamics and the Metropolis-Hasting algorithm. In this study, we follow the latter for the MC simulation of the IM lattice evolution. As described in Section 2.3, an inertia factor is introduced into our model and the generalized Metropolis-Hastings MC steps are below:
+<br/>
+1. Select cell i at random from the 2-D lattice of the focus area. Let the spin value of this cell be σ_i.
+<br/>
+2. Generate another uniform random variable 〖σ^'〗_i between -1 and +1.
+<br/>
+3. Compute the energy change ∆Hi= H_ν-H_μ  from σ_i to 〖σ^'〗_i. 
+<br/>
+4. Compute the energy I|〖σ^'〗_i-σ_i | to overcome the inertia of changing the spin value at i.
+<br/>
+5. Compute the total energy change ∆E = ∆Hi  +I|〖σ^'〗_i-σ_i |.  
+<br/>
+6. (a) If ∆E is negative, the energy change is favorable since the energy is reduced. The spin value change is therefore accepted to 〖σ^'〗_i.
+<br/>
+   (b) If ∆E is positive, the probability of the spin flip is determined by the Boltzmann distribution. In this case, another uniform random variable r between 0 and 1 is generated. If r is less than P = e^(-β∆E), the spin value change is accepted; otherwise, the change is rejected and the spin value at i stays at σ_i.
+<br/>
+For each semi-monthly simulation period, we repeat the above MC steps 50,000 times. As the lattice of our focus area has 3,600 cells, this repetition allows approximately 14 flip tries for each cell, or roughly once per day. This specific repetition number is chosen by taking into account the computational complexity of the algorithm and also making sure that each cell of the Ising lattice gets sufficient attempts to be changed. Other choices of the repetition number can be considered, which may result in different fitted parameter values. What is important is to ensure the number of repetitions for each period proportional to its duration, so the time unit of each Metropolis step is the same across the full simulation process [79].
+<br/><br/>
+
+<h2> 4.5 Architecture of the neural networks </h2>
+<br/>
+In this research, we apply deep neural network models to solve the inverse Ising problem; that is, to find the best-fit Ising parameters (J, B_0,〖 B〗_x 〖,B〗_y, I) based on the initial and final states of each simulation period. Three models are implemented: a simple CNN built from scratch, a much deeper fine-tuned ResNet and ViT respectively.
+<br/>
+The architecture of my first simple CNN is illustrated in Figure 3, which is similar to AlexNet [40]. It starts with the input layer, which consists of two images of shape (60, 60, 2), representing the start and end state images respectively. It is followed by four convolutional layers with a kernel shape (3, 3). The kernel counts from 16 in the first convolutional layer to 32, 64, and 128 in the last layer. Zero padding and strides (1, 1) are used to ensure coverage of the entire input grid. Each of the convolutional layers applies a Leaky Rectified Linear Unit (LeakyReLU) activation function.  Every convolutional layer is followed by a max pooling layer of pool size (2, 2) that summarizes the crucial features and reduces the layer size. The outputs of the last max pooling layer are flattened and followed by a fully connected dense layer and a dropout layer to avoid overfitting. The outputs are fed to the final dense layer with 5 neurons. It is worth noting that our CNN model differs from most of the CNNs used for classification tasks, as our targets are the continuous Ising parameters instead of discrete categorical labels. Therefore, a linear activation function is chosen for the final layer, rather than other popular choices such as Sigmoid in classification tasks.  The total number of trainable parameters stays at 213,101, making this a small deep learning algorithm that can be trained very fast on an Intel i7-11700F CPU. This CNN model is implemented with the Tensorflow/Keras [80] package in Python; more details including the code can be found on GitHub [81].
+<br/>
+<figure>
+    <img src="/images/Figure3.png" width="500" height="300">
+    <figcaption> Figure 3: Architecture diagram of the simple CNN model to solve the inverse Ising problem </figcaption>
+</figure>
+<br/><br/>
+
+Our second network is a much deeper ResNet with weights pretrained on the large ImageNet dataset [82]. The original paper by He et al. [43] developed 5 variations with different network depths: ResNet18, ResNet34, ResNet50, ResNet101, and ResNet152. My study employs ResNet50, as a balance choice between the size and performance of the network. In summary, ResNet50 consists of 49 trainable convolutional layers and 1 fully connected layer at the end. In this research, the model is tailored to receive inputs of image shape 60x60 and 2 channels, which then passes the ResNet50 network; finally, a fully connected linear layer with 5 output neurons is appended at the end to learn the 5 Ising parameters (J, B_0,〖 B〗_x 〖,B〗_y, I). The high-level architecture of this fine-tuned network is illustrated in Figure 4(a).  Total number of trainable parameters of this network is 25,558,901, and it can be trained on a Nvidia GeForce RTX3060 GPU in approximately 35 minutes. This fine-tuned model is implemented under the PyTorch [83] framework using the built-in TorchVision ResNet package [84].
+<br/>
+The last network in this study is a fine-tuned ViT with weights also pretrained on the ImageNet dataset. Since the original paper by Dosovitskiy et al. [57], various ViT implementations have been developed, including Data-efficient Image Transformers (DeiT) [85] by Meta, BERT Pre-training of Image Transformers (BEiT) [86] by Microsoft, etc. In this research, we fine-tune the pretrained google/vit-base-patch16-224 model [87], available in the Transformer package [88] as implemented by Hugging Face [89], a collaboration platform which warehouses a collection of open-source machine learning models. as illustrated in Figure 4(b), this base ViT network consists of 12 sequential transformer encoder blocks, each of which consists of a layer-norm (LN), a multi-head self-attention network, a multi-layer perceptron with Gaussian Error Linear Unit (GELU) activation, and residual connections. In this research, the model is customized for inputs of patches of 60x60 images with 2 channels, and the final output is converted to a 5-neuron fully connected linear layer. The total number of trainable parameters is 85,259,525; the network is more compute-heavy due to the quadratic complexity when calculating the attention matrices. It takes about 70 hours to train this transformer model on an RTX3060 GPU.
+<br/>
+<figure>
+    <img src="/images/Figure4.png" width="500" height="300">
+    <figcaption> Figure 4: (a) Architecture of the customized (a) ResNet50, and (b) ViT networks used in this research. Bulk of the architecture diagrams are taken from He et al. [43] and Dosovitskiy et al. [57] </figcaption>
+</figure>
+<br/><br/>
+<h2> 4.6 Training data for the neural networks </h2>
+<br/>
+Training neural networks requires a substantial amount of data. In my study, these data are generated following the simulation steps described in previous subsections. To be specific, we start with the Ising lattice at the initial state of a simulation period and randomly select 10,000 set of parameters (J, B_0,〖 B〗_x 〖,B〗_y, I); for each set of parameters, we run the Metropolis simulation steps as described in section 4.4. As a result, we generate 10,000 sets of training samples corresponding to each of the initial states. An example of the training sample corresponding to the initial state of the focus area on Sept 16th, 2022 and Ising parameters (J = 2.31, B_0=-14.5,〖 B〗_x=-6.15〖,B〗_y=0.07, I = 9.93) is illustrated in Figure 5. Compared with Figure 2, this training sample apparently happens to correspond to a much faster freezing cycle than the actual observation.
+<br/>
+<figure>
+    <img src="/images/Figure4.png" width="500" height="300">
+    <figcaption> Figure 5: A training sample pair. (a) is the initial observed state on Sept 16th, 2022 and (b) the final simulated state on Oct 1st, 2022 based on Ising parameters (J=2.31, B0=-14.5, Bx=-6.15, By=0.07, I=9.93). </figcaption>
+</figure>
+<br/><br/>
+These generated Ising configuration pairs for all simulation periods from June 16th to Jan 1st are passed as the inputs to our neural network. As a supervised learning process, the target of our network is set to be the corresponding Ising parameters. After the network is fully trained, estimating the best-fit Ising parameters for each of our simulation periods is straightforward: we simply pass the observed initial and end state sea ice images to the network, which predicts and returns the respective Ising parameters.
+<br/><br/><br/>
+
+
 
 
 
