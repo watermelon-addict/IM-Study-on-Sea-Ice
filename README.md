@@ -79,12 +79,29 @@ In statistical physics, the configuration probability of lattice σ follows the 
 <br/>
 -->
 
-where Z is the partition function: <br/>
-![image](https://github.com/Watermelon-Addict/IM-Study-on-Sea-Ice/assets/160803085/bde41b65-a38b-4ad6-a56f-61f525a37bf4)
+where Z is the partition function: 
+<br/>
+<figure>
+    <img src="/images/eq3.png" >
+</figure>
 
-and <br/>
+<!--- 
+<br/>
+![image](https://github.com/Watermelon-Addict/IM-Study-on-Sea-Ice/assets/160803085/bde41b65-a38b-4ad6-a56f-61f525a37bf4)
+-->
+
+and 
+<br/>
+<figure>
+    <img src="/images/eq4.png" >
+</figure>
+
+<!--- 
+<br/>
 ![image](https://github.com/Watermelon-Addict/IM-Study-on-Sea-Ice/assets/160803085/86e2baa8-fcec-4fbb-97d2-96a360444b21)
 <br/>
+-->
+
 β is the inverse temperature; 
 $k_B$ is the Boltzmann constant; T is the IM temperature, which differentiates from the ambient temperature discussed later.
 <br/>
@@ -101,9 +118,18 @@ The Hamiltonian function of the continuous spin IM is represented by the same Eq
 
 <h2> 2.3 Monte Carlo simulation and inertia factor </h2>
 <br/>
-The incorporation of the continuous spins also adds to the complexity of the Monte Carlo (MC) simulation of the IM lattice. In the classical binary spin IM, σ_i can only flip to -σ_i in each simulation step, and therefore the absolute value of the change is always 2 no matter if the flip goes from -1 to +1 or from +1 to -1. In a continuous spin IM, the challenge of determining the post-flip numeric value of the new spin arises. In our approach, this new spin value is implemented through a random number $σ'_i$ uniformly distributed between -1 and +1, which will be explained in greater details in Section 4.4. Moreover, we incorporate an innovative inertia factor I, and the probability of each flip is determined by   <br/>
+The incorporation of the continuous spins also adds to the complexity of the Monte Carlo (MC) simulation of the IM lattice. In the classical binary spin IM, σ_i can only flip to -σ_i in each simulation step, and therefore the absolute value of the change is always 2 no matter if the flip goes from -1 to +1 or from +1 to -1. In a continuous spin IM, the challenge of determining the post-flip numeric value of the new spin arises. In our approach, this new spin value is implemented through a random number $σ'_i$ uniformly distributed between -1 and +1, which will be explained in greater details in Section 4.4. Moreover, we incorporate an innovative inertia factor I, and the probability of each flip is determined by   
+<br/>
+<figure>
+    <img src="/images/eq5.png" >
+</figure>
+
+<!--- 
+<br/>
 ![image](https://github.com/Watermelon-Addict/IM-Study-on-Sea-Ice/assets/160803085/d2ce424e-7772-4a88-9584-ca15272a8c84)
 <br/>
+-->
+
 where σ_i represents the original spin value before the change, $σ'_i$ the new attempted value, and H_ν and H_μ the system Hamiltonian before and after as described in Equation (1) and Section 2.1. 
 <br/>
 The newly added $-I|σ'_i-σ_i |$  accounts for the energy needed to overcome the inertia of the spin change, and I is an IM parameter to be fitted. Intuitively, this term represents the natural resistance to any state change and can also be thought of as an analog to the latent heat needed for the ice/water phase transition in classical thermodynamics. Motivated by the fact that the total energy change for water/ice phase transition at constant temperature and pressure is proportional to mass, we choose a linear functional form for the inertia term as the simplest and most sensible assumption. Therefore, the total energy required for a spin flip is $∆E=H_ν-H_μ+I|σ'_i-σ_i |$, which consists of two parts: the system Hamiltonian change plus the inertia term. The probability of spin value change follows the Boltzmann distribution as Equation (5). 
@@ -119,26 +145,58 @@ There has been various machine learning research on the IM, many of which employ
 <br/>
 The key to CNN is convolutional layers, which employ a mathematical operation called convolution. A convolutional layer consists of kernels, or filters. The kernels slide along the input grid and compute the weighted sums, as shown below:
 <br/>
+<figure>
+    <img src="/images/eq6.png" >
+</figure>
+
+<!--- 
+<br/>
 ![image](https://github.com/user-attachments/assets/e1f0b6f4-9ca7-4163-bd22-6e46a1b59c09)
 <br/>
+-->
+
 Where i is the two-dimensional image; K represents the kernel; the convolution operator is typically denoted as an asterisk *. 
 <br/>
 In most CNNs, the convolutional layers are followed by pooling layers, which reduce the network size and generate a summary statistic from the outputs of the convolutional layers. For instance, max pooling is one of the most popularly used techniques, which calculates the maximum value within a neighboring rectangular area. 
 <br/>
 AlexNet [40], a CNN network comprising 5 convolutional layers, demonstrated that the depth of neural networks were essential to their performance by winning the ImageNet Large Scale Visual Recognition Challenge in 2012 [72]. Since then, deeper networks gained popularity as they outperform the shallower ones [73]. However, deeper networks are more difficult to train due to vanishing/exploding gradients [74] [75] and the degradation [76] problems, which were overcome by the breakthrough of the residual network in 2015 [43]. Specifically, for a subnetwork with input x and the underlying network function H(x), instead of directly learning H(x), the corresponding residual network learns a new function F(x) defined as:
 <br/>
+<figure>
+    <img src="/images/eq7.png" >
+</figure>
+
+<!--- 
+<br/>
 ![image](https://github.com/user-attachments/assets/2a36a7d4-e0f5-4c8f-ab8c-882aa8d2ca26)
 <br/>
+-->
+
 F(x), called residual function, is implemented as short skip connections. ResNet [43], a residual network as deep as over 100 layers, achieved superior performance in  image classification than any previous models.
 <br/>
 Vision transformer (ViT) [57] was developed as alternatives to CNN in computer vision tasks. The core of the transformer architecture is the self-attention mechanism. Long range dependencies and relationships between the inputs, either a sequence of texts in NLP or image patches in ViT, are captured via scaled dot-product attention [46] as illustrated below, which is one of the most influential formulas in deep learning:
 <br/>
+<figure>
+    <img src="/images/eq8.png" >
+</figure>
+
+<!--- 
+<br/>
 ![image](https://github.com/user-attachments/assets/82af217f-0304-461f-b987-716b6d23998b)
 <br/>
+-->
+
 Where Q represents the query matrix, K the key matrix, V the value matrix; K^Tis the transpose of K; QK^Tis the matrix multiplication; d_k is the dimension of the keys. Softmax function for any vector x=(x1,x2,…,xn) is defined as:
+<br/>
+<figure>
+    <img src="/images/eq9.png" >
+</figure>
+
+<!--- 
 <br/>
 ![image](https://github.com/user-attachments/assets/acf62a19-2bcd-4493-b3bb-3dccdd97ec07)
 <br/>
+-->
+
 The weights of Q, K, V are trained to learn the relationship between different parts of the inputs; the transformer outputs can be fed to various downstream task, e.g. a multi-layer perceptron (MLP) [77] for image classification.
 <br/>
 In this study, we will build three neural networks—a simple CNN from scratch, a much deeper fine-tuned ResNet, and a ViT—and apply each of them to solve the inverse Ising problem independently.
