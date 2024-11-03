@@ -51,7 +51,6 @@ The system described by an IM is a set of lattice sites, each having a spin that
 <figure>
     <img src="/images/eq1.png" >
 </figure>
-<br/>
 
 <!---
 ![image](https://github.com/user-attachments/assets/dee81799-e014-4984-adeb-0a8a3df9398e)
@@ -65,10 +64,16 @@ where σ_i represents the spin variables at site i and takes the value of +1 or 
 <br/>
 In statistical physics, the configuration probability of lattice σ follows the Boltzmann distribution 
 <br/>
+<figure>
+    <img src="/images/eq2.png" >
+</figure>
+
+<!--- 
+<br/>
   ![image](https://github.com/user-attachments/assets/5f266ac7-cf2c-4816-80d6-300fd73bac70)
 <br/>
 
-<!--- <figure>
+<figure>
     <img src="https://github.com/user-attachments/assets/5f266ac7-cf2c-4816-80d6-300fd73bac70" width="750" height="50">
 </figure>
 <br/>
