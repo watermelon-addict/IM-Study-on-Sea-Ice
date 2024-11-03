@@ -317,16 +317,10 @@ Training neural networks requires a substantial amount of data. In my study, the
 These generated Ising configuration pairs for all simulation periods from June 16th to Jan 1st are passed as the inputs to our neural network. As a supervised learning process, the target of our network is set to be the corresponding Ising parameters. After the network is fully trained, estimating the best-fit Ising parameters for each of our simulation periods is straightforward: we simply pass the observed initial and end state sea ice images to the network, which predicts and returns the respective Ising parameters.
 <br/><br/><br/>
 
+# 5. Results and analysis
 
+More to be added
 
-
-
-
-
-
-<br/><br/>
-
-# Results
 
 ### Simulation results for 2022
 
