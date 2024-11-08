@@ -317,60 +317,38 @@ Training neural networks requires a substantial amount of data. In my study, the
 These generated Ising configuration pairs for all simulation periods from June 16th to Jan 1st are passed as the inputs to our neural network. As a supervised learning process, the target of our network is set to be the corresponding Ising parameters. After the network is fully trained, estimating the best-fit Ising parameters for each of our simulation periods is straightforward: we simply pass the observed initial and end state sea ice images to the network, which predicts and returns the respective Ising parameters.
 <br/><br/><br/>
 
-# 5. Results and analysis
+# 5. Results and analyses
 
-More to be added
-
-
-### Simulation results for 2022
-
-Figure 3 shows the semi-monthly NRTSI sea ice images in the focus area from June 16th, 2022 to Jan 1st, 2023. <br/>
-![image](https://github.com/Watermelon-Addict/IM-Study-on-Sea-Ice/assets/160803085/3d981b64-3b10-42e9-a6e9-709d24295919)
 <br/>
-*Figure 3: The actual semi-monthly sea ice evolution in the focus area in 2022*
-<br/><br/>
-
-The CNN-predicted Ising parameters (J, B_0,B_x, B_y, I) for each simulation period in 2022 are shown in Table 1. <br/>
-![image](https://github.com/Watermelon-Addict/IM-Study-on-Sea-Ice/assets/160803085/2e80a462-0299-4775-9786-4b5ccb5d822a)
+Thanks to the publicly accessible NRTSI data, simulation and training can be completed with all three networks—the simple CNN, the much deeper ResNet50, and the ViT—for every year in the past four decades. The performance of these networks varies: ResNet50 demonstrated a slight advantage in terms of both alignment with the actual data and the balance of the computational resources required for model training. Due to space constraints, in this section we present only the results from ResNet50. A comparative analysis of the three networks is discussed in Section 6.2, and detailed results with the other two networks can be found in Appendix A.1.
 <br/>
-*Table 1: CNN predicted Ising parameters for the 2022 sea ice evolution*
-<br/><br/>
 
-The simulated sea ice images for each 2022 period are shown in Figure 4 utilizing the CNN predicted Ising parameters in Table 1. These images exhibit excellent similarity to Figure 3, demonstrating the strong explanatory power of our Ising model.  <br/>
-![image](https://github.com/Watermelon-Addict/IM-Study-on-Sea-Ice/assets/160803085/584d70e9-a89f-4de2-9a1a-7750f7baf1ec)
+
+
 <br/>
-*Figure 4: The simulated semi-monthly sea ice evolution in the focus area in 2022*
-<br/><br/>
 
-
-The differences in ice coverages across the entire focus area for each of the simulation period in Figure 3 and Figure 4 are calculated; the results are illustrated as the heatmaps in Figure 5. <br/>
-![image](https://github.com/Watermelon-Addict/IM-Study-on-Sea-Ice/assets/160803085/b8f58896-f807-4cf8-bb93-91783beb31a8)
 <br/>
-*Figure 5: Heatmaps illustrating the absolute difference (between 0 and 1) in ice coverages between Figure 3 and Figure 4 for each semi-monthly period*
-<br/><br/>
 
-Figure 6 shows two key numerical measures based on both actual observations and the simulation results for our focus area: the ice coverage percentage, i.e., the mean of the ice coverage across the entire lattice, and the ice extent, i.e., the percentage of areas that are covered by at least 15% ice. <br/>
-![image](https://github.com/Watermelon-Addict/IM-Study-on-Sea-Ice/assets/160803085/0a1e7d88-6dca-4edd-88f4-bd73f6556f4b)
 <br/>
-*Figure 6: (a) The ice coverage percentage in the focus area in 2022. (b) The ice extent for the same period. Blue curves are the actual measures from the NRTSI data; orange ones show the IM simulation results.*
-<br/><br/>
 
-### Other results
-
-More results, including the daily sea ice evolution, and simulation resutls for 2023 and other years, can be found in: E. Wang, "Deep Learning on a Novel Ising Model to Study Arctic Sea Ice Dynamics", 2024. <br/>
 
 <br/><br/>
-# Code files
-The code files this project uses when employing the noval Continuous Spin Ising Model and Convolutional Neural Networks to study the dynamics of Arctic Sea Ice include:  
-•	download_NSIDC.py<br/>
-•	ReadSeaIce.py<br/>
-•	IIMConstants.py<br/>
-•	IceIsingCont.py<br/>
-•	IIMCNNModel.py<br/>
-•	IIMCNNRun.py<br/>
-•	IIM_CNN_Results.py<br/>
-•	IIMSimul.py<br/>
-•	Gen_Figures.py.<br/>
+# Code list
+The code files for this study include: <br/>
+• download_NSIDC.py<br/>
+• ReadSeaIce.py<br/>
+• IIMConstants.py<br/>
+• IceIsingCont.py<br/>
+• IIMCNNModel.py<br/>
+• IIMCNNRun.py<br/>
+• IIM_CNN_Results.py<br/>
+• IIMResnetFineTune.py<br/>
+• IIM_Resnet_Results.py<br/>
+• IIMViTFineTune.py<br/>
+• IIM_ViT_Results.py<br/>
+• IIMSimul.py<br/>
+• Gen_Figures.py<br/>
+
 <br/>
 Detailed desription of the code is in CodeList.txt
 <br/><br/>
