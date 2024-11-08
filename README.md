@@ -406,6 +406,14 @@ My current study will need to be extended to gain the full predictive power when
 My study sets the stage for future Ising model research on sea ice evolution. Methodologically, we generalize the classical Ising model with continuous spin values to incorporate varying ice/water percentages across the Ising lattice. A more complicated idea to be explored in future research is the Quantum Ising Model (QIM), or the so-called Transverse Field Ising Model [93]. With quantum computers, the continuous spin values can be naturally modeled by the rotation of qubits in the Bloch Sphere. Large quantum computers are inaccessible for personal usage currently; but once they are reachable, our research can be readily extended with the assistance of quantum computing in the future.
 <br/><br/>
 
+
+
+
+
+
+
+
+
 <br/>
 
 <br/>
@@ -436,14 +444,101 @@ Detailed desription of the code is in CodeList.txt
 <br/><br/>
 
 
-# Key references: <br/>
-E. Wang, "Deep Learning on a Novel Ising Model to Study Arctic Sea Ice Dynamics", 2024. <br/>
-E. Ising, "Beitrag zur Theorie des Ferromagnetismus," Z. Phys, vol. 31, no. 1, p. 2530258, 1925. <br />
-Y.-P. Ma, I. Sudakov, C. Strong and K. Golden, "Ising model for melt ponds on Arctic sea ice," New Journal of Physics, vol. 21, p. 063029, 2019. <br />
-M. Krasnytska, B. Berche, Y. YuHolovatch and R. Kenna, "Ising model with variable spin/agent strengths," Journal of Physics: Complexity, vol. 1, p. 035008, 2020.
-J. Albert and R. H. Swendsen, "The Inverse Ising Problem," Physics Procedia, vol. 57, pp. 99-103, 2014.<br />
-N. Walker, K. Tam and M. Jarrell, "Deep learning on the 2‑dimensional Ising model to extract the crossover region with a variational autoencoder," Scientific Reports, vol. 10, p. 13047, 2020. <br />
-W. N. Meier, J. S. Stewart, H. Wilcox, M. A. Hardman and S. D. J., "Near-Real-Time DMSP SSMIS Daily Polar Gridded Sea Ice Concentrations, Version 2," NASA National Snow and Ice Data Center Distributed Active Archive Center, Boulder, Colorado USA, 2023.<br />
+# Bibliography <br/>
+[1] 	National Snow and Ice Data Center, "Sea Ice Today," 2024. [Online]. Available: https://nsidc.org/sea-ice-today. <br/>
+[2] 	NOAA National Centers for Environmental Information, "2023 was the warmest year in the modern temperature record," Januray 2024. [Online]. Available: https://www.climate.gov/news-features/featured-images/2023-was-warmest-year-modern-temperature-record#:~:text=The%20year%202023%20was%20the,decade%20(2014%E2%80%932023).<br/>
+[3] 	E. Wang, "A study on Arctic sea ice dynamics using the continuous spin Ising model," Journal of Applied Physics, vol. 135, p. 194901, 2024. <br/>
+[4] 	E. Ising, "Beitrag zur Theorie des Ferromagnetismus," Z. Phys, vol. 31, no. 1, p. 2530258, 1925. <br/>
+[5] 	E. Ising, Contribution to the Theory of Ferromagnetism, 1924. <br/>
+[6] 	S. G. Brush, "History of the Lenz-Ising model," Review of Modern Physics, vol. 39, no. 4, p. 883, 1967. <br/>
+[7] 	L. Onsager, "Crystal statistics. I. A two-dimensional model with an order-disorder transition," Physical Review, vol. 65, no. 3-4, pp. 117-149, 1944. <br/>
+[8] 	H. A. Kramers and G. H. Wannier, "Statistics of the Two-Dimensional Ferromagnet. Part I," Physical Review, vol. 60, no. 3, pp. 252-262, 1941. <br/>
+[9] 	H. A. Kramers and G. H. Wannier, "Statistics of the Two-Dimensional Ferromagnet. Part II," Physical Review, vol. 60, no. 3, pp. 263-176, 1941. <br/>
+[10] 	J. Zuber and C. Itzykson, "Quantum field theory and the two-dimensional Ising model," Physical Review D, vol. 15, p. 2875, 1977. <br/>
+[11] 	M. Aguilera, S. A. Moosavi and H. Shimazaki, "A unifying framework for mean-field theories," Nature Communications, vol. 12, p. 1197, 2021. <br/> 
+[12] 	S. Sides, P. Rikvold and M. Novotony, "Kinetic Ising model in an oscilating field: finite-size scaling at the dynamic phase transition," Physical review letters, vol. 81, no. 4, p. 4865, 1998. <br/>
+[13] 	D. Stauffer, "Social applications of two-dimensional Ising models," American Journal of Physics, vol. 76, no. 4, pp. 470-473, 2008. <br/>
+[14] 	C. Campajola, F. Lillo and D. Tantari, "Inference of the kinetic Ising model with heterogeneous missing data," Physical Review E, vol. 99, no. 6, p. 062138, 2019. <br/>
+[15] 	B. Dun and Y. Roudi, "Learning and inference in a nonequilibrium Ising model with hidden nodes," Physical Review E, vol. 87, no. 2, p. 022127, 2013. <br/>
+[16] 	N. N. Vtyurina, D. Dulin, M. W. Docter, A. S. Meyer, N. H. Dekker and E. A. Abbondanzieri, "Hysteresis in DNA compaction by Dps is described by an Ising model," Proceedings of the National Academy of Sciences, vol. 113, no. 18, pp. 4982-4987, 2016. <br/>
+[17] 	J. Majewski, H. Li and J. Ott, "The Ising model in physics and statistical genetics," The American Journal of Human Genetics, vol. 69, no. 4, pp. 853-862, 2001. <br/>
+[18] 	A. Witoelar and Y. Roudi, "Neural network reconstruction using kinetic Ising models with memory," BMC Neurosci., vol. 12, p. 274, 2011. <br/>
+[19] 	C. Donner and M. Opper, "Inverse Ising problem in continuous time: a latent variable approach," Physical Review E, vol. 96, p. 061104, 2017. <br/>
+[20] 	J. Hertz, Y. Roudi and J. Tyrcha, "Ising model for inferring network structure from spike data," arXiv.1106.1752, 2011. <br/>
+[21] 	Y. Roudi, D. B. and J. Hertz, "Multi-neuronal activity and functional connectivity in cell assemblies," Curr. Opin. Neurobiol, vol. 32, p. 38, 2015. <br/>
+[22] 	Y. Shi and T. Duke, "Cooperative model of bacteril sensing," Physical Review E, vol. 58, no. 5, pp. 6399-6406, 1998. <br/>
+[23] 	T. F. Stepinski, "Spatially explicit simulation of deforestation using the Ising-like neutral model," Environmental Research: Ecology, vol. 2, no. 2, p. 025003, 2023. <br/>
+[24] 	T. F. Stepinski and J. Nowosad, "The kinetic Ising model encapsulates essential dynamics of land pattern change," Royal Society Open Science, vol. 10, no. 10, p. 231005, 2023. <br/>
+[25] 	Y.-P. Ma, I. Sudakov, C. Strong and K. Golden, "Ising model for melt ponds on Arctic sea ice," New Journal of Physics, vol. 21, p. 063029, 2019. <br/>
+[26] 	T. C. Schelling, "Dynamic models of segregation," J. Math. Sociol., vol. 1, pp. 143-186, 1971. <br/>
+[27] 	J. P. Bouchaud, "Crises and collective socio-economic phenomena: simple models and challenges," J. Stat. Phys., vol. 151, pp. 567-606, 2013. <br/>
+[28] 	S. Bornholdt and F. Wagner, "Stability of money: phase transitions," Physica A: Statistical Mechanics and its Applications, vol. 316, no. 1-4, pp. 453-468, 2002. <br/>
+[29] 	G. E. Hinton, "How Neural Networks Learn from Experience," Scientific American, vol. 267, no. 3, pp. 144-151, 1992. <br/>
+[30] 	D. E. Rumelhart, G. E. Hinton and R. J. Williams, "Learning representations by back-propagating errors," Nature, vol. 323, pp. 533-536, 1986. <br/>
+[31] 	J. Schmidhuber, "Annotated History of Modern AI and Deep Learning," arXiv, vol. 2212, p. 11279, 2022. <br/>
+[32] 	J. J. Hopfield, "Neural networks and physical systems with emergent collective computational abilities," The Proceedings of the National Academy of Sciences, vol. 79, no. 8, pp. 2554-2558, 1982. <br/>
+[33] 	Y. LeCun, B. Boser, J. S. Denker, D. Henderson, R. E. Howard, W. Hubbard and L. D. Jackel, "Backpropagation Applied to Handwritten Zip Code Recognition," Neural Computation, vol. 1, no. 4, pp. 541-551, 1989. <br/>
+[34] 	K. Fukushima, "Neocognitron: A self-organizing neural network model for a mechanism of pattern recognition unaffected by shift in position," Biological Cybernetics, vol. 36, pp. 193-202, 1980. <br/>
+[35] 	A. Waibel, "Phoneme Recognition Using Time-Delay Neural Networks," in Meeting of IEICE, Tokyo, Japan, 1987. <br/>
+[36] 	D. Ciresan, U. Meier, J. Masci, L. M. Gambardella and J. Schmidhuber, "Flexible, High Performance Convolutional Neural Networks for Image Classification," in Proceedings of the Twenty-Second International Joint Conference on Artificial Intelligence, 2011. <br/>
+[37] 	A. Tsantekidis, N. Passalis, A. Tefas, J. Kanniainen, M. Gabbouj and A. Iosifidis, "Forecasting Stock Prices from the Limit Order Book Using Convolutional Neural Networks," in IEEE 19th Conference on Business Informatics (CBI), 2017. <br/>
+[38] 	A. van den Oord, S. Dieleman and B. Schrauwen, "Deep content-based music recommendation," in Advances in Neural Information Processing Systems 26 (NIPS 2013), 2013. <br/>
+[39] 	R. Collobert and J. Weston, "A unified architecture for natural language processing," in Proceedings of the 25th international conference on Machine learning - ICML, New York, USA, 2008. <br/>
+[40] 	A. Krizhevsky, I. Sutskever and G. E. Hinton, "ImageNet Classification with Deep Convolutional Neural Networks," in Advances in Neural Information Processing Systems 25 (NIPS 2012), 2012. <br/>
+[41] 	K. Simonyan and A. Zisserman, "Very Deep Convolutional Networks for Large-Scale Image Recognition," arXiv:1409.1556, 2014. <br/>
+[42] 	C. Szegedy, W. Liu, Y. Jia, P. Sermanet, S. Reed, D. Anguelov, D. Erhan, V. Vanhoucke and A. Rabinovich, "Going deeper with convolutions," in Conference on Computer Vision and Pattern Recognition (CVPR), 2015. <br/>
+[43] 	K. He, X. Zhang, S. Ren and J. Sun, "Deep Residual Learning for Image Recognition," in Conference on Computer Vision and Pattern Recognition (CVPR), 2016. <br/>
+[44] 	G. Huang, Z. Liu, L. van der Maaten and K. Q. Weinberger, "Densely Connected Convolutional Networks," arXiv:1608.06993, 2016. <br/>
+[45] 	M. Tan and Q. V. Le, "EfficientNet: Rethinking Model Scaling for Convolutional Neural Networks," arXiv:1905.11946, 2019. <br/>
+[46] 	A. Vaswani, N. Shazeer, N. Parmar, J. Uszkoreit, L. Jones, A. N. Gomez, Ł. Kaiser and I. Polosukhin, "Attention is All you Need," in Advances in Neural Information Processing Systems, 30, 2017. <br/>
+[47] 	S. Hochreiter and J. Schmidhuber, "Long Short-term Memory," Neural Computation, vol. 9, no. 8, pp. 1735-1780, 1997. <br/>
+[48] 	K. Cho, B. van Merrienboer, D. Bahdanau, F. Bougares, H. Schwenk and Y. Bengio, "Learning Phrase Representations using RNN Encoder-Decoder for Statistical Machine Translation," arXiv:1406.1078, 2014. <br/>
+[49] 	OpenAI, J. Achiam, S. Adler, S. Agarwal and e. al, "GPT-4 Technical Report," arXiv:2303.08774, 2023. <br/>
+[50] 	T. Wolf, L. Debut, V. Sanh, J. Chaumond, C. Delangue, A. Moi, P. Cistac, T. Rault, R. Louf, M. Funtowicz, J. Davison, S. Shleifer, P. von Platen, C. Ma, Y. Jernite, J. Plu and C. Xu, "Transformers: State-of-the-Art Natural Language Processing," in Proceedings of the 2020 Conference on Empirical Methods in Natural Language Processing: System Demonstrations, 2020. <br/>
+[51] 	J. Devlin, M.-W. Chang, K. Lee and K. Toutanova, "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding," arXiv:1810.04805, 2018. <br/>
+[52] 	H. Touvron, T. Lavril, G. Izacard, X. Martinet, M.-A. Lachaux, T. Lacroix, B. Rozière, N. Goyal, E. Hambro, F. Azhar, A. Rodriguez, A. Joulin, E. Grave and G. Lample, "LLaMA: Open and Efficient Foundation Language Models," arXiv:2302.13971, 2023. <br/>
+[53] 	A. Ruoss, G. Delétang, S. Medapati, J. Grau-Moya, L. Wenliang, E. Catt, J. Reid and T. Genewein, "Grandmaster-Level Chess Without Search," arXiv:2402.04494v1, 2024. <br/>
+[54] 	M. Ciolino, D. Noever and J. Kalin, "The Go Transformer: Natural Language Modeling for Game Play," arXiv:2007.03500, 2020. <br/>
+[55] 	P. Xu, X. Zhu and D. A. Clifton, "Multimodal Learning with Transformers: A Survey," arXiv:2206.06488v2, 2023. <br/>
+[56] 	P. Ramachandran, N. Parmar, A. Vaswani, I. Bello, A. Levskaya and J. Shlens, "Stand-Alone Self-Attention in Vision Models," in Advances in Neural Information Processing Systems 32, 2019. <br/>
+[57] 	A. Dosovitskiy, L. Beyer, A. Kolesnikov, D. Weissenborn, X. Zhai, T. Unterthiner, M. Dehghani, M. Minderer, G. Heigold, S. Gelly and J. Uszkoreit, "An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale," arXiv:2010.11929, 2021. <br/>
+[58] 	United States Environmental Protection Agency, "Climate Change Indicators: Arctic Sea Ice," 2021. [Online]. Available: https://www.epa.gov/climate-indicators/climate-change-indicators-arctic-sea-ice#:~:text=September%20is%20typically%20when%20the,maximum%20extent%20after%20winter%20freezing. <br/>
+[59] 	NASA Langley Research Center's Atmospheric Science Data Center, "Ice-Albedo Feedback in the Arctic," NASA, 2020. <br/>
+[60] 	K. L. Oakley, M. E. Whalen, D. C. Douglas, M. S. Udevitz, T. C. Atwood and C. Jay, "Polar bear and walrus response to the rapid decline in Arctic sea ice," USGS - Science for a changing world, 2012. [Online]. Available: https://pubs.usgs.gov/publication/fs20123131.<br/>
+[61] 	NSIDC, "EASE-Grid sea ice age, version 4," 2021. <br/>
+[62] 	Copernius, "Record warm November consolidates 2023 as the warmest year," 2023. [Online]. Available: https://climate.copernicus.eu/record-warm-november-consolidates-2023-warmest-year#:~:text=The%20extraordinary%20global%20November%20temperatures,Climate%20Change%20Service%20(C3S). <br/>
+[63] 	NYTimes, "2024 on Track to Be the Hottest Year on Record," August 2024. [Online]. Available: https://www.nytimes.com/2024/08/08/climate/heat-records-2024.html. <br/>
+[64] 	A. Shekaari and M. Jafari, "Theory and simulation of the Ising model," arXiv, 2021. <br/>
+[65] 	G. S. Sylvester and H. van Beijeren, "Phase Transitions for Continous-Spin Ising Ferromagnets," Journal of Functional Analysis, vol. 28, pp. 145-167, 1978. <br/>
+[66] 	E. Bayong and H. T. Diep, "Effect of long-range interactions on the critical behavior of the continuous Ising model," Physical Review B, vol. 59, no. 18, p. 11919, 1999. <br/>
+[67] 	M. Krasnytska, B. Berche, Y. Holovatch and R. Kenna, "Ising model with variable spin/agent strengths," Journal of Physics: Complexity, vol. 1, p. 035008, 2020. <br/>
+[68] 	P. Basua, J. Bhattacharya, D. P. S. Jakkab, C. Mosomane and V. Shukla, "Machine learning of Ising criticality with spin-shuffling," arXiv, 2023. <br/>
+[69] 	N. Walker, K. Tam and M. Jarrell, "Deep learning on the 2 dimensional Ising model to extract the crossover region with a variational autoencoder," Scientific Reports, vol. 10, p. 13047, 2020. <br/>
+[70] 	G. S. Hartnett and M. Mohseni, "Self-Supervised Learning of Generative Spin-Glasses with Normalizing Flows," arXiv, 2020. <br/>
+[71] 	J. Albert and R. H. Swendsen, "The Inverse Ising Problem," Physics Procedia, vol. 57, pp. 99-103, 2014. <br/>
+[72] 	"Large Scale Visual Recognition Challenge 2012 (ILSVRC2012)," image-net.org, 2012. [Online]. Available: https://image-net.org/challenges/LSVRC/2012/results.html. <br/>
+[73] 	H. Mhaskar, Q. Liao and T. Poggio, "When and Why Are Deep Networks Better than Shallow Ones?," in Proceedings of the Thirty-First AAAI Conference on Artificial Intelligence, 2017. <br/>
+[74] 	Y. Bengio, P. Simard and P. Frascon, "Learning long-term dependencies with gradient descent is difficult," IEEE Transactions on Neural, vol. 5, no. 2, pp. 157-166, 1994. <br/>
+[75] 	X. Glorot and Y. Bengio, "Understanding the difficulty of training deep feedforward neural networks," in Proceedings of the Thirteenth International Conference on Artificial Intelligence and Statistics, 2010. <br/>
+[76] 	K. He and J. Sun, "Convolutional Neural Networks at Constrained Time Cost," in Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR), 2015. <br/>
+[77] 	F. Rosenblatt, "The Perceptron: A Probabilistic Model For Information Storage And Organization in the Brain," Psychological Review, vol. 65, no. 6, pp. 386-408, 1958. <br/>
+[78] 	W. N. Meier, J. S. Stewart, H. Wilcox, M. A. Hardman and D. Scott, "Near-Real-Time DMSP SSMIS Daily Polar Gridded Sea Ice Concentrations, Version 2," NASA National Snow and Ice Data Center Distributed Active Archive Center, Boulder, Colorado USA, 2023. <br/>
+[79] 	T. F. Stepinski and J. Nowosad, "The kinetic Ising model encapsulates essential dynamics of land pattern change," Royal Society Open Science, vol. 10, p. 231005, 2023. <br/>
+[80] 	Google Brain Team, "Keras: The high-level API for TensorFlow," [Online]. Available: https://www.tensorflow.org/guide/keras. <br/>
+[81] 	J. Deng, W. Dong, R. Socher, L.-J. Li, K. Li and F.-F. Li, "ImageNet: A large-scale hierarchical image database," in Conference on Computer Vision and Pattern Recognition (CVPR), Miami, FL, USA, 2009. <br/>
+[82] 	A. Paszke, S. Gross, S. Chintala, G. Chanan, E. Yang, Z. DeVito, Z. Lin, A. Desmaison, L. Antiga and A. Lerer, "Automatic differentiation in PyTorch," in 31st Conference on Neural Information Processing Systems, 2017. <br/>
+[83] 	"ResNet," [Online]. Available: https://pytorch.org/vision/stable/models/resnet.html. <br/>
+[84] 	H. Touvron, M. Cord, M. Douze, F. Massa, A. Sablayrolles and H. Jégou, "Training data-efficient image transformers & distillation through attention," arXiv:2012.12877, 2021. <br/>
+[85] 	H. Bao, L. Dong, S. Piao and F. Wei, "BEiT: BERT Pre-Training of Image Transformers," arXiv:2106.08254, 2022. <br/>
+[86] 	"google/vit-base-patch16-224," https://huggingface.co/google/vit-base-patch16-224, [Online]. Available: https://huggingface.co/google/vit-base-patch16-224. <br/>
+[87] 	"Transformers," Hugging Face, [Online]. Available: https://huggingface.co/docs/transformers/en/index. <br/>
+[88] 	"Hugging Face," [Online]. Available: https://huggingface.co/. <br/>
+[89] 	O. M. Johannessen and T. I. Olaussen, "Arctic sea-ice extent: No record minimum in 2023 or recent years," Atmospheric and Oceanic Science Letters, p. 100499, 2024. <br/>
+[90] 	"Arctic sea ice minimum at sixth lowest extent on record," National Snow & Ice Data Center,, 2023. [Online]. Available: https://nsidc.org/arcticseaicenews/2023/09/arctic-sea-ice-minimum-at-sixth/. <br/>
+[91] 	Z. Lu, H. Xie, C. Liu and Y. Zhang, "Bridging the gap between vision transformers and convolutional neural networks on small datasets," in NIPS: Proceedings of the 36th International Conference on Neural Information Processing Systems, 2022. <br/>
+[92] 	H. Wu, B. Xiao, N. Codella, M. Liu, X. Dai, L. Yuan and L. Zhang, "CvT: Introducing Convolutions to Vision Transformers," arXiv:2103.15808, 2021. <br/>
+[93] 	B. K. Chakrabarti, A. Dutta and P. Sen, Quantum Ising Phases and Transitions in Transverse Ising Models, Berlin: Springer, 1996. <br/>
+
 
 
 
