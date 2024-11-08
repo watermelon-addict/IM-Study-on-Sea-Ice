@@ -372,7 +372,7 @@ Furthermore, we compute two key numerical measures: the ice coverage percentage,
 <br/>
 <br/>
 <figure>
-    <img src="/images/Figure9.png" width="600" height="280">
+    <img src="/images/Figure9.png" width="600" height="300">
     <figcaption>Figure 9: (a) The ice coverage percentage in the focus area from June 16th, 2023 to Jan 1st, 2024; (b) The ice extent for the same periods. Blue curves are the actual measures from the NRTSI data; orange ones show the IM simulation results. </figcaption>
 </figure>
 <br/>
@@ -418,7 +418,7 @@ Following the same steps as in Section 5.1, the IM simulations and ResNet50 trai
 <br/>
 <br/>
 <figure>
-    <img src="/images/Figure14.png" width="600" height="280">
+    <img src="/images/Figure14.png" width="600" height=300">
     <figcaption>Figure 14: (a) The ice coverage percentage in the focus area from June 16th, 2012 to Jan 1st, 2013; (b) The ice extent for the same periods.  </figcaption>
 </figure>
 <br/>
