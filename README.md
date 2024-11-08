@@ -329,7 +329,7 @@ For illustration purposes, we focus on the results for 2023, the year with the m
 Figure 6 shows the semi-monthly NRTSI sea ice images in the focus area from June 16th, 2023 to Jan 1st, 2024. As can be seen, the melting cycle starts from June 16th and goes until Sept 16th, and the freezing cycle from Sept 16th to year end. Prior to June 16th, the region is almost fully covered by ice, so the IM simulation will be trivial. This is why we set the simulation start date on June 16th of each year. During the period of June 16th to Dec 16th, every succeeding image shows considerable ice coverage difference from the previous date while retaining certain core features. This semi-monthly frequency choice allows our IM simulation to capture the essence of the evolution dynamics without overfitting the model.
 <br/>
 <figure>
-    <img src="/images/Figure6.png" width="600" height="300">
+    <img src="/images/Figure6.png" width="600" height="400">
     <figcaption> Figure 6: The actual semi-monthly sea ice evolution in the focus area in 2023: (a) June 16th, (b) July 1st, (c) July 16th, (d) Aug 1st, (e) Aug 16th, (f) Sept 1st, (g) Sept 16th, (h) Oct 1st, (i) Oct 16th, (j) Nov 1st, (k) Nov 16th, (l) Dec 1st, (m) Dec 16th, 2023, and (n) Jan 1st, 2024.  </figcaption>
 </figure>
 <br/>
