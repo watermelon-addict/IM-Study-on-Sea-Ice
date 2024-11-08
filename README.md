@@ -339,7 +339,7 @@ The Ising parameters (J, B_0,〖 B〗_x 〖,B〗_y, I) for each simulation perio
 <br/>
 <br/>
 <figure>
-    <img src="/images/Table1.png" width="800" height="250">
+    <img src="/images/Table1.png" width="1000" height="200">
     <figcaption> Table 1: ResNet50 predicted Ising parameters for the 2023 sea ice evolution</figcaption>
 </figure>
 <br/>
