@@ -6,7 +6,7 @@ Simulation and plot functions for Sea Ice Continuous Ising Model
 
 These functions are based on IceIsingCont.py and ReadSeaIce.py
 
-They are called by IIMCNNModel.py and Gen_Figures.py
+They are called by IIMCNNModel.py, IIMResnetFineTune.py, IIMViTFineTune.py, and Gen_Figures.py
 
 Functions directly used for the paper:
     IIM_period_test():	Tests a period with certain IM parameters and isplays images.
@@ -37,15 +37,15 @@ import matplotlib.dates as mdates
 import time
 
 import sys
-if( "D:\\Users\\ellenwang\\source\\py\\ICEIsing" not in sys.path ): 
-    sys.path.append( "D:\\Users\\ellenwang\\source\\py\\ICEIsing" )
+if( "D:\\Users\\junwang\\source\\py\\ICEIsing" not in sys.path ): 
+    sys.path.append( "D:\\Users\\junwang\\source\\py\\ICEIsing" )
 import IceIsingCont as IIMC # Ice Ising Model Continuous
 from ReadSeaIce import read_SI
 from IIMConstants import v1, v2, NX, NY, metrosteps, NumParam
 
 plt.rcParams[ "font.family"] = "Times New Roman"
 
-# auxiliary function to test a period with certain IM parameters (J, B, Bx, By, I)
+# test a period with certain IM parameters (J, B, Bx, By, I)
 # displays images of initial, simulations, and target
 def IIM_period_test( params, args, iters = 1, plt_title = '' ):
     # iters is number of simulation states to be displayed
@@ -96,7 +96,7 @@ def IIM_period_test( params, args, iters = 1, plt_title = '' ):
     return( tot_diff, s1_outs )
 
 
-# calculate difference of 2 lattices, used for optimization, not CNN
+# calculate difference of 2 lattices
 def IIM_cost_diff( s1_out, s2 ):
 
     # hyperparameters in the cost function 
@@ -126,7 +126,7 @@ def IIM_cost_diff( s1_out, s2 ):
     return( tot_diff )
 
 
-# Ising run for a period; calculate the cost function value, which will be used as input for optimization func, not CNN
+# Ising run for a period; calculate the cost function value, which will be used as input for optimization func
 def IIM_period_cost( params, args ):
     # IM paramters
     j_is, b_is, bx, by, inertia = params
@@ -148,11 +148,11 @@ def IIM_period_cost( params, args ):
     return( tot_diff )
 
 
+# bounds for IM parameter minimization
+bnds0 = [(2.25,2.75),(0,15), (-10,10),(-10,10), (9,11)]
 
-# bounds for IM parameter minimization, for dual annealing optimization
-bnds0 = [(2.25,2.75), (0,15), (-10,10), (-10,10), (9,11)]
 
-# single period optimization using dual annealing
+# single period optimization
 # this saves a json file with best fit parameters and the simulation output image
 # this also show the image by calling IMM_period_test
 def single_run( y1, m1, d1, y2, m2, d2, bnds = bnds0, savefile = True ):
@@ -191,7 +191,7 @@ def single_run( y1, m1, d1, y2, m2, d2, bnds = bnds0, savefile = True ):
     return( ( ret, s1_outs) )
 
 
-# parallel optimization runs for a full year
+# parallel run for a full year
 def annual_run( year ):
     start = time.time()
 
@@ -242,21 +242,31 @@ def annual_run( year ):
 
 
 # read best fit parameters and simulation image from saved results
-def read_result(y1,m1,d1,y2,m2,d2, rd=date.today(), plot = False, printres = False, CNN=False ):
+def read_result(y1,m1,d1,y2,m2,d2, rd=date.today(), plot = False, printres = False, 
+                CNN=False, Resnet=False, ViT=False ):
     ymd = "{:4d}{:02d}{:02d}"
     ymd1 = ymd.format(y1, m1, d1)
     ymd2 = ymd.format(y2, m2, d2)
 
-    if( CNN ):
+    if(ViT):
+        of = '..\\IIM_ViT_Outputs\\result_prod_{:s}_{:s}_rundate{:s}.json'  
+    elif( Resnet ):
+        of = '..\\IIM_Resnet_Outputs\\result_prod_{:s}_{:s}_rundate{:s}.json'
+    elif( CNN ):
         of = '..\\IIM_CNN_Outputs\\result_{:s}_{:s}_rundate{:s}.json'
     else:      
         if( rd < datetime.date( 2023, 8, 20)): # different output results naming
             of = '..\\Outputs\\result_fixJL_{:s}_{:s}_rundate{:s}.json'
+        elif (rd == datetime.date( 2024, 4, 6) ): # for testing purpose only without inertia factor
+            # Testing results without inertia factor have run date 6Apr2024, saved as "result_no_inertia_5-xxx"
+            of = '..\\Outputs\\result_no_inertia_5_{:s}_{:s}_rundate{:s}.json'
         else:
             of = '..\\Outputs\\result_{:s}_{:s}_rundate{:s}.json'
 
     of = of.format(ymd1, ymd2, str(rd) )    
 
+    # print( f"Have read {of}" )
+    
     with open( of, "r") as openfile:
         jso = json.load(openfile)
     
@@ -280,7 +290,7 @@ def read_result(y1,m1,d1,y2,m2,d2, rd=date.today(), plot = False, printres = Fal
 
 
 # load results for a full year, plot the images and print best fit parameters
-def load_year( year, rd = date.today(), CNN = False ):
+def load_year( year, rd = date.today(), CNN = False, Resnet = False, ViT=False, plot_err = False ):
     ymd1 = [] # period start date
     ymd2 = [] # period end date
 
@@ -326,7 +336,8 @@ def load_year( year, rd = date.today(), CNN = False ):
         y2,m2,d2=ymd2[i]
         y1,m1,d1=ymd1[i]
         s2_actu = read_SI(y2,m2,d2)
-        s2_simu, retx, retfun = read_result(y1,m1,d1,y2,m2,d2, rd = rd, CNN = CNN)
+        s2_simu, retx, retfun = read_result(y1,m1,d1,y2,m2,d2, rd = rd, 
+                                            CNN = CNN, Resnet=Resnet, ViT=ViT)
         actual.append(s2_actu)
         simulated.append(s2_simu)
         retxs.append(retx)
@@ -396,6 +407,7 @@ def load_year( year, rd = date.today(), CNN = False ):
         print( ymd, end = ", " )
 
     labels = ["J", "B0", "Bx", "By", "I"]
+    # labels = ["J", "B0", "Bx", "By"] # for testing purpose only without inertia factor
     for j in range( len(labels) ):
         print( "\n%s" % labels[j], end = ", ")
         for i in range(sz):
@@ -406,16 +418,64 @@ def load_year( year, rd = date.today(), CNN = False ):
         print( retfuns[i], end = ", " )
 
     print( "\n" )
+
+    # plot differential heatmap
+    if( plot_err ):
+        diffs = []
+        diff_vals = []
+         
+        for i in range(sz+1):
+            # heatmaps shows the absolute difference of each cell, ranging from 0 to 1
+            df = abs( simulated[i] - actual[i] )
+            diffs.append(df)
+            
+            dfv = 0
+            for x in range( NX):
+                for y in range(NY):
+                    dfv += df[x,y]
+            dfv /= (NX*NY)
+            # diff_vals contains the average of absolute differential across the lattice
+            # which is the l1 measure, or the dual_annealing minimization goal
+            # diff_vals are not the samea as error bar plot which is takeing the sum then average
+            # diff_vals are not used in the paper
+            diff_vals.append(dfv)
+        
+        fig, axes = plt.subplots(NI,NJ)
+        fig.subplots_adjust(right=0.95, wspace=0.00)
+        for i in range(NI):
+            for j in range(NJ):
+                axes[i][j].axis('off')
+                if( i*NJ+j < sz + 1 ): # nubmer of images = sz+1  
+                    # pos = axes[i][j].imshow(diffs[i*NJ+j],cmap="Blues", interpolation='none')
+                    pos = axes[i][j].imshow(diffs[i*NJ+j], cmap='YlOrRd', vmin=0, vmax=1, interpolation='none')
+                    label = chr( ord('a')+i*NJ+j)
+                    axes[i][j].set_title(f'({label})', y = -0.22) # add sub-figure label (a), (b), ...
+    
+            # add color bars
+            sub_ax = fig.add_axes([0.95, 0.66, 0.01, 0.22])
+            fig.colorbar(pos,cax=sub_ax)
+            sub_ax = fig.add_axes([0.95, 0.39, 0.01, 0.22])
+            fig.colorbar(pos,cax=sub_ax)
+            sub_ax = fig.add_axes([0.95, 0.125, 0.01, 0.22])
+            fig.colorbar(pos,cax=sub_ax)
+
+        print( "\n%s" % "Average absolute difference between simulated and actual", end = ", ")
+        for i in range(sz+1):
+            print( diff_vals[i], end = ", " )
+        print( "\n" )
+        
     return()
 
 
-# simulate day by day for a semimonthly period, given Ising parameters
-def day_by_day(y1,m1,d1,y2,m2,d2, rd=date.today(), savefile = True, plot = True, CNN=False ):
+# simulate day by day for a semimonthly period
+def day_by_day(y1,m1,d1,y2,m2,d2, rd=date.today(), savefile = True, plot = True, 
+               CNN=False, Resnet=False, ViT=False, plot_err=True ):
     # load best fit parameters
-    s_simu, retx, retfun = read_result(y1,m1,d1,y2,m2,d2, rd = rd, CNN=CNN)    
+    s_simu, retx, retfun = read_result(y1,m1,d1,y2,m2,d2, rd = rd, CNN=CNN, Resnet=Resnet, ViT=ViT)    
 
     # divide metropolis simulation steps evenly for each day
-    date1 = datetime.date(y1,m1,d1)
+    date1_orig = datetime.date(y1,m1,d1)
+    date1 = date1_orig
     date2 = datetime.date(y2,m2,d2)    
     delta = date2 - date1
     numdays = delta.days    
@@ -447,7 +507,11 @@ def day_by_day(y1,m1,d1,y2,m2,d2, rd=date.today(), savefile = True, plot = True,
         s2 = read_SI( yy, mm, dd)
         actual.append(s2)
 
-    if(CNN):
+    if(ViT):
+        of = '..\\IIM_ViT_Outputs\\DayByDay_{:s}_{:s}_rundate{:s}.json'  
+    elif(Resnet):
+        of = '..\\IIM_Resnet_Outputs\\DayByDay_{:s}_{:s}_rundate{:s}.json'    
+    elif(CNN):
         of = '..\\IIM_CNN_Outputs\\DayByDay_{:s}_{:s}_rundate{:s}.json'
     else:        
         of = '..\\Outputs\\DayByDay_{:s}_{:s}_rundate{:s}.json'
@@ -519,14 +583,78 @@ def day_by_day(y1,m1,d1,y2,m2,d2, rd=date.today(), savefile = True, plot = True,
         sub_ax = fig.add_axes([0.94, .125, 0.01, 0.163])
         fig.colorbar(pos,cax=sub_ax)
 
+    # plot differential heatmaps and errorbar
+    if( plot_err ):
+        diffs = []
+        diff_vals = []
+         
+        for i in range(numdays+1):
+            df = simulated[i] - actual[i]
+            diffs.append(np.copy(abs(df)))
+            
+            dfv = 0
+            for x in range( NX):
+                for y in range(NY):
+                    dfv += df[x,y]
+            dfv /= (NX*NY)
+            dfv = abs(dfv)
+            diff_vals.append(dfv)
+        
+        print( diff_vals )
+        fig, axes = plt.subplots(NI,NJ,figsize=(10,8))
+        fig.subplots_adjust(right=0.95, wspace=0.00)
+        for i in range(NI):
+            for j in range(NJ):
+                axes[i][j].axis('off')
+                if( i*NJ+j < numdays+1 ): # nubmer of images = sz+1  
+                    # pos = axes[i][j].imshow(diffs[i*NJ+j],cmap="Blues", interpolation='none')
+                    # pos = axes[i][j].imshow(diffs[i*NJ+j], cmap='YlOrRd', vmin=0, vmax=1, interpolation='none')
+                    pos = axes[i][j].imshow(diffs[i*NJ+j], cmap='YlOrRd', vmin=0, vmax=1 )
+                    label = chr( ord('a')+i*NJ+j)
+                    axes[i][j].set_title(f'({label})', y = -0.18) # add sub-figure label (a), (b), ...
+    
+            # fig.suptitle( "Daily evolution based on semi-monthly fitted params")
+            sub_ax = fig.add_axes([0.94, 0.717, 0.01, 0.163])
+            fig.colorbar(pos,cax=sub_ax)
+            sub_ax = fig.add_axes([0.94, 0.52, 0.01, 0.163])
+            fig.colorbar(pos,cax=sub_ax)
+            sub_ax = fig.add_axes([0.94, 0.323, 0.01, 0.163])
+            fig.colorbar(pos,cax=sub_ax)
+            sub_ax = fig.add_axes([0.94, .125, 0.01, 0.163])
+            fig.colorbar(pos,cax=sub_ax)
+        fig.show()
+        
+        # error bar day by day
+        days_act = [date1_orig]
+        act_avgs = []
+        for i in range(numdays):
+            d = date1_orig + datetime.timedelta(days=i+1)
+            days_act.append(d)
+
+        for i in range(numdays+1):
+            # avg is the average water percentage across the lattice
+            # 1- to covnert back to ICE average
+            act_avg = 1 - np.average(actual[i])
+            act_avgs.append(act_avg)
+        
+        fig,ax = plt.subplots(1,2,figsize=(10,5))
+        ax[0].errorbar(days_act, act_avgs, yerr=diff_vals, ecolor='red', marker='s' )
+        ax[0].xaxis.set_major_formatter(mdates.DateFormatter( '%Y-%m-%d'))
+        ax[0].xaxis.set_major_locator(mdates.DayLocator( interval=5 ))
+        ax[0].set_xlim( date1_orig + datetime.timedelta(days=-1), date2 + datetime.timedelta(days=1) )
+        fig.autofmt_xdate()
+        # ax[0].set_xlabel( '(a)')
+        ax[0].set_ylabel( 'ICE Coverage Percentage')
+        ax[0].legend( loc=9 ) # center top position
+
     return()
 
 
 # project 2023 future ICE starting from 16Aug2023 to 1Jan2024
 # based on best fit parameters from same period of 2022
-# this is only used in Aug 2023 to test the model, its not used once 2023 full year data is available
 def project_future(y0=2023, m0=8, d0=16, rd = date.today(), 
-                   pf_date = datetime.date(2023,9,20), savefile = True, plot = True ):
+                   pf_date = datetime.date(2023,9,20), savefile = True, plot = True,
+                   CNN=False, Resnet=False, ViT=False):
     s1 = read_SI( y0, m0, d0)
     s_in = np.copy(s1)
     simulated = [s1]
@@ -550,7 +678,8 @@ def project_future(y0=2023, m0=8, d0=16, rd = date.today(),
                 m2 += 1
 
         # read best fit IM paramters from previous year
-        s2_simu, retx, retfun = read_result(y1-1,m1,d1,y2-1,m2,d2, rd = rd)        
+        s2_simu, retx, retfun = read_result(y1-1,m1,d1,y2-1,m2,d2, rd = rd,
+                                            CNN = CNN, Resnet=Resnet, ViT=ViT )        
         end_dates.append((y2,m2,d2))
         y1 = y2
         m1 = m2
@@ -567,6 +696,16 @@ def project_future(y0=2023, m0=8, d0=16, rd = date.today(),
         simulated.append(np.copy(s_out))        
         s_in = np.copy(s_out) # set simulated as new start for next period
         
+
+    if(ViT):
+        dire = 'IIM_ViT_Outputs'
+    elif( Resnet ):
+        dire = 'IIM_Resnet_Outputs'
+    elif( CNN ):
+        dire = 'IIM_CNN_Outputs'
+    else:      
+        dire = 'Outputs'
+        
     sz = len( simulated )
     # save simualted lattices to json
     # start with the initial lattice which will be saved too
@@ -574,8 +713,8 @@ def project_future(y0=2023, m0=8, d0=16, rd = date.today(),
         ymd = "{:4d}{:02d}{:02d}"
         ymd1 = ymd.format(y0, m0, d0)
         rds = ymd.format( pf_date.year, pf_date.month, pf_date.day)
-        of = '..\\Outputs\\ProjectFuture_{:s}_rundate{:s}.json'
-        of = of.format(ymd1, rds )    
+        of = '..\\{:s}\\ProjectFuture_{:s}_rundate{:s}.json'
+        of = of.format(dire, ymd1, rds )    
         
         res = {"end date": (y2,m2,d2), 
                "semimonthforward": sz-1,
@@ -588,6 +727,8 @@ def project_future(y0=2023, m0=8, d0=16, rd = date.today(),
                         
         with open( of, "w") as outfile:
             json.dump( res, outfile, indent = 4)    
+        
+        print( f"Saved {of}")
 
     # plot simulated forward semimonthly, start from y0, m0, d0
     if( plot ):
@@ -616,12 +757,70 @@ def project_future(y0=2023, m0=8, d0=16, rd = date.today(),
     return()
 
 
+# Plot actual between 16Aug2023 and 1Jan2024 to compare with project_future()
+def plot_actual_pf():
+    y0 = 2023 
+    m0 = 8
+    d0 = 16
+    
+    s1 = read_SI( y0, m0, d0)
+    s_in = np.copy(s1)
+    actuals = [s1]
+    end_dates = [(y0,m0,d0)] # end dates for each simulation
+
+    # period start and end dates, to be moved forward semimonthly every step
+    y2 = y0
+    m2 = m0
+    d2 = d0
+
+    while( y2 < 2024 ):    
+        # move dates forward semi-monthly. Dates are always 1st and 16th of every month
+        if( d2 == 1):
+            d2 = 16
+        else:
+            d2 = 1 
+            if( m2 == 12):
+                y2 += 1
+                m2 = 1
+            else:
+                m2 += 1
+
+        s2 = read_SI( y2, m2, d2)
+        actuals.append(np.copy(s2))        
+        
+    sz = len( actuals )
+
+    v1 = 0.
+    v2 = 1.
+    NJ=5
+    NI=(sz-1)//NJ + 1
+
+    fig, axes = plt.subplots(NI,NJ,figsize=(10,4))
+    fig.subplots_adjust(right=0.95, wspace=0.00)
+    
+    for i in range(NI):
+        for j in range(NJ):
+            axes[i][j].axis('off')
+            if( i*NJ+j < sz ):
+                pos = axes[i][j].imshow(actuals[i*NJ+j],cmap="Blues", vmin=v1, vmax=v2)
+                label = chr( ord('a')+i*NJ+j)
+                axes[i][j].set_title(f'({label})', y = -0.15)
+    # fig.suptitle( "2023 Semi-monthly Forward Projection")
+
+    sub_ax = fig.add_axes([0.94, 0.54, 0.01, 0.34])
+    fig.colorbar(pos,cax=sub_ax)
+    sub_ax = fig.add_axes([0.94, 0.13, 0.01, 0.34])
+    fig.colorbar(pos,cax=sub_ax)
+    return()
+
+
 # plot average ice percentage and ice extent
 # there are run dates, first is the best-fit parameter rund ate, 
 # second pf_date is for 2023 proj future date (date of generating 2022 best-fit param), which is only needed because of 2023 actual are partial
 # once we pass 2023, and we simulate the full 2023 results, then change curr_year to 2024
 def extent_avg_plot( year, rd=date.today(), pf_date = datetime.date(2023,8,23), 
-                    print_res = False, PF = True, CNN = False ):
+                    print_res = False, PF = True, CNN = False, Resnet = False, ViT=False,
+                    plot_err=False ):
     ymd1 = [] # period start date
     ymd2 = [] # period end date
     
@@ -663,7 +862,7 @@ def extent_avg_plot( year, rd=date.today(), pf_date = datetime.date(2023,8,23),
         y2,m2,d2=ymd2[i]
         y1,m1,d1=ymd1[i]
         s2_actu = read_SI(y2,m2,d2)
-        s2_simu, retx, retfun = read_result(y1,m1,d1,y2,m2,d2, rd=rd, CNN=CNN )
+        s2_simu, retx, retfun = read_result(y1,m1,d1,y2,m2,d2, rd=rd, CNN=CNN, Resnet=Resnet, ViT=ViT )
         actual.append(s2_actu)
         simulated.append(s2_simu)
 
@@ -777,13 +976,40 @@ def extent_avg_plot( year, rd=date.today(), pf_date = datetime.date(2023,8,23),
         print("simulated extent")
         print( sim_exts )
 
+    # plot differential as errorbar
+    if( plot_err ):
+        diffs = []
+        diff_vals = []
+         
+        for i in range(sz_sim):
+            df = simulated[i] - actual[i]
+            diffs.append(df)
+            
+            dfv = 0
+            for x in range( NX):
+                for y in range(NY):
+                    dfv += df[x,y]
+            dfv /= (NX*NY)
+            dfv = abs(dfv)
+            diff_vals.append(dfv)
+        
+        fig,ax = plt.subplots(1,2,figsize=(10,5))
+        ax[0].errorbar(days_act, act_avgs, yerr=diff_vals, ecolor='red', marker='s' )
+        ax[0].xaxis.set_major_formatter(mdates.DateFormatter( '%Y-%m-%d'))
+        ax[0].xaxis.set_major_locator(mdates.DayLocator( interval=38 ))
+        ax[0].set_xlim( datetime.date(y1,6,6), datetime.date(y1+1,1,11))
+        fig.autofmt_xdate()
+        # ax[0].set_xlabel( '(a)')
+        ax[0].set_ylabel( 'ICE Coverage Percentage')
+        ax[0].legend( loc=9 ) # center top position
+
     return()
 
 
 # plot average ice percentage and ice extent for 2023 prediction vs actual
 # 16Aug2023 is the final data date that prediction was based on 
-# again this is only to test the quality of the prediction done in Aug2023 
-def extent_avg_pred_comp( year, rd=date.today(), pf_date = datetime.date(2023,8,9), print_res = True ):
+def extent_avg_pred_comp( year, rd=date.today(), pf_date = datetime.date(2023,8,9), print_res = True,
+                          CNN = False, Resnet = False, ViT=False ):
     ymd1 = [] # period start date
     ymd2 = [] # period end date
 
@@ -808,7 +1034,8 @@ def extent_avg_pred_comp( year, rd=date.today(), pf_date = datetime.date(2023,8,
         y2,m2,d2=ymd2[i]
         y1,m1,d1=ymd1[i]
         s2_actu = read_SI(y2,m2,d2)
-        s2_simu, retx, retfun = read_result(y1,m1,d1,y2,m2,d2, rd=rd)
+        s2_simu, retx, retfun = read_result(y1,m1,d1,y2,m2,d2, rd=rd,
+                                            CNN=CNN, Resnet=Resnet, ViT=ViT)
         actual.append(s2_actu)
         simulated.append(s2_simu)
 
@@ -821,12 +1048,20 @@ def extent_avg_pred_comp( year, rd=date.today(), pf_date = datetime.date(2023,8,
     ymd1_new.append((2023,9,16))
     ymd1_new.append((2023,10,1))
     ymd1_new.append((2023,10,16))
+    ymd1_new.append((2023,11,1))
+    ymd1_new.append((2023,11,16))
+    ymd1_new.append((2023,12,1))
+    ymd1_new.append((2023,12,16))
 
     ymd2_new.append((2023,9,1))
     ymd2_new.append((2023,9,16))
     ymd2_new.append((2023,10,1))
     ymd2_new.append((2023,10,16))
     ymd2_new.append((2023,11,1))
+    ymd2_new.append((2023,11,16))
+    ymd2_new.append((2023,12,1))
+    ymd2_new.append((2023,12,16))
+    ymd2_new.append((2024,1,1))
     sz = len(ymd1_new)
     for i in range(sz):
         y2,m2,d2=ymd2_new[i]
@@ -850,15 +1085,25 @@ def extent_avg_pred_comp( year, rd=date.today(), pf_date = datetime.date(2023,8,
     for i in range(sz1):
         d = datetime.date(all_act_dates[i][0], all_act_dates[i][1], all_act_dates[i][2])
         days_sim.append(d)
+
+    if(ViT):
+        dire = 'IIM_ViT_Outputs'
+    elif( Resnet ):
+        dire = 'IIM_Resnet_Outputs'
+    elif( CNN ):
+        dire = 'IIM_CNN_Outputs'
+    else:      
+        dire = 'Outputs'
         
     mm = 8
     dd = 16
     ymd = "{:4d}{:02d}{:02d}"
     ymd1 = ymd.format(year, mm, dd)
     pfs = ymd.format(pf_date.year, pf_date.month, pf_date.day)
-    of = '..\\Outputs\\ProjectFuture_{:s}_rundate{:s}.json'
-    of = of.format(ymd1, pfs )    
+    of = '..\\{:s}\\ProjectFuture_{:s}_rundate{:s}.json'
+    of = of.format(dire, ymd1, pfs )    
     
+    print( f"Loaded {of}")
     with open( of, "r") as openfile:
         jso = json.load(openfile)
     
@@ -1034,7 +1279,178 @@ def extent_avg_prev_years( years = [2012, 2023, 2019, 2020] ):
 
     return()
 
-# debugging purpose only
+
+
+# Below are runs for Ising model without inertia factor in Apr 2024, form comparison purpose
+
+# test a period with certain IM parameters (J, B, Bx, By, I)
+# displays images of initial, simulations, and target
+def IIM_period_test_NI( params, args, iters = 1, plt_title = '' ):
+    # iters is number of simulation states to be displayed
+    
+    # IM paramters
+    j_is, b_is, bx, by = params
+
+    # s1 is initial state, s2 is target state
+    # s1 & s2 values are between 0 and 1; Ising lattice between -1 and 1
+    s1, s2, NX, NY = args   
+
+    
+    ice_im = IIMC.Lattice(s1, NX = NX, NY = NY, J = j_is, B = b_is, Bx = bx, By = by )
+
+    # iters+2 images will be displayed
+    # first image is initial; final image is target
+    # the middle iters images are simulation results
+    # if iters = 1, then dispaly initial, simulation, and target state
+    fig, axes = plt.subplots(iters+2,1)
+    pos = axes[0].imshow(s1,cmap="Blues", vmin=v1, vmax=v2)
+    fig.colorbar(pos, ax = axes[0])
+    axes[0].axis("off")
+    
+    steps = int( metrosteps / iters ) # intermediate simulation steps
+    
+    # intermediate simulation outputs: if iters=1, then this includes 1 simulation result
+    s1_outs = [] 
+    for i in range(iters):
+        ice_im.metropolis( steps, inertia=0 )
+        s1_out = [ 0.5 + x / 2. for x in ice_im.lat ]
+        s1_outs.append(np.copy(s1_out))        
+
+    # show simulation results 
+    for i in range(iters):
+        pos = axes[i+1].imshow(s1_outs[i],cmap="Blues", vmin=v1, vmax=v2)
+        fig.colorbar(pos, ax = axes[i+1])
+        axes[i+1].axis("off")
+
+    tot_diff = IIM_cost_diff( s1_out, s2 )
+
+    # show final target state
+    pos = axes[iters+1].imshow(s2,cmap="Blues", vmin=v1, vmax=v2)
+    fig.colorbar(pos, ax = axes[iters+1])
+    axes[iters+1].axis("off")
+    
+    axes[0].set_title( plt_title)
+    
+    return( tot_diff, s1_outs )
+
+# Ising run for a period; calculate the cost function value, which will be used as input for optimization func
+def IIM_period_cost_NI( params, args ):
+    # IM paramters
+    j_is, b_is, bx, by = params
+
+    # s1 is initial state, s2 is target state
+    # s1 & s2 values are between 0 and 1; Ising lattice between -1 and 1
+    s1, s2, NX, NY = args   
+    
+    # initialize ising lattice
+    ice_im = IIMC.Lattice(s1, NX = NX, NY = NY, J = j_is, B = b_is, Bx = bx, By = by )
+
+    # run a MC period
+    ice_im.metropolis( metrosteps, inertia=0 )
+
+    # convert the output lattice from -1/1 to 0/1 to compare with target state s2
+    s1_out = [ 0.5 + x / 2. for x in ice_im.lat ]
+
+    tot_diff = IIM_cost_diff( s1_out, s2 )
+    return( tot_diff )
+
+# bounds for comparison to the model without inertia factor 
+# bnds1 = [(0,5),(0,15), (-10,10),(-10,10) ]
+# bnds2 = [(1.75,2.75),(0,15), (-10,10),(-10,10) ]
+# bnds3 = [(1.25,2.1),(6,15), (-10,10),(-10,10) ]
+# bnds4 = [(1.25,3.25),(3,11), (-10,10),(-10,10) ]
+bnds5 = [(1.25,2.8),(3,8.5), (-8,10),(-7,10) ]
+
+# single period optimization
+# this saves a json file with best fit parameters and the simulation output image
+# this also show the image by calling IMM_period_test
+def single_run_NI( y1, m1, d1, y2, m2, d2, bnds = bnds0, savefile = True ):
+    # freezing cycle starts from 16Sep-1Oct, ends at 1mar-16mar, so it's freezing cycle if target month in 10,11,12,1,2,3
+    if( m2>=10 or m2<=3 ):
+        bnds[1] = (-bnds[1][1], bnds[1][0]) 
+    
+    s1 = read_SI( y1, m1, d1)
+    s2 = read_SI( y2, m2, d2)
+    ret = dual_annealing(IIM_period_cost_NI, bounds = bnds, args = [(s1, s2, NX, NY )] )
+    print( "start", y1, m1, d1 )
+    print( "end", y2, m2, d2 )
+    print( ret.x )
+    print( ret.fun )    
+    d, s1_outs = IIM_period_test_NI(ret.x, args = [s1, s2, NX, NY])
+
+    if(savefile):        
+        ymd = "{:4d}{:02d}{:02d}"
+        ymd1 = ymd.format(y1, m1, d1)
+        ymd2 = ymd.format(y2, m2, d2)
+        tod = str(date.today())
+        of = '..\\Outputs\\result_no_inertia_5_{:s}_{:s}_rundate{:s}.json'
+        of = of.format( ymd1, ymd2, tod )    
+        
+        l = s1_outs[0].tolist()
+        res = {"start": (y1,m1,d1), 
+               "end": (y2,m2,d2), 
+               "metrosteps": metrosteps,
+               "retx": ret.x.tolist(),
+               "retfun": ret.fun,
+               "success": ret.success,
+               "array": l}
+        with open( of, "w") as outfile:
+            json.dump( res, outfile, indent = 4)    
+
+    return( ( ret, s1_outs) )
+
+
+# parallel run for a full year
+def annual_run_NI( year ):
+    start = time.time()
+
+    # bnds = bnds1
+    bnds = bnds5
+    ymd1 = [] # period start date
+    ymd2 = [] # period end date
+
+    curr_year = 2024 # when 2023 results are fully ready we chanage this to 2024
+    # full 2023 data available now upon 4Jan2024
+
+    # starts from 16Jun-1Jul period; ends 16Dec-1Jan period
+    if( year < curr_year ):
+        endmonth = 13
+    else:
+        # Run in August 2023
+        # endmonth = 9 # 2023 only available up to 16Aug 
+        # Now run in September 2023
+        endmonth = 12 # 2023 only available up to 1Dec, as of december 2023
+        
+    for m in range( 7, endmonth):
+        ymd2.append((year,m,1))
+        ymd2.append((year,m,16))
+        ymd1.append((year,m-1,16))
+        ymd1.append((year,m,1))
+    
+    if( year < curr_year ):
+        ymd2.append((year+1,1,1))
+        ymd1.append((year,12,16))
+    else:   # 2023 adding last available period 16Nov -> 1Dec
+        ymd2.append((year,12,1))
+        ymd1.append((year,11,16))
+        
+    sz = len(ymd1)
+    th=[]
+    for i in range(sz):
+        y2,m2,d2=ymd2[i]
+        y1,m1,d1=ymd1[i]
+        th.append( mp.Process( target=single_run_NI, args = (y1,m1,d1,y2,m2,d2,bnds) ) )
+
+    for i in range(sz):
+        th[i].start()
+
+    for i in range(sz):
+        th[i].join()
+
+    end = time.time()
+    print("execution time is:%6.0f seconds" % (end-start) )
+
+
 # if ( __name__ == '__main__'): # usually do not run
 #     annual_run(2023)
 

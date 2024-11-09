@@ -1,5 +1,5 @@
 1. Full list of the Python code files
-The code files this project uses when employing an innovative Continuous Spin Ising Model and Convolutional Neural Networks to study the dynamics of Arctic Sea Ice include:  
+The code files this project uses when employing an innovative Continuous Spin Ising Model and three deep neural networks (a simple CNN, a fine-tuned ResNet50, and a fine-tuned ViT) to study the dynamics of Arctic Sea Ice include:  
 •	download_NSIDC.py
 •	ReadSeaIce.py
 •	IIMConstants.py
@@ -7,6 +7,10 @@ The code files this project uses when employing an innovative Continuous Spin Is
 •	IIMCNNModel.py
 •	IIMCNNRun.py
 •	IIM_CNN_Results.py
+•	IIMResnetFineTune.py
+•	IIM_Resnet_Results.py
+•	IIMViTFineTune.py
+•	IIM_ViT_Results.py
 •	IIMSimul.py
 •	Gen_Figures.py.
 
@@ -17,11 +21,13 @@ The code files this project uses when employing an innovative Continuous Spin Is
 
 The backbone of the model is coded in IceIsingCont.py and IIMCNNModel.py. 
 •	IceIsingCont.py sets up the Ising lattice and the Monte Carlo simulation process. 
-•	IIMCNNModel.py creates the convolutional neural network model and sets up the training process following the Keras/Tensorflow CNN paradigm for image recognition (ref. https://www.tensorflow.org/tutorials/images/cnn). This file also contains the functions to generate CNN training datasets.
+•	IIMCNNModel.py creates the simple convolutional neural network model and sets up the training process following the Keras/Tensorflow CNN paradigm for image recognition (ref. https://www.tensorflow.org/tutorials/images/cnn). This file also contains the functions to generate CNN training datasets.
+•	IIMResnetFineTune.py tailors and fine-tunes a ResNet50 model and sets up the training process following the PyTorch TorchVision framework for image recognition fine-tuning (ref. https://pytorch.org/vision/stable/models/resnet.html). 
+•	IIMViTFineTune.py tailors and fine-tunes a vision transformer model and sets up the training process following the Huggingface Transformer framework for image recognition fine-tuning (ref. https://huggingface.co/docs/transformers/en/index). 
 
 Other files are for either one of the following purposes:
 •	Data downloading, processing, and other auxiliary functions/constants, including download_NSIDC.py, ReadSeaIce.py, and IIMConstants.py
-•	Calls to the functions in the 2 backbone files to run actual simulation and training processes, or functions to collect and plot the result, including  IIMCNNRun.py, IIMSimul.py, IIM_CNN_Results.py, and Gen_Figures.py
+•	Calls to the functions in the 2 backbone files to run actual simulation and training processes, or functions to collect and plot the result, including  IIMCNNRun.py, IIMSimul.py, IIM_CNN_Results.py, IIM_Resnet_Results.py, IIM_ViT_Results.py, and Gen_Figures.py
 
 
 
@@ -58,6 +64,14 @@ IIM_CNN_Results.py:	Functions to collect/save the annual Ising/CNN results.
 			save_CNN_Res():	Save CNN Ising parameters results and the lattice for a single period
 			collect_CNN_res(): Collect multiple periods of a year, save CNN results
 
+IIMResnetFineTune.py:	The main script that tailors and fine-tunes a ResNet50 model and sets up the training process following the PyTorch TorchVision framework for image recognition fine-tuning (ref. https://pytorch.org/vision/stable/models/resnet.html). 
+
+IIM_Resnet_Results.py:	Functions to collect/save the annual Ising/ResNet50 results.
+
+IIMViTFineTune.py: 	The main script that tailors and fine-tunes a vision transformer model and sets up the training process following the Huggingface Transformer framework for image recognition fine-tuning (ref. https://huggingface.co/docs/transformers/en/index). 
+
+IIM_ViT_Results.py:	Functions to collect/save the annual Ising/ViT results.
+
 IIMSimul.py:		Codes for most of the auxiliary functions including generating plots for the paper, testing functions for simulation results, comparisons of ice extents across years, intermediate results using different optimization method dual_annealing, and prediction of future ice extent performed in summer of 2023, etc. The functions in this script are called by IIMCNNModel.py and Gen_Figures.py.
 			Functions directly used for the paper:
     			IIM_period_test():	Tests a period with certain IM parameters and displays images.
@@ -76,7 +90,7 @@ IIMSimul.py:		Codes for most of the auxiliary functions including generating plo
     
 Gen_Figures.py:		Collect final results and plot the figures used in the paper.
 
-IIM_CNN.png:		The diagram of the CNN model architecture used in this project, plotted by IIMCNNModel.py.
+IIM_CNN.png:		The diagram of the simple CNN model architecture used in this project, plotted by IIMCNNModel.py.
 
 
 
