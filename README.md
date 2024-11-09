@@ -461,6 +461,9 @@ My current study will need to be extended to gain the full predictive power when
 My study sets the stage for future Ising model research on sea ice evolution. Methodologically, we generalize the classical Ising model with continuous spin values to incorporate varying ice/water percentages across the Ising lattice. A more complicated idea to be explored in future research is the Quantum Ising Model (QIM), or the so-called Transverse Field Ising Model [93]. With quantum computers, the continuous spin values can be naturally modeled by the rotation of qubits in the Bloch Sphere. Large quantum computers are inaccessible for personal usage currently; but once they are reachable, our research can be readily extended with the assistance of quantum computing in the future.
 <br/><br/>
 
+<br/><br/>
+<br/><br/>
+<br/><br/>
 
 
 
@@ -468,7 +471,13 @@ My study sets the stage for future Ising model research on sea ice evolution. Me
 
 
 
-
+# Appendices
+<br/>
+<h2> A.1 Simulation results using the simple CNN and the fine-tuned ViT models </h2>
+<br/>
+The IM simulation results using other two neural networks—the simple CNN and the fine-tuned ViT—are described below.
+<br/>
+The Ising parameters (J, B_0,〖 B〗_x 〖,B〗_y, I) for each simulation period in 2023 predicted by the simple CNN model are shown in Table 2. The simulated sea ice images for each 2023 period are shown in Figure 16 utilizing the Ising parameters in Table 2. The absolute differences in ice coverages for each of the simulation period in Figure 6 and Figure 16 are calculated; the results are illustrated as the heatmaps in Figure 17. The ice coverage percentage and ice extent comparison charts based on the simple CNN model are illustrated in Figure 18.
 <br/>
 
 <br/>
@@ -476,8 +485,81 @@ My study sets the stage for future Ising model research on sea ice evolution. Me
 <br/>
 
 <br/>
+
+<br/>
+The Ising parameters (J, B_0,〖 B〗_x 〖,B〗_y, I) for each simulation period in 2023 predicted by the fine-tuned ViT model are shown in Table 3. The simulated sea ice images for each 2023 period are shown in Figure 19 utilizing the Ising parameters in Table 3. The absolute differences in ice coverages for each of the simulation period in Figure 6 and Figure 19 are illustrated as the heatmaps in Figure 20. The ice coverage percentage and ice extent comparison charts based on the fine-tuned ViT model are illustrated in Figure 21.
+<br/>
+
+<br/>
+
+<br/>
+
+<br/>
+
+<br/>
+From the above results, we can see that the three deep neural networks in this study, a simple CNN, a deeper fine-tuned ResNet50, and a fine-tuned ViT, when coupled with Ising model, all demonstrated striking power explain the complex sea ice dynamics. ResNet50 marginally outperforms the other two models by delivering slightly better similarity with observations.
+<br/>
+<br/>
+<h2> A.2 Simulation results of other years </h2>
+<br/>
+The IM simulation results for 2012 and 2022 based on the fine-tuned ResNet50 model are included in this section. The 2024 results will be included when the full year data is available.
+<br/>
+Figure 22 shows the semi-monthly NRTSI sea ice images in the focus area from June 16th, 2022 to Jan 1st, 2023. The Ising parameters (J, B_0,〖 B〗_x 〖,B〗_y, I) for each simulation period in 2022 predicted by the ResNet50 model are shown in Table 4. The simulated sea ice images for each 2022 period are shown in Figure 23 utilizing the Ising parameters in Table 4. The absolute differences in ice coverages for each of the simulation period in Figure 22 and Figure 23 are calculated; the results are illustrated as the heatmaps in Figure 24. The ice coverage percentage and ice extent comparison charts based on the simple CNN model are illustrated in Figure 25.
+<br/>
+
+<br/>
+
+<br/>
+
+<br/>
+
+<br/>
+
+<br/>
+Figure 26 shows the semi-monthly NRTSI sea ice images in the focus area from June 16th, 2012 to Jan 1st, 2013. The Ising parameters (J, B_0,〖 B〗_x 〖,B〗_y, I) for each simulation period in 2012 predicted by the ResNet50 model are shown in Table 5. The simulated sea ice images for each 2012 period are shown in Figure 27 utilizing the Ising parameters in Table 5. The absolute differences in ice coverages for each of the simulation period in Figure 26 and Figure 27 are calculated; the results are illustrated as the heatmaps in Figure 28. The ice coverage percentage and ice extent comparison charts based on the simple CNN model are illustrated in Figure 29.
+<br/>
+
+<br/>
+
+<br/>
+
+<br/>
+
+<br/>
+
+<br/>
+<br/>
+<h2> A.3 Methodology analysis: the effect of the inertia factor  </h2>
+<br/>
+The impact of the inertia factor I on the performance of our model is worth investigation. We have explored the vanilla Ising model without the inertia term; the subsequent simulation results for 2022 are illustrated in Table 6 and Figure 30 to Figure 32. It can be seen that they substantially underperform the results with the inertia term incorporated. Adding the inertia factor makes the simulation process much more robust, validating that this added feature has significant strength in sea ice modeling. Intuitively, this finding indicates that Arctic sea ice and water have a tendency to stay unchanged even in the presence of external forces.
+<br/>
+
+<br/>
+
+<br/>
+
+<br/>
+
+<br/>
+<br/>
+<h2> A.4 Methodology analysis: extrapolation power of the model </h2>
+<br/>
+This section addresses the extrapolation capability of this generalized Ising model. How does the model perform if the Ising parameters fitted from one year are applied to the data of a different year? For this purpose, projection of sea ice evolution from September to December 2023 has been conducted based on the 2022 best-fit parameters (as in Table 7 which is copied from part of Table 4) for the same time periods with the initial ice image on August 16th, 2023. Figure 33 Shows the actual sea ice evolution from Aug 16th, 2023 to Jan 1st, 2024; Figure 34 shows the IM simulated evolution based on 2022 parameters from Table 4; Figure 35 Shows the ice coverage percentage and extent based on Figure 33 and Figure 34. Notably, although larger deviations are observed from the actual images, because the idiosyncratic intra-year configurations are hard to reproduce by the Ising parameters from a different year. However, the ice extent metrics calculated from my experiment accurately predict that September 2023 would record the second lowest ice extent in history for my focus area. The extrapolation ability of our model, even though far from being perfect, is strong and can offer many insights into the sea ice dynamics for the near future.
+<br/>
+
+<br/>
+
+<br/>
+
+<br/>
+
+<br/>
+
 
 <br/><br/>
+<br/><br/>
+<br/><br/>
+
 # Code list
 The code files for this study include: <br/>
 • download_NSIDC.py<br/>
