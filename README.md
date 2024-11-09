@@ -479,23 +479,62 @@ The IM simulation results using other two neural networks—the simple CNN and t
 <br/>
 The Ising parameters (J, B_0,〖 B〗_x 〖,B〗_y, I) for each simulation period in 2023 predicted by the simple CNN model are shown in Table 2. The simulated sea ice images for each 2023 period are shown in Figure 16 utilizing the Ising parameters in Table 2. The absolute differences in ice coverages for each of the simulation period in Figure 6 and Figure 16 are calculated; the results are illustrated as the heatmaps in Figure 17. The ice coverage percentage and ice extent comparison charts based on the simple CNN model are illustrated in Figure 18.
 <br/>
-
 <br/>
-
+<figure>
+    <img src="/images/Table2.png" width="1000" height="180">
+    <figcaption> Table 2: The simple CNN model predicted Ising parameters for the 2023 sea ice evolution </figcaption>
+</figure>
 <br/>
-
 <br/>
-
+<br/>
+<figure>
+    <img src="/images/Figure16.png" width="600" height="400">
+    <figcaption> Figure 16: The simple CNN model simulated semi-monthly sea ice evolution in the focus area in 2023. (a) is the actual image on June 16th, 2023; (b) - (n) are simulated images on (b) July 1st, (c) July 16th, (d) Aug 1st, (e) Aug 16th, (f) Sept 1st, (g) Sept 16th, (h) Oct 1st, (i) Oct 16th, (j) Nov 1st, (k) Nov 16th, (l) Dec 1st, (m) Dec 16th, 2022, and (n) Jan 1st, 2024. </figcaption>
+</figure>
+<br/>
+<br/>
+<br/>
+<figure>
+    <img src="/images/Figure17.png" width="600" height="400">
+    <figcaption> Figure 17: Heatmaps illustrating the absolute difference in ice coverages between Figure 6 (the actual sea ice) and 16 (the simple CNN model simulated configuration) for each semi-monthly period, from (a) June 16th, 2023 to (n) Jan 1st, 2024.  Yellow color indicates a good match and red a large difference, as shown by the scale on the right. </figcaption>
+</figure>
+<br/>
+<br/>
+<br/>
+<figure>
+    <img src="/images/Figure18.png" width="600" height="300">
+    <figcaption> Figure 18: (a) The ice coverage percentage in the focus area from June 16th, 2023 to Jan 1st, 2024; (b) The ice extent for the same periods. Blue curves are the actual measures from the NRTSI data; orange ones show the IM simulation results from the simple CNN model. </figcaption>
+</figure>
+<br/>
 <br/>
 The Ising parameters (J, B_0,〖 B〗_x 〖,B〗_y, I) for each simulation period in 2023 predicted by the fine-tuned ViT model are shown in Table 3. The simulated sea ice images for each 2023 period are shown in Figure 19 utilizing the Ising parameters in Table 3. The absolute differences in ice coverages for each of the simulation period in Figure 6 and Figure 19 are illustrated as the heatmaps in Figure 20. The ice coverage percentage and ice extent comparison charts based on the fine-tuned ViT model are illustrated in Figure 21.
 <br/>
-
+<figure>
+    <img src="/images/Table3.png" width="1000" height="180">
+    <figcaption> Table 3: The fine-tuned ViT model predicted Ising parameters for the 2023 sea ice evolution </figcaption>
+</figure>
 <br/>
-
 <br/>
-
 <br/>
-
+<figure>
+    <img src="/images/Figure19.png" width="600" height="400">
+    <figcaption> Figure 19: The fine-tuned ViT model simulated semi-monthly sea ice evolution in the focus area in 2023. (a) is the actual image on June 16th, 2023; (b) - (n) are simulated images on (b) July 1st, (c) July 16th, (d) Aug 1st, (e) Aug 16th, (f) Sept 1st, (g) Sept 16th, (h) Oct 1st, (i) Oct 16th, (j) Nov 1st, (k) Nov 16th, (l) Dec 1st, (m) Dec 16th, 2022, and (n) Jan 1st, 2024. </figcaption>
+</figure>
+<br/>
+<br/>
+<br/>
+<figure>
+    <img src="/images/Figure20.png" width="600" height="400">
+    <figcaption> Figure 20: Heatmaps illustrating the absolute difference in ice coverages between Figure 6 (the actual sea ice) and 16 (the fine-tuned ViT model simulated configuration) for each semi-monthly period, from (a) June 16th, 2023 to (n) Jan 1st, 2024.  Yellow color indicates a good match and red a large difference, as shown by the scale on the right. </figcaption>
+</figure>
+<br/>
+<br/>
+<br/>
+<figure>
+    <img src="/images/Figure21.png" width="600" height="300">
+    <figcaption> Figure 21: (a) The ice coverage percentage in the focus area from June 16th, 2023 to Jan 1st, 2024; (b) The ice extent for the same periods. Blue curves are the actual measures from the NRTSI data; orange ones show the IM simulation results from the fine-tuned ViT model. </figcaption>
+</figure>
+<br/>
 <br/>
 From the above results, we can see that the three deep neural networks in this study, a simple CNN, a deeper fine-tuned ResNet50, and a fine-tuned ViT, when coupled with Ising model, all demonstrated striking power explain the complex sea ice dynamics. ResNet50 marginally outperforms the other two models by delivering slightly better similarity with observations.
 <br/>
@@ -506,40 +545,106 @@ The IM simulation results for 2012 and 2022 based on the fine-tuned ResNet50 mod
 <br/>
 Figure 22 shows the semi-monthly NRTSI sea ice images in the focus area from June 16th, 2022 to Jan 1st, 2023. The Ising parameters (J, B_0,〖 B〗_x 〖,B〗_y, I) for each simulation period in 2022 predicted by the ResNet50 model are shown in Table 4. The simulated sea ice images for each 2022 period are shown in Figure 23 utilizing the Ising parameters in Table 4. The absolute differences in ice coverages for each of the simulation period in Figure 22 and Figure 23 are calculated; the results are illustrated as the heatmaps in Figure 24. The ice coverage percentage and ice extent comparison charts based on the simple CNN model are illustrated in Figure 25.
 <br/>
-
 <br/>
-
+<figure>
+    <img src="/images/Figure22.png" width="600" height="400">
+    <figcaption> Figure 22: The actual semi-monthly sea ice evolution in the focus area in 2022: (a) June 16th, (b) July 1st, (c) July 16th, (d) Aug 1st, (e) Aug 16th, (f) Sept 1st, (g) Sept 16th, (h) Oct 1st, (i) Oct 16th, (j) Nov 1st, (k) Nov 16th, (l) Dec 1st, (m) Dec 16th, 2022, and (n) Jan 1st, 2023. </figcaption>
+</figure>
 <br/>
-
 <br/>
-
+<figure>
+    <img src="/images/Table4.png" width="1000" height="180">
+    <figcaption> Table 4: The fine-tuned ResNet50 model predicted Ising parameters for the 2022 sea ice evolution </figcaption>
+</figure>
 <br/>
-
+<br/>
+<br/>
+<figure>
+    <img src="/images/Figure23.png" width="600" height="400">
+    <figcaption> Figure 23: The fine-tuned ResNet50 model simulated semi-monthly sea ice evolution in the focus area in 2022. (a) is the actual image on June 16th, 2022; (b) - (n) are simulated images on (b) July 1st, (c) July 16th, (d) Aug 1st, (e) Aug 16th, (f) Sept 1st, (g) Sept 16th, (h) Oct 1st, (i) Oct 16th, (j) Nov 1st, (k) Nov 16th, (l) Dec 1st, (m) Dec 16th, 2022, and (n) Jan 1st, 2023. </figcaption>
+</figure>
+<br/>
+<br/>
+<br/>
+<figure>
+    <img src="/images/Figure24.png" width="600" height="400">
+    <figcaption> Figure 24: Heatmaps illustrating the absolute difference in ice coverages between Figure 22 (the actual sea ice) and 23 (the fine-tuned ResNet50 model simulated configuration) for each semi-monthly period, from (a) June 16th, 2022 to (n) Jan 1st, 2023.  Yellow color indicates a good match and red a large difference, as shown by the scale on the right. </figcaption>
+</figure>
+<br/>
+<br/>
+<br/>
+<figure>
+    <img src="/images/Figure25.png" width="600" height="300">
+    <figcaption> Figure 25: (a) The ice coverage percentage in the focus area from June 16th, 2022 to Jan 1st, 2023; (b) The ice extent for the same periods. Blue curves are the actual measures from the NRTSI data; orange ones show the IM simulation results from the fine-tuned ResNet50 model. </figcaption>
+</figure>
+<br/>
 <br/>
 Figure 26 shows the semi-monthly NRTSI sea ice images in the focus area from June 16th, 2012 to Jan 1st, 2013. The Ising parameters (J, B_0,〖 B〗_x 〖,B〗_y, I) for each simulation period in 2012 predicted by the ResNet50 model are shown in Table 5. The simulated sea ice images for each 2012 period are shown in Figure 27 utilizing the Ising parameters in Table 5. The absolute differences in ice coverages for each of the simulation period in Figure 26 and Figure 27 are calculated; the results are illustrated as the heatmaps in Figure 28. The ice coverage percentage and ice extent comparison charts based on the simple CNN model are illustrated in Figure 29.
 <br/>
-
 <br/>
-
+<figure>
+    <img src="/images/Figure26.png" width="600" height="400">
+    <figcaption> Figure 26: The actual semi-monthly sea ice evolution in the focus area in 2012: (a) June 16th, (b) July 1st, (c) July 16th, (d) Aug 1st, (e) Aug 16th, (f) Sept 1st, (g) Sept 16th, (h) Oct 1st, (i) Oct 16th, (j) Nov 1st, (k) Nov 16th, (l) Dec 1st, (m) Dec 16th, 2012, and (n) Jan 1st, 2013. </figcaption>
+</figure>
 <br/>
-
 <br/>
-
+<figure>
+    <img src="/images/Table5.png" width="1000" height="180">
+    <figcaption> Table 5: The fine-tuned ResNet50 model predicted Ising parameters for the 2012 sea ice evolution </figcaption>
+</figure>
 <br/>
-
+<br/>
+<br/>
+<figure>
+    <img src="/images/Figure27.png" width="600" height="400">
+    <figcaption> Figure 27: The fine-tuned ResNet50 model simulated semi-monthly sea ice evolution in the focus area in 2012. (a) is the actual image on June 16th, 2012; (b) - (n) are simulated images on (b) July 1st, (c) July 16th, (d) Aug 1st, (e) Aug 16th, (f) Sept 1st, (g) Sept 16th, (h) Oct 1st, (i) Oct 16th, (j) Nov 1st, (k) Nov 16th, (l) Dec 1st, (m) Dec 16th, 2012, and (n) Jan 1st, 2013. </figcaption>
+</figure>
+<br/>
+<br/>
+<br/>
+<figure>
+    <img src="/images/Figure28.png" width="600" height="400">
+    <figcaption> Figure 28: Heatmaps illustrating the absolute difference in ice coverages between Figure 26 (the actual sea ice) and 27 (the fine-tuned ResNet50 model simulated configuration) for each semi-monthly period, from (a) June 16th, 2012 to (n) Jan 1st, 2013.  Yellow color indicates a good match and red a large difference, as shown by the scale on the right. </figcaption>
+</figure>
+<br/>
+<br/>
+<br/>
+<figure>
+    <img src="/images/Figure29.png" width="600" height="300">
+    <figcaption> Figure 29: (a) The ice coverage percentage in the focus area from June 16th, 2012 to Jan 1st, 2013; (b) The ice extent for the same periods. Blue curves are the actual measures from the NRTSI data; orange ones show the IM simulation results from the fine-tuned ResNet50 model. </figcaption>
+</figure>
 <br/>
 <br/>
 <h2> A.3 Methodology analysis: the effect of the inertia factor  </h2>
 <br/>
 The impact of the inertia factor I on the performance of our model is worth investigation. We have explored the vanilla Ising model without the inertia term; the subsequent simulation results for 2022 are illustrated in Table 6 and Figure 30 to Figure 32. It can be seen that they substantially underperform the results with the inertia term incorporated. Adding the inertia factor makes the simulation process much more robust, validating that this added feature has significant strength in sea ice modeling. Intuitively, this finding indicates that Arctic sea ice and water have a tendency to stay unchanged even in the presence of external forces.
 <br/>
-
 <br/>
-
+<figure>
+    <img src="/images/Table6.png" width="1000" height="160">
+    <figcaption> Table 6: The predicted Ising parameters for the 2012 sea ice evolution without the inertia factor I. </figcaption>
+</figure>
 <br/>
-
 <br/>
-
+<figure>
+    <img src="/images/Figure30.png" width="600" height="400">
+    <figcaption> Figure 30: The simulated semi-monthly evolution of sea ice for our focus area in 2022, using the Ising model without the inertia factor. </figcaption>
+</figure>
+<br/>
+<br/>
+<br/>
+<figure>
+    <img src="/images/Figure31.png" width="600" height="400">
+    <figcaption> Figure 31: Heatmaps illustrating the difference in the ice coverage between Figure 22 (the 2022 actual sea ice) and figure 30 (the simulation based on Ising model without the inertia factor). </figcaption>
+</figure>
+<br/>
+<br/>
+<br/>
+<figure>
+    <img src="/images/Figure32.png" width="600" height="300">
+    <figcaption> Figure 32: The ice coverage percentage and the ice extent of 2022, where the simulated curves are based on the Ising model without the inertia term. </figcaption>
+</figure>
+<br/>
 <br/>
 <br/>
 <h2> A.4 Methodology analysis: extrapolation power of the model </h2>
