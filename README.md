@@ -621,7 +621,7 @@ The impact of the inertia factor I on the performance of our model is worth inve
 <br/>
 <br/>
 <figure>
-    <img src="/images/Table6.png" width="900" height="160">
+    <img src="/images/Table6.png" width="900" height="140">
     <figcaption> Table 6: The predicted Ising parameters for the 2012 sea ice evolution without the inertia factor I. </figcaption>
 </figure>
 <br/>
