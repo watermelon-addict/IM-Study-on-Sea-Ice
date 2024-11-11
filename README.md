@@ -52,7 +52,7 @@ The system described by an IM is a set of lattice sites, each having a spin that
     <img src="/images/eq1.png" >
 </figure>
 
-where $σ_i$ represents the spin variables at site i and takes the value of +1 or -1; J_ij represents the interaction between sites i and j and can take positive values for ferromagnetic and paramagnetic materials, or negative for antiferromagnetic materials; B_i captures the interaction between the external field and site i. i and j range across the full lattice, which can be one, two or higher dimensions, and <i, j> represents pairs of spins at sites i and j that interact with each other. In a simple setup, each spin may only interact with its nearest neighbors, so <i, j> sums over adjacent sites only. For example, in a simple 2-D IM, each spin interacts only with the sites positioned immediately left, right, above, and below. 
+where $σ_i$ represents the spin variables at site i and takes the value of +1 or -1; $J_{ij}$ represents the interaction between sites i and j and can take positive values for ferromagnetic and paramagnetic materials, or negative for antiferromagnetic materials; B_i captures the interaction between the external field and site i. i and j range across the full lattice, which can be one, two or higher dimensions, and <i, j> represents pairs of spins at sites i and j that interact with each other. In a simple setup, each spin may only interact with its nearest neighbors, so <i, j> sums over adjacent sites only. For example, in a simple 2-D IM, each spin interacts only with the sites positioned immediately left, right, above, and below. 
 <br/>
 In statistical physics, the configuration probability of lattice σ follows the Boltzmann distribution 
 <br/>
@@ -60,27 +60,11 @@ In statistical physics, the configuration probability of lattice σ follows the 
     <img src="/images/eq2.png" >
 </figure>
 
-<!--- 
-<br/>
-  ![image](https://github.com/user-attachments/assets/5f266ac7-cf2c-4816-80d6-300fd73bac70)
-<br/>
-
-<figure>
-    <img src="https://github.com/user-attachments/assets/5f266ac7-cf2c-4816-80d6-300fd73bac70" width="750" height="50">
-</figure>
-<br/>
--->
-
 where Z is the partition function: 
 <br/>
 <figure>
     <img src="/images/eq3.png" >
 </figure>
-
-<!--- 
-<br/>
-![image](https://github.com/Watermelon-Addict/IM-Study-on-Sea-Ice/assets/160803085/bde41b65-a38b-4ad6-a56f-61f525a37bf4)
--->
 
 and 
 <br/>
@@ -88,16 +72,10 @@ and
     <img src="/images/eq4.png" >
 </figure>
 
-<!--- 
-<br/>
-![image](https://github.com/Watermelon-Addict/IM-Study-on-Sea-Ice/assets/160803085/86e2baa8-fcec-4fbb-97d2-96a360444b21)
-<br/>
--->
-
 β is the inverse temperature; 
 $k_B$ is the Boltzmann constant; T is the IM temperature, which differentiates from the ambient temperature discussed later.
 <br/>
-The evolution of the kinetic IM runs through a series of spin flips over the lattice. The probability of each spin flip depends on whether such a flip increases or reduces the Hamiltonian of the system. Mathematically the probability is determined by $min⁡(1,e^{(-β(H_ν-H_μ ) )})$ [64], where Hv and Hµ represent the Hamiltonian of the system before and after the flip. It can be easily seen that higher IM temperatures lead to greater thermal fluctuations and larger variances in the spin value distribution, while lower IM temperatures result in fewer fluctuations.
+The evolution of the kinetic IM runs through a series of spin flips over the lattice. The probability of each spin flip depends on whether such a flip increases or reduces the Hamiltonian of the system. Mathematically the probability is determined by $min⁡(1,e^{(-β(H_ν-H_μ ) )})$ [64], where $H_v$ and $H_µ$ represent the Hamiltonian of the system before and after the flip. It can be easily seen that higher IM temperatures lead to greater thermal fluctuations and larger variances in the spin value distribution, while lower IM temperatures result in fewer fluctuations.
 
 <br/>
 <h2> 2.2 Continuous spin Ising model </h2>
@@ -105,24 +83,18 @@ The evolution of the kinetic IM runs through a series of spin flips over the lat
 Most studies of the IM focus on binary values of the spins, i.e., σ_i takes values of +1 or -1 only. However, the sea ice data for each location takes varying values between 0 and 1 that represent the percentage of ice coverage. Therefore, we generalize the IM to allow for continuous spin values that can take any real number between -1 and +1. This generalization enables the IM to examine more realistic systems, but also adds a high degree of complexity to the mathematical solutions. Past research has studied phase transitions and critical behaviors of the continuous IM [65] [66], and recently, an IM with variable power-law spin strengths is studied with its rich phase diagrams [67].
 <br/>
 
-The Hamiltonian function of the continuous spin IM is represented by the same Equation (1). However, σ_i now takes continuous values between +1 and -1; $-J_{ij} σ_i σ_j$ reaches the minimum energy state if σ_i=σ_j=+1, or σ_i=σ_j=-1, as the energy of any other value pair is higher. The highest energy is observed when σ_i=+1, σ_j=-1, or vice versa. This numeric feature works ideally for an ice/water lattice: the most stable low energy state is either 100% water or ice across two adjacent locations, whereas full ice next to full water displays the most unstable high energy state.
+The Hamiltonian function of the continuous spin IM is represented by the same Equation (1). However, $σ_i$ now takes continuous values between +1 and -1; $-J_{ij} σ_i σ_j$ reaches the minimum energy state if $σ_i=σ_j=+1$, or $σ_i=σ_j=-1$, as the energy of any other value pair is higher. The highest energy is observed when σ_i=+1, σ_j=-1, or vice versa. This numeric feature works ideally for an ice/water lattice: the most stable low energy state is either 100% water or ice across two adjacent locations, whereas full ice next to full water displays the most unstable high energy state.
 <br/><br/>
 
 <h2> 2.3 Monte Carlo simulation and inertia factor </h2>
 <br/>
-The incorporation of the continuous spins also adds to the complexity of the Monte Carlo (MC) simulation of the IM lattice. In the classical binary spin IM, σ_i can only flip to -σ_i in each simulation step, and therefore the absolute value of the change is always 2 no matter if the flip goes from -1 to +1 or from +1 to -1. In a continuous spin IM, the challenge of determining the post-flip numeric value of the new spin arises. In our approach, this new spin value is implemented through a random number $σ'_i$ uniformly distributed between -1 and +1, which will be explained in greater details in Section 4.4. Moreover, we incorporate an innovative inertia factor I, and the probability of each flip is determined by   
+The incorporation of the continuous spins also adds to the complexity of the Monte Carlo (MC) simulation of the IM lattice. In the classical binary spin IM, $σ_i$ can only flip to $-σ_i$ in each simulation step, and therefore the absolute value of the change is always 2 no matter if the flip goes from -1 to +1 or from +1 to -1. In a continuous spin IM, the challenge of determining the post-flip numeric value of the new spin arises. In our approach, this new spin value is implemented through a random number $σ'_i$ uniformly distributed between -1 and +1, which will be explained in greater details in Section 4.4. Moreover, we incorporate an innovative inertia factor I, and the probability of each flip is determined by   
 <br/>
 <figure>
     <img src="/images/eq5.png" >
 </figure>
 
-<!--- 
-<br/>
-![image](https://github.com/Watermelon-Addict/IM-Study-on-Sea-Ice/assets/160803085/d2ce424e-7772-4a88-9584-ca15272a8c84)
-<br/>
--->
-
-where σ_i represents the original spin value before the change, $σ'_i$ the new attempted value, and H_ν and H_μ the system Hamiltonian before and after as described in Equation (1) and Section 2.1. 
+where σ_i represents the original spin value before the change, $σ'_i$ the new attempted value, and $H_ν$ and $H_μ$ the system Hamiltonian before and after as described in Equation (1) and Section 2.1. 
 <br/>
 The newly added $-I|σ'_i-σ_i |$  accounts for the energy needed to overcome the inertia of the spin change, and I is an IM parameter to be fitted. Intuitively, this term represents the natural resistance to any state change and can also be thought of as an analog to the latent heat needed for the ice/water phase transition in classical thermodynamics. Motivated by the fact that the total energy change for water/ice phase transition at constant temperature and pressure is proportional to mass, we choose a linear functional form for the inertia term as the simplest and most sensible assumption. Therefore, the total energy required for a spin flip is $∆E=H_ν-H_μ+I|σ'_i-σ_i |$, which consists of two parts: the system Hamiltonian change plus the inertia term. The probability of spin value change follows the Boltzmann distribution as Equation (5). 
 <br/>
@@ -141,12 +113,6 @@ The key to CNN is convolutional layers, which employ a mathematical operation ca
     <img src="/images/eq6.png" >
 </figure>
 
-<!--- 
-<br/>
-![image](https://github.com/user-attachments/assets/e1f0b6f4-9ca7-4163-bd22-6e46a1b59c09)
-<br/>
--->
-
 Where i is the two-dimensional image; K represents the kernel; the convolution operator is typically denoted as an asterisk *. 
 <br/>
 In most CNNs, the convolutional layers are followed by pooling layers, which reduce the network size and generate a summary statistic from the outputs of the convolutional layers. For instance, max pooling is one of the most popularly used techniques, which calculates the maximum value within a neighboring rectangular area. 
@@ -157,12 +123,6 @@ AlexNet [40], a CNN network comprising 5 convolutional layers, demonstrated that
     <img src="/images/eq7.png" >
 </figure>
 
-<!--- 
-<br/>
-![image](https://github.com/user-attachments/assets/2a36a7d4-e0f5-4c8f-ab8c-882aa8d2ca26)
-<br/>
--->
-
 F(x), called residual function, is implemented as short skip connections. ResNet [43], a residual network as deep as over 100 layers, achieved superior performance in  image classification than any previous models.
 <br/>
 Vision transformer (ViT) [57] was developed as alternatives to CNN in computer vision tasks. The core of the transformer architecture is the self-attention mechanism. Long range dependencies and relationships between the inputs, either a sequence of texts in NLP or image patches in ViT, are captured via scaled dot-product attention [46] as illustrated below, which is one of the most influential formulas in deep learning:
@@ -171,23 +131,13 @@ Vision transformer (ViT) [57] was developed as alternatives to CNN in computer v
     <img src="/images/eq8.png" >
 </figure>
 
-<!--- 
-<br/>
-![image](https://github.com/user-attachments/assets/82af217f-0304-461f-b987-716b6d23998b)
-<br/>
--->
 
-Where Q represents the query matrix, K the key matrix, V the value matrix; K^Tis the transpose of K; QK^Tis the matrix multiplication; d_k is the dimension of the keys. Softmax function for any vector x=(x1,x2,…,xn) is defined as:
+Where Q represents the query matrix, K the key matrix, V the value matrix; $K^T$is the transpose of K; $QK^T$is the matrix multiplication; $d_k$ is the dimension of the keys. Softmax function for any vector $x=(x_1,x_2,…,x_n)$ is defined as:
 <br/>
 <figure>
     <img src="/images/eq9.png" >
 </figure>
 
-<!--- 
-<br/>
-![image](https://github.com/user-attachments/assets/acf62a19-2bcd-4493-b3bb-3dccdd97ec07)
-<br/>
--->
 
 The weights of Q, K, V are trained to learn the relationship between different parts of the inputs; the transformer outputs can be fed to various downstream task, e.g. a multi-layer perceptron (MLP) [77] for image classification.
 <br/>
@@ -240,13 +190,13 @@ Figure 2 (a) and (b) display an example of the initial and the final target stat
 <br/>
 In the IM Hamiltonian function, i.e., Equation (1), We set the following:
 <br/>
-● σ_i is a real number between -1 and +1 for any cell i in the focus area.
+● $σ_i$ is a real number between -1 and +1 for any cell i in the focus area.
 <br/>
 ● <i, j> sums over all adjacent cells, so each spin interacts only with four sites that are positioned immediately left, right, above and below.
 <br/>
-● J_ij  is set to be constant within each simulation period across all cells.
+● $J_{ij}$  is set to be constant within each simulation period across all cells.
 <br/>
-● Bi is set to be time-invariant within each simulation period. However, in order to capture the real-world external force variation across locations, especially the environmental differences from the coast area to the north pole, Bi is set to be a linear function of x_i (the row) and y_i (the column) coordinates of cell i, i.e., Bi = B_0+B_x (x_i-x_0 )+B_y (y_i-y_0), where B_0 is the average B over the lattice, and x_0 and y_0 are the coordinates of the lattice center.
+● Bi is set to be time-invariant within each simulation period. However, in order to capture the real-world external force variation across locations, especially the environmental differences from the coast area to the north pole, $B_i$ is set to be a linear function of $x_i$ (the row) and $y_i$ (the column) coordinates of cell i, i.e., $B_i = B_0+B_x (x_i-x_0 )+B_y (y_i-y_0)$, where $B_0$ is the average B over the lattice, and $x_0$ and $y_0$ are the coordinates of the lattice center.
 <br/>
 ● I, the inertia factor, is set to be constant within each simulation period.
 <br/>
@@ -257,19 +207,19 @@ In the IM Hamiltonian function, i.e., Equation (1), We set the following:
 <br/>
 Various Monte Carlo (MC) methods have been developed for the IM simulation. Among them the most widely used are the Glauber dynamics and the Metropolis-Hasting algorithm. In this study, we follow the latter for the MC simulation of the IM lattice evolution. As described in Section 2.3, an inertia factor is introduced into our model and the generalized Metropolis-Hastings MC steps are below:
 <br/>
-1. Select cell i at random from the 2-D lattice of the focus area. Let the spin value of this cell be σ_i.
+1. Select cell i at random from the 2-D lattice of the focus area. Let the spin value of this cell be $σ_i$.
 <br/>
-2. Generate another uniform random variable 〖σ^'〗_i between -1 and +1.
+2. Generate another uniform random variable $σ'_i$ between -1 and +1.
 <br/>
-3. Compute the energy change ∆Hi= H_ν-H_μ  from σ_i to 〖σ^'〗_i. 
+3. Compute the energy change $∆H_i= H_ν-H_μ$  from $σ_i$ to $σ'_i$. 
 <br/>
-4. Compute the energy I|〖σ^'〗_i-σ_i | to overcome the inertia of changing the spin value at i.
+4. Compute the energy $I|σ'_i-σ_i|$ to overcome the inertia of changing the spin value at i.
 <br/>
-5. Compute the total energy change ∆E = ∆Hi  +I|〖σ^'〗_i-σ_i |.  
+5. Compute the total energy change $∆E = ∆H_i  + I|σ'_i-σ_i|$.  
 <br/>
-6. (a) If ∆E is negative, the energy change is favorable since the energy is reduced. The spin value change is therefore accepted to 〖σ^'〗_i.
+6. (a) If ∆E is negative, the energy change is favorable since the energy is reduced. The spin value change is therefore accepted to $σ'_i$.
 <br/>
-   (b) If ∆E is positive, the probability of the spin flip is determined by the Boltzmann distribution. In this case, another uniform random variable r between 0 and 1 is generated. If r is less than P = e^(-β∆E), the spin value change is accepted; otherwise, the change is rejected and the spin value at i stays at σ_i.
+   (b) If ∆E is positive, the probability of the spin flip is determined by the Boltzmann distribution. In this case, another uniform random variable r between 0 and 1 is generated. If r is less than $P = e^(-β∆E)$, the spin value change is accepted; otherwise, the change is rejected and the spin value at i stays at $σ_i$.
 <br/><br/>
 
 For each semi-monthly simulation period, we repeat the above MC steps 50,000 times. As the lattice of our focus area has 3,600 cells, this repetition allows approximately 14 flip tries for each cell, or roughly once per day. This specific repetition number is chosen by taking into account the computational complexity of the algorithm and also making sure that each cell of the Ising lattice gets sufficient attempts to be changed. Other choices of the repetition number can be considered, which may result in different fitted parameter values. What is important is to ensure the number of repetitions for each period proportional to its duration, so the time unit of each Metropolis step is the same across the full simulation process [79].
@@ -277,7 +227,7 @@ For each semi-monthly simulation period, we repeat the above MC steps 50,000 tim
 
 <h2> 4.5 Architecture of the neural networks </h2>
 <br/>
-In this research, we apply deep neural network models to solve the inverse Ising problem; that is, to find the best-fit Ising parameters (J, B_0,〖 B〗_x 〖,B〗_y, I) based on the initial and final states of each simulation period. Three models are implemented: a simple CNN built from scratch, a much deeper fine-tuned ResNet and ViT respectively.
+In this research, we apply deep neural network models to solve the inverse Ising problem; that is, to find the best-fit Ising parameters $(J, B_0, B_x, B_y, I)$ based on the initial and final states of each simulation period. Three models are implemented: a simple CNN built from scratch, a much deeper fine-tuned ResNet and ViT respectively.
 <br/>
 The architecture of my first simple CNN is illustrated in Figure 3, which is similar to AlexNet [40]. It starts with the input layer, which consists of two images of shape (60, 60, 2), representing the start and end state images respectively. It is followed by four convolutional layers with a kernel shape (3, 3). The kernel counts from 16 in the first convolutional layer to 32, 64, and 128 in the last layer. Zero padding and strides (1, 1) are used to ensure coverage of the entire input grid. Each of the convolutional layers applies a Leaky Rectified Linear Unit (LeakyReLU) activation function.  Every convolutional layer is followed by a max pooling layer of pool size (2, 2) that summarizes the crucial features and reduces the layer size. The outputs of the last max pooling layer are flattened and followed by a fully connected dense layer and a dropout layer to avoid overfitting. The outputs are fed to the final dense layer with 5 neurons. It is worth noting that our CNN model differs from most of the CNNs used for classification tasks, as our targets are the continuous Ising parameters instead of discrete categorical labels. Therefore, a linear activation function is chosen for the final layer, rather than other popular choices such as Sigmoid in classification tasks.  The total number of trainable parameters stays at 213,101, making this a small deep learning algorithm that can be trained very fast on an Intel i7-11700F CPU. This CNN model is implemented with the Tensorflow/Keras [80] package in IIMCNNModel.py.
 <br/>
@@ -288,7 +238,7 @@ The architecture of my first simple CNN is illustrated in Figure 3, which is sim
 </figure>
 <br/><br/>
 
-Our second network is a much deeper ResNet with weights pretrained on the large ImageNet dataset [81]. The original paper by He et al. [43] developed 5 variations with different network depths: ResNet18, ResNet34, ResNet50, ResNet101, and ResNet152. My study employs ResNet50, as a balance choice between the size and performance of the network. In summary, ResNet50 consists of 49 trainable convolutional layers and 1 fully connected layer at the end. In this research, the model is tailored to receive inputs of image shape 60x60 and 2 channels, which then passes the ResNet50 network; finally, a fully connected linear layer with 5 output neurons is appended at the end to learn the 5 Ising parameters (J, B_0,〖 B〗_x 〖,B〗_y, I). The high-level architecture of this fine-tuned network is illustrated in Figure 4(a).  Total number of trainable parameters of this network is 25,558,901, and it can be trained on a Nvidia GeForce RTX3060 GPU in approximately 35 minutes. This fine-tuned model is implemented under the PyTorch [82] framework using the built-in TorchVision ResNet package [83] as in IIMResnetFineTune.py.
+Our second network is a much deeper ResNet with weights pretrained on the large ImageNet dataset [81]. The original paper by He et al. [43] developed 5 variations with different network depths: ResNet18, ResNet34, ResNet50, ResNet101, and ResNet152. My study employs ResNet50, as a balance choice between the size and performance of the network. In summary, ResNet50 consists of 49 trainable convolutional layers and 1 fully connected layer at the end. In this research, the model is tailored to receive inputs of image shape 60x60 and 2 channels, which then passes the ResNet50 network; finally, a fully connected linear layer with 5 output neurons is appended at the end to learn the 5 Ising parameters $(J, B_0, B_x, B_y, I)$. The high-level architecture of this fine-tuned network is illustrated in Figure 4(a).  Total number of trainable parameters of this network is 25,558,901, and it can be trained on a Nvidia GeForce RTX3060 GPU in approximately 35 minutes. This fine-tuned model is implemented under the PyTorch [82] framework using the built-in TorchVision ResNet package [83] as in IIMResnetFineTune.py.
 <br/>
 The last network in this study is a fine-tuned ViT with weights also pretrained on the ImageNet dataset. Since the original paper by Dosovitskiy et al. [57], various ViT implementations have been developed, including Data-efficient Image Transformers (DeiT) [84] by Meta, BERT Pre-training of Image Transformers (BEiT) [85] by Microsoft, etc. In this research, we fine-tune the pretrained google/vit-base-patch16-224 model [86], available in the Transformer package [87] as implemented by Hugging Face [88], a collaboration platform which warehouses a collection of open-source machine learning models. as illustrated in Figure 4(b), this base ViT network consists of 12 sequential transformer encoder blocks, each of which consists of a layer-norm (LN), a multi-head self-attention network, a multi-layer perceptron with Gaussian Error Linear Unit (GELU) activation, and residual connections. In this research, the model is customized for inputs of patches of 60x60 images with 2 channels, and the final output is converted to a 5-neuron fully connected linear layer. The total number of trainable parameters is 85,259,525; the network is more compute-heavy due to the quadratic complexity when calculating the attention matrices. It takes about 70 hours to train this transformer model on an RTX3060 GPU. This model is implemented in IIMViTFineTune.py.
 <br/>
@@ -299,11 +249,11 @@ The last network in this study is a fine-tuned ViT with weights also pretrained 
 <br/><br/>
 <h2> 4.6 Training data for the neural networks </h2>
 <br/>
-Training neural networks requires a substantial amount of data. In my study, these data are generated following the simulation steps described in previous subsections. To be specific, we start with the Ising lattice at the initial state of a simulation period and randomly select 10,000 set of parameters (J, B_0,〖 B〗_x 〖,B〗_y, I); for each set of parameters, we run the Metropolis simulation steps as described in section 4.4. As a result, we generate 10,000 sets of training samples corresponding to each of the initial states. An example of the training sample corresponding to the initial state of the focus area on Sept 16th, 2022 and Ising parameters (J = 2.31, B_0=-14.5,〖 B〗_x=-6.15〖,B〗_y=0.07, I = 9.93) is illustrated in Figure 5. Compared with Figure 2, this training sample apparently happens to correspond to a much faster freezing cycle than the actual observation.
+Training neural networks requires a substantial amount of data. In my study, these data are generated following the simulation steps described in previous subsections. To be specific, we start with the Ising lattice at the initial state of a simulation period and randomly select 10,000 set of parameters $(J, B_0, B_x, B_y, I)$; for each set of parameters, we run the Metropolis simulation steps as described in section 4.4. As a result, we generate 10,000 sets of training samples corresponding to each of the initial states. An example of the training sample corresponding to the initial state of the focus area on Sept 16th, 2022 and Ising parameters $(J = 2.31, B_0=-14.5, B_x=-6.15, B_y=0.07, I = 9.93)$ is illustrated in Figure 5. Compared with Figure 2, this training sample apparently happens to correspond to a much faster freezing cycle than the actual observation.
 <br/>
 <figure>
     <img src="/images/Figure5.png" width="400" height="240">
-    <figcaption> Figure 5: A training sample pair. (a) is the initial observed state on Sept 16th, 2022 and (b) the final simulated state on Oct 1st, 2022 based on Ising parameters (J=2.31, B0=-14.5, Bx=-6.15, By=0.07, I=9.93). </figcaption>
+    <figcaption> Figure 5: A training sample pair. (a) is the initial observed state on Sept 16th, 2022 and (b) the final simulated state on Oct 1st, 2022 based on Ising parameters $(J = 2.31, B_0=-14.5, B_x=-6.15, B_y=0.07, I = 9.93)$. </figcaption>
 </figure>
 <br/><br/>
 These generated Ising configuration pairs for all simulation periods from June 16th to Jan 1st are passed as the inputs to our neural network. As a supervised learning process, the target of our network is set to be the corresponding Ising parameters. After the network is fully trained, estimating the best-fit Ising parameters for each of our simulation periods is straightforward: we simply pass the observed initial and end state sea ice images to the network, which predicts and returns the respective Ising parameters.
@@ -327,7 +277,7 @@ Figure 6 shows the semi-monthly NRTSI sea ice images in the focus area from June
 </figure>
 <br/>
 <br/>
-The Ising parameters (J, B_0,〖 B〗_x 〖,B〗_y, I) for each simulation period in 2023 predicted by the fine-tuned ResNet50 model are shown in Table 1. The spin interaction coefficient J and the inertia factor I are relatively stable; intuitively, the strength of such interactions does not change much across different time periods. Moreover, J remains positive across all periods, confirming that adjacent cells are inclined to maintain values of the same sign, i.e., the area surrounding ice will be more likely to freeze, and that surrounding water will tend to melt. In this sense, the ice/water system displays the feature of ferromagnetism/paramagnetism instead of antiferromagnetism. 
+The Ising parameters $(J, B_0, B_x, B_y, I)$ for each simulation period in 2023 predicted by the fine-tuned ResNet50 model are shown in Table 1. The spin interaction coefficient J and the inertia factor I are relatively stable; intuitively, the strength of such interactions does not change much across different time periods. Moreover, J remains positive across all periods, confirming that adjacent cells are inclined to maintain values of the same sign, i.e., the area surrounding ice will be more likely to freeze, and that surrounding water will tend to melt. In this sense, the ice/water system displays the feature of ferromagnetism/paramagnetism instead of antiferromagnetism. 
 <br/>
 <br/>
 <figure>
@@ -336,9 +286,9 @@ The Ising parameters (J, B_0,〖 B〗_x 〖,B〗_y, I) for each simulation perio
 </figure>
 <br/>
 <br/>
-On the other hand, the external force parameters B_0,〖 B〗_x 〖,and B〗_y display large variations across different time periods. In particular, the average force B_0  is positive from June 1st to Sept 16th but turns negative afterwards, which can be explained by the seasonal ambient temperature as the dominant external factor for ice/water dynamics. Ambient temperature is not the only factor, though. Arctic temperature normally peaks in July/August while B_0  remains positive and ice melting continues through mid-September. This lag effect could be explained by other environmental effects such as albedo or jet streams but is beyond the scope of this study. 
+On the other hand, the external force parameters $B_0, B_x, B_y$ display large variations across different time periods. In particular, the average force $B_0$  is positive from June 1st to Sept 16th but turns negative afterwards, which can be explained by the seasonal ambient temperature as the dominant external factor for ice/water dynamics. Ambient temperature is not the only factor, though. Arctic temperature normally peaks in July/August while $B_0$ remains positive and ice melting continues through mid-September. This lag effect could be explained by other environmental effects such as albedo or jet streams but is beyond the scope of this study. 
 <br/>
-All values of Bx are negative due to the geographic distribution of ice coverage. For our Ising lattice representing the focus area,  x coordinates corresponding to the rows in the lattice increase from top to bottom; y coordinates for the columns increase from left to right. Interestingly, ice coverage near the bottom of our area, the Canadian Arctic Archipelago marked by the red oval in Figure 1, is much thicker than elsewhere including the north pole (the gray circular mask). In fact, many scientists believe this region will have the last piece of ice standing in the Arctic if the Blue Ocean Event happens. As the lower part of the focus area tends to have greater ice coverage, Bx is all negative. Whereas By is less negative and shows positive for certain periods, implying that the impact of the geographic location along the y direction is less pronounced than that of x. This is because the ice at the north pole is thinner than in Archipelago, which mitigates the impact of the y coordinate.  In addition, the values of Bx and By exhibit greater fluctuations than other parameters, indicating that our simplified linear functional form of Bi = B_0+B_x (x_i-x_0 )+B_y (y_i-y_0) is far from perfectly modeling the full effect of external fields; it can be further enriched by linking to actual geographical and environmental factors to enhance the power of the Ising model, which is left for our future research.
+All values of Bx are negative due to the geographic distribution of ice coverage. For our Ising lattice representing the focus area,  x coordinates corresponding to the rows in the lattice increase from top to bottom; y coordinates for the columns increase from left to right. Interestingly, ice coverage near the bottom of our area, the Canadian Arctic Archipelago marked by the red oval in Figure 1, is much thicker than elsewhere including the north pole (the gray circular mask). In fact, many scientists believe this region will have the last piece of ice standing in the Arctic if the Blue Ocean Event happens. As the lower part of the focus area tends to have greater ice coverage, Bx is all negative. Whereas By is less negative and shows positive for certain periods, implying that the impact of the geographic location along the y direction is less pronounced than that of x. This is because the ice at the north pole is thinner than in Archipelago, which mitigates the impact of the y coordinate.  In addition, the values of Bx and By exhibit greater fluctuations than other parameters, indicating that our simplified linear functional form of $B_i = B_0+B_x (x_i-x_0 )+B_y (y_i-y_0)$ is far from perfectly modeling the full effect of external fields; it can be further enriched by linking to actual geographical and environmental factors to enhance the power of the Ising model, which is left for our future research.
 <br/>
 The simulated sea ice images for each 2023 period are shown in Figure 7 utilizing the Ising parameters in Table 1. These images exhibit excellent similarity to Figure 6, demonstrating the strong explanatory power of our Ising model. Nevertheless, our model is not perfect. Upon close inspection, The images in Figure 6 and Figure 7 do reveal discrepancies, especially as shown in images (d) Aug 1st and (i) Oct 16th, where the actual ice configurations display significant irregularity compared to the prior period. While an IM with simple parameterization encounters difficulties in describing these local irregularities, it is feasible to include a richer set of parameters or to employ more complicated parametric functional forms at the potential cost of overfitting. In this paper, we keep our Ising model tractable and accept these local discrepancies.
 <br/>
@@ -469,7 +419,7 @@ My study sets the stage for future Ising model research on sea ice evolution. Me
 <br/>
 The IM simulation results using other two neural networks—the simple CNN and the fine-tuned ViT—are described below.
 <br/>
-The Ising parameters (J, B_0,〖 B〗_x 〖,B〗_y, I) for each simulation period in 2023 predicted by the simple CNN model are shown in Table 2. The simulated sea ice images for each 2023 period are shown in Figure 16 utilizing the Ising parameters in Table 2. The absolute differences in ice coverages for each of the simulation period in Figure 6 and Figure 16 are calculated; the results are illustrated as the heatmaps in Figure 17. The ice coverage percentage and ice extent comparison charts based on the simple CNN model are illustrated in Figure 18.
+The Ising parameters $(J, B_0, B_x, B_y, I)$ for each simulation period in 2023 predicted by the simple CNN model are shown in Table 2. The simulated sea ice images for each 2023 period are shown in Figure 16 utilizing the Ising parameters in Table 2. The absolute differences in ice coverages for each of the simulation period in Figure 6 and Figure 16 are calculated; the results are illustrated as the heatmaps in Figure 17. The ice coverage percentage and ice extent comparison charts based on the simple CNN model are illustrated in Figure 18.
 <br/>
 <br/>
 <figure>
@@ -499,7 +449,7 @@ The Ising parameters (J, B_0,〖 B〗_x 〖,B〗_y, I) for each simulation perio
 </figure>
 <br/>
 <br/>
-The Ising parameters (J, B_0,〖 B〗_x 〖,B〗_y, I) for each simulation period in 2023 predicted by the fine-tuned ViT model are shown in Table 3. The simulated sea ice images for each 2023 period are shown in Figure 19 utilizing the Ising parameters in Table 3. The absolute differences in ice coverages for each of the simulation period in Figure 6 and Figure 19 are illustrated as the heatmaps in Figure 20. The ice coverage percentage and ice extent comparison charts based on the fine-tuned ViT model are illustrated in Figure 21.
+The Ising parameters $(J, B_0, B_x, B_y, I)$ for each simulation period in 2023 predicted by the fine-tuned ViT model are shown in Table 3. The simulated sea ice images for each 2023 period are shown in Figure 19 utilizing the Ising parameters in Table 3. The absolute differences in ice coverages for each of the simulation period in Figure 6 and Figure 19 are illustrated as the heatmaps in Figure 20. The ice coverage percentage and ice extent comparison charts based on the fine-tuned ViT model are illustrated in Figure 21.
 <br/>
 <figure>
     <img src="/images/Table3.png" width="1000" height="180">
@@ -535,7 +485,7 @@ From the above results, we can see that the three deep neural networks in this s
 <br/>
 The IM simulation results for 2012 and 2022 based on the fine-tuned ResNet50 model are included in this section. The 2024 results will be included when the full year data is available.
 <br/>
-Figure 22 shows the semi-monthly NRTSI sea ice images in the focus area from June 16th, 2022 to Jan 1st, 2023. The Ising parameters (J, B_0,〖 B〗_x 〖,B〗_y, I) for each simulation period in 2022 predicted by the ResNet50 model are shown in Table 4. The simulated sea ice images for each 2022 period are shown in Figure 23 utilizing the Ising parameters in Table 4. The absolute differences in ice coverages for each of the simulation period in Figure 22 and Figure 23 are calculated; the results are illustrated as the heatmaps in Figure 24. The ice coverage percentage and ice extent comparison charts based on the simple CNN model are illustrated in Figure 25.
+Figure 22 shows the semi-monthly NRTSI sea ice images in the focus area from June 16th, 2022 to Jan 1st, 2023. The Ising parameters $(J, B_0, B_x, B_y, I)$ for each simulation period in 2022 predicted by the ResNet50 model are shown in Table 4. The simulated sea ice images for each 2022 period are shown in Figure 23 utilizing the Ising parameters in Table 4. The absolute differences in ice coverages for each of the simulation period in Figure 22 and Figure 23 are calculated; the results are illustrated as the heatmaps in Figure 24. The ice coverage percentage and ice extent comparison charts based on the simple CNN model are illustrated in Figure 25.
 <br/>
 <br/>
 <figure>
@@ -571,7 +521,7 @@ Figure 22 shows the semi-monthly NRTSI sea ice images in the focus area from Jun
 </figure>
 <br/>
 <br/>
-Figure 26 shows the semi-monthly NRTSI sea ice images in the focus area from June 16th, 2012 to Jan 1st, 2013. The Ising parameters (J, B_0,〖 B〗_x 〖,B〗_y, I) for each simulation period in 2012 predicted by the ResNet50 model are shown in Table 5. The simulated sea ice images for each 2012 period are shown in Figure 27 utilizing the Ising parameters in Table 5. The absolute differences in ice coverages for each of the simulation period in Figure 26 and Figure 27 are calculated; the results are illustrated as the heatmaps in Figure 28. The ice coverage percentage and ice extent comparison charts based on the simple CNN model are illustrated in Figure 29.
+Figure 26 shows the semi-monthly NRTSI sea ice images in the focus area from June 16th, 2012 to Jan 1st, 2013. The Ising parameters $(J, B_0, B_x, B_y, I)$ for each simulation period in 2012 predicted by the ResNet50 model are shown in Table 5. The simulated sea ice images for each 2012 period are shown in Figure 27 utilizing the Ising parameters in Table 5. The absolute differences in ice coverages for each of the simulation period in Figure 26 and Figure 27 are calculated; the results are illustrated as the heatmaps in Figure 28. The ice coverage percentage and ice extent comparison charts based on the simple CNN model are illustrated in Figure 29.
 <br/>
 <br/>
 <figure>
