@@ -208,7 +208,7 @@ In the IM Hamiltonian function, i.e., Equation (1), We set the following:
 
 ## 4.4	Metropolis simulation setups
 <br/>
-Various Monte Carlo (MC) methods have been developed for the IM simulation. Among them the most widely used are the Glauber dynamics and the Metropolis-Hasting algorithm. In this study, we follow the latter for the MC simulation of the IM lattice evolution. As described in Section 2.3, an inertia factor is introduced into our model and the generalized Metropolis-Hastings MC steps are below $$:
+Various Monte Carlo (MC) methods have been developed for the IM simulation. Among them the most widely used are the Glauber dynamics and the Metropolis-Hasting algorithm. In this study, we follow the latter for the MC simulation of the IM lattice evolution. As described in Section 2.3, an inertia factor is introduced into our model and the generalized Metropolis-Hastings MC steps are below:
 <br/><br/>
 1.  Select cell i at random from the 2-D lattice of the focus area. Let the spin value of this cell be $σ_i$.
 <br/>
@@ -228,7 +228,7 @@ Various Monte Carlo (MC) methods have been developed for the IM simulation. Amon
 For each semi-monthly simulation period, we repeat the above MC steps 50,000 times. As the lattice of our focus area has 3,600 cells, this repetition allows approximately 14 flip tries for each cell, or roughly once per day. This specific repetition number is chosen by taking into account the computational complexity of the algorithm and also making sure that each cell of the Ising lattice gets sufficient attempts to be changed. Other choices of the repetition number can be considered, which may result in different fitted parameter values. What is important is to ensure the number of repetitions for each period proportional to its duration, so the time unit of each Metropolis step is the same across the full simulation process [79].
 <br/><br/>
 
-<h2> 4.5 Architecture of the neural networks </h2>
+## 4.5 Architecture of the neural networks
 <br/>
 In this research, we apply deep neural network models to solve the inverse Ising problem; that is, to find the best-fit Ising parameters $(J, B_0, B_x, B_y, I)$ based on the initial and final states of each simulation period. Three models are implemented: a simple CNN built from scratch, a much deeper fine-tuned ResNet and ViT respectively.
 <br/>
