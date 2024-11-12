@@ -170,7 +170,7 @@ For this research paper, we focus on studying a specific geographic region bound
 
 # 4.    Ising model and neural network setup
 <br/>
-The methodology of our study on sea ice dynamics is outlined as follows: we first normalize the NRSTI data to a continuous Ising lattice, carefully choose the simulation periods, and set up the Ising parameters (J, B, I) to be fitted. Then given the initial lattice of each simulation period, we run the Metropolis MC simulation based on the values of (J, B, I) to generate a final state of the Ising lattice for this period. The full Metropolis simulation procedure is passed into a neural network to solve the inverse Ising problem, i.e., to find the Ising parameters after training so that the simulated final Ising lattice matches the observed NRSTI data as closely as possible.
+The methodology of our study on sea ice dynamics is outlined as follows: we first normalize the NRSTI data to a continuous Ising lattice, carefully choose the simulation periods, and set up the Ising parameters $(J, B, I)$ to be fitted. Then given the initial lattice of each simulation period, we run the Metropolis MC simulation based on the values of $(J, B, I)$ to generate a final state of the Ising lattice for this period. The full Metropolis simulation procedure is passed into a neural network to solve the inverse Ising problem, i.e., to find the Ising parameters after training so that the simulated final Ising lattice matches the observed NRSTI data as closely as possible.
 <br/>
 <h2> 4.1	Ising model lattice </h2>
 <br/>
@@ -188,21 +188,21 @@ Figure 2 (a) and (b) display an example of the initial and the final target stat
 </figure>
 
 <br/><br/>
-<h2> 4.3	Ising model parameters </h2>
+## 4.3	Ising model parameters
 <br/>
 In the IM Hamiltonian function, i.e., Equation (1), We set the following:
 <br/>
-● $σ_i$ is a real number between -1 and +1 for any cell i in the focus area.
+●  $σ_i$ is a real number between -1 and +1 for any cell i in the focus area.
 <br/>
-● <i, j> sums over all adjacent cells, so each spin interacts only with four sites that are positioned immediately left, right, above and below.
+●  <i, j> sums over all adjacent cells, so each spin interacts only with four sites that are positioned immediately left, right, above and below.
 <br/>
-● $J_{ij}$  is set to be constant within each simulation period across all cells.
+●  $J_{ij}$  is set to be constant within each simulation period across all cells.
 <br/>
-● Bi is set to be time-invariant within each simulation period. However, in order to capture the real-world external force variation across locations, especially the environmental differences from the coast area to the north pole, $B_i$ is set to be a linear function of $x_i$ (the row) and $y_i$ (the column) coordinates of cell i, i.e., $B_i = B_0+B_x (x_i-x_0 )+B_y (y_i-y_0)$, where $B_0$ is the average B over the lattice, and $x_0$ and $y_0$ are the coordinates of the lattice center.
+●  $B_i$ is set to be time-invariant within each simulation period. However, in order to capture the real-world external force variation across locations, especially the environmental differences from the coast area to the north pole, $B_i$ is set to be a linear function of $x_i$ (the row) and $y_i$ (the column) coordinates of cell i, i.e., $B_i = B_0+B_x (x_i-x_0 )+B_y (y_i-y_0)$, where $B_0$ is the average B over the lattice, and $x_0$ and $y_0$ are the coordinates of the lattice center.
 <br/>
-● I, the inertia factor, is set to be constant within each simulation period.
+●  I, the inertia factor, is set to be constant within each simulation period.
 <br/>
-● β, the inverse Boltzmann temperature, is set to 1 without loss of generality.
+●  β, the inverse Boltzmann temperature, is set to 1 without loss of generality.
 <br/><br/>
 
 <h2> 4.4	Metropolis simulation setps </h2>
