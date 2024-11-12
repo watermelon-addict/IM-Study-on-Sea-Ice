@@ -191,8 +191,9 @@ Figure 2 (a) and (b) display an example of the initial and the final target stat
 ## 4.3	Ising model parameters
 <br/>
 In the IM Hamiltonian function, i.e., Equation (1), We set the following:
-<br/>
-$σ_i$ is a real number between -1 and +1 for any cell i in the focus area.
+<br/><br/>
+
+●  $σ_i$ is a real number between -1 and +1 for any cell i in the focus area.
 <br/>
 ●  <i, j> sums over all adjacent cells, so each spin interacts only with four sites that are positioned immediately left, right, above and below.
 <br/>
