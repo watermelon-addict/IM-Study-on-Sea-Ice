@@ -124,7 +124,7 @@ AlexNet [40], a CNN network comprising 5 convolutional layers, demonstrated that
 <figure>
     <img src="/images/eq7.png" >
 </figure>
-
+<br/>
 F(x), called residual function, is implemented as short skip connections. ResNet [43], a residual network as deep as over 100 layers, achieved superior performance in  image classification than any previous models.
 <br/>
 Vision transformer (ViT) [57] was developed as alternatives to CNN in computer vision tasks. The core of the transformer architecture is the self-attention mechanism. Long range dependencies and relationships between the inputs, either a sequence of texts in NLP or image patches in ViT, are captured via scaled dot-product attention [46] as illustrated below, which is one of the most influential formulas in deep learning:
@@ -132,7 +132,7 @@ Vision transformer (ViT) [57] was developed as alternatives to CNN in computer v
 <figure>
     <img src="/images/eq8.png" >
 </figure>
-
+<br/>
 
 Where Q represents the query matrix, K the key matrix, V the value matrix; $K^T$is the transpose of K; $QK^T$is the matrix multiplication; $d_k$ is the dimension of the keys. Softmax function for any vector $x=(x_1,x_2,…,x_n)$ is defined as:
 <br/>
