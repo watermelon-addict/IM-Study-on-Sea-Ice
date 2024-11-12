@@ -105,7 +105,7 @@ Here is an example to illustrate the inertia effect. Starting with an initial sp
 In summary, we introduce to the classical IM the continuous spin values and a novel inertia factor. These mathematical additions prepare us to study real-world Arctic sea ice dynamics while keeping the computational complexity tractable.
 <br/><br/>
 
-## 2.4 The inverse Ising problem: solved with deep neural networks
+<h2> 2.4 The inverse Ising problem: solved with deep neural networks </h2>
 <br/>
 There has been various machine learning research on the IM, many of which employes CNN due to the tremendous power of CNN on image recognition. These studies focus on exploring the phase transitions near a critical temperature [68], while some of them involve generative neural networks such as variational autoencoders [69] or normalizing flows [70]. My task in this study is different, which is to solve the so-called inverse Ising problem [71]: given the start and end state images of the Ising lattices, how do we determine the IM interaction parameters (J, B, I)? In this paper, we will train a few different deep learning models including CNN and ViT for this task, with detailed steps to be explained in Section 4.5.
 <br/>
