@@ -134,7 +134,7 @@ Vision transformer (ViT) [57] was developed as alternatives to CNN in computer v
 </figure>
 <br/>
 
-Where Q represents the query matrix, K the key matrix, V the value matrix; $K^T$is the transpose of K; $QK^T$is the matrix multiplication; $d_k$ is the dimension of the keys. Softmax function for any vector $x=(x_1,x_2,…,x_n)$ is defined as:
+Where Q represents the query matrix, K the key matrix, V the value matrix; $K^T$ is the transpose of K; $QK^T$ is the matrix multiplication; $d_k$ is the dimension of the keys. Softmax function for any vector $x=(x_1,x_2,…,x_n)$ is defined as:
 <br/>
 <figure>
     <img src="/images/eq9.png" >
