@@ -214,18 +214,25 @@ Various Monte Carlo (MC) methods have been developed for the IM simulation. Amon
 
 1.  Select cell i at random from the 2-D lattice of the focus area. Let the spin value of this cell be $σ_i$.
 <br/>
+
 2.  Generate another uniform random variable $σ'_i$ between -1 and +1.
 <br/>
+
 3.  Compute the energy change $∆H_i= H_ν-H_μ$  from $σ_i$ to $σ'_i$. 
 <br/>
+
 4.  Compute the energy $I|σ'_i-σ_i|$ to overcome the inertia of changing the spin value at i.
 <br/>
+
 5.  Compute the total energy change $∆E = ∆H_i  + I|σ'_i-σ_i|$.  
 <br/>
+
 6.  (a) If ∆E is negative, the energy change is favorable since the energy is reduced. The spin value change is therefore accepted to $σ'_i$.
 <br/>
+
    (b) If ∆E is positive, the probability of the spin flip is determined by the Boltzmann distribution. In this case, another uniform random variable r between 0 and 1 is generated. If r is less than $P = e^(-β∆E)$, the spin value change is accepted; otherwise, the change is rejected and the spin value at i stays at $σ_i$.
 <br/><br/>
+
 
 For each semi-monthly simulation period, we repeat the above MC steps 50,000 times. As the lattice of our focus area has 3,600 cells, this repetition allows approximately 14 flip tries for each cell, or roughly once per day. This specific repetition number is chosen by taking into account the computational complexity of the algorithm and also making sure that each cell of the Ising lattice gets sufficient attempts to be changed. Other choices of the repetition number can be considered, which may result in different fitted parameter values. What is important is to ensure the number of repetitions for each period proportional to its duration, so the time unit of each Metropolis step is the same across the full simulation process [79].
 <br/><br/>
