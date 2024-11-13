@@ -223,7 +223,7 @@ Various Monte Carlo (MC) methods have been developed for the IM simulation. Amon
 
 6.  (a) If ∆E is negative, the energy change is favorable since the energy is reduced. The spin value change is therefore accepted to $σ'_i$.<br/>
 
-  <space><space><space> (b) If ∆E is positive, the probability of the spin flip is determined by the Boltzmann distribution. In this case, another uniform random variable r between 0 and 1 is generated. If r is less than $P = e^{-β∆E}$, the spin value change is accepted; otherwise, the change is rejected and the spin value at i stays at $σ_i$.
+&nbsp; &nbsp; &nbsp; (b) If ∆E is positive, the probability of the spin flip is determined by the Boltzmann distribution. In this case, another uniform random variable r between 0 and 1 is generated. If r is less than $P = e^{-β∆E}$, the spin value change is accepted; otherwise, the change is rejected and the spin value at i stays at $σ_i$.
 <br/><br/>
 
 
