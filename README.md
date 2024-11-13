@@ -208,8 +208,10 @@ In the IM Hamiltonian function, i.e., Equation (1), We set the following:
 
 ## 4.4	Metropolis simulation setups
 <br/>
+
 Various Monte Carlo (MC) methods have been developed for the IM simulation. Among them the most widely used are the Glauber dynamics and the Metropolis-Hasting algorithm. In this study, we follow the latter for the MC simulation of the IM lattice evolution. As described in Section 2.3, an inertia factor is introduced into our model and the generalized Metropolis-Hastings MC steps are below:
-<br/><br/>
+<br/>
+
 1.  Select cell i at random from the 2-D lattice of the focus area. Let the spin value of this cell be $σ_i$.
 <br/>
 2.  Generate another uniform random variable $σ'_i$ between -1 and +1.
@@ -229,7 +231,7 @@ For each semi-monthly simulation period, we repeat the above MC steps 50,000 tim
 <br/><br/>
 
 ## 4.5 Architecture of the neural networks
-<br/><br/>
+<br/>
 
 In this research, we apply deep neural network models to solve the inverse Ising problem; that is, to find the best-fit Ising parameters $(J, B_0, B_x, B_y, I)$  based on the initial and final states of each simulation period. Three models are implemented: a simple CNN built from scratch, a much deeper fine-tuned ResNet and ViT respectively.
 <br/>
