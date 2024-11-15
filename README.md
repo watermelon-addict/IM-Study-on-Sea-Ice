@@ -268,9 +268,7 @@ Training neural networks requires a substantial amount of data. In my study, the
 <br/>
 <figure>
     <img src="/images/Figure5.png" width="400" height="240">    
-    <figcaption> Figure 5: A training sample pair. (a) is the initial observed state on Sept 16th, 2022 and (b) the final simulated state on Oct 1st, 2022 based on Ising parameters 
-        
-        $(J = 2.31, B_0=-14.5, B_x=-6.15, B_y=0.07, I = 9.93)$. </figcaption>
+    <figcaption> Figure 5: A training sample pair. (a) is the initial observed state on Sept 16th, 2022 and (b) the final simulated state on Oct 1st, 2022 based on Ising parameters $(J = 2.31, B_0=-14.5, B_x=-6.15, B_y=0.07, I = 9.93)$. </figcaption>
 </figure>
 <br/><br/>
 
