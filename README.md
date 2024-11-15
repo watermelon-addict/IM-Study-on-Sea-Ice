@@ -45,6 +45,7 @@ Data recorded by the National Aeronautics and Space Administration (NASA) and th
 <br/>
 <h2> 2.1	Classical Ising model </h2>
 <br/>
+
 The system described by an IM is a set of lattice sites, each having a spin that interacts with its neighbors. The Hamiltonian function [4] for the lattice σ in a standard IM is given as 
 <br/>
 
@@ -52,8 +53,9 @@ The system described by an IM is a set of lattice sites, each having a spin that
     <img src="/images/eq1.png" >
 </figure>
 
-where $σ_i$ represents the spin variables at site i and takes the value of +1 or -1; $J_{ij}$ represents the interaction between sites i and j and can take positive values for ferromagnetic and paramagnetic materials, or negative for antiferromagnetic materials; B_i captures the interaction between the external field and site i. i and j range across the full lattice, which can be one, two or higher dimensions, and <i, j> represents pairs of spins at sites i and j that interact with each other. In a simple setup, each spin may only interact with its nearest neighbors, so <i, j> sums over adjacent sites only. For example, in a simple 2-D IM, each spin interacts only with the sites positioned immediately left, right, above, and below. 
+where $σ_i$ represents the spin variables at site i and takes the value of $+1$ or $-1$; $J_{ij}$ represents the interaction between sites i and j and can take positive values for ferromagnetic and paramagnetic materials, or negative for antiferromagnetic materials; $B_i$ captures the interaction between the external field and site i. i and j range across the full lattice, which can be one, two or higher dimensions, and $<i, j>$ represents pairs of spins at sites i and j that interact with each other. In a simple setup, each spin may only interact with its nearest neighbors, so $<i, j>$ sums over adjacent sites only. For example, in a simple 2-D IM, each spin interacts only with the sites positioned immediately left, right, above, and below. 
 <br/>
+
 In statistical physics, the configuration probability of lattice σ follows the Boltzmann distribution 
 <br/>
 <figure>
@@ -75,12 +77,14 @@ and
 β is the inverse temperature; 
 $k_B$ is the Boltzmann constant; T is the IM temperature, which differentiates from the ambient temperature discussed later.
 <br/>
+
 The evolution of the kinetic IM runs through a series of spin flips over the lattice. The probability of each spin flip depends on whether such a flip increases or reduces the Hamiltonian of the system. Mathematically the probability is determined by $min⁡(1,e^{(-β(H_ν-H_μ ) )})$ [64], where $H_v$ and $H_µ$ represent the Hamiltonian of the system before and after the flip. It can be easily seen that higher IM temperatures lead to greater thermal fluctuations and larger variances in the spin value distribution, while lower IM temperatures result in fewer fluctuations.
 
 <br/>
 <h2> 2.2 Continuous spin Ising model </h2>
 <br/>
-Most studies of the IM focus on binary values of the spins, i.e., σ_i takes values of +1 or -1 only. However, the sea ice data for each location takes varying values between 0 and 1 that represent the percentage of ice coverage. Therefore, we generalize the IM to allow for continuous spin values that can take any real number between -1 and +1. This generalization enables the IM to examine more realistic systems, but also adds a high degree of complexity to the mathematical solutions. Past research has studied phase transitions and critical behaviors of the continuous IM [65] [66], and recently, an IM with variable power-law spin strengths is studied with its rich phase diagrams [67].
+
+Most studies of the IM focus on binary values of the spins, i.e., $σ_i$ takes values of $+1$ or $-1$ only. However, the sea ice data for each location takes varying values between 0 and 1 that represent the percentage of ice coverage. Therefore, we generalize the IM to allow for continuous spin values that can take any real number between $-1$ and $+1$. This generalization enables the IM to examine more realistic systems, but also adds a high degree of complexity to the mathematical solutions. Past research has studied phase transitions and critical behaviors of the continuous IM [65] [66], and recently, an IM with variable power-law spin strengths is studied with its rich phase diagrams [67].
 <br/>
 
 The Hamiltonian function of the continuous spin IM is represented by the same Equation (1). However, $σ_i$ now takes continuous values between +1 and -1; $-J_{ij} σ_i σ_j$ reaches the minimum energy state if $σ_i=σ_j=+1$, or $σ_i=σ_j=-1$, as the energy of any other value pair is higher. The highest energy is observed when $σ_i=+1$, $σ_j=-1$, or vice versa. This numeric feature works ideally for an ice/water lattice: the most stable low energy state is either 100% water or ice across two adjacent locations, whereas full ice next to full water displays the most unstable high energy state.
@@ -107,7 +111,8 @@ In summary, we introduce to the classical IM the continuous spin values and a no
 
 <h2> 2.4 The inverse Ising problem: solved with deep neural networks </h2>
 <br/>
-There has been various machine learning research on the IM, many of which employes CNN due to the tremendous power of CNN on image recognition. These studies focus on exploring the phase transitions near a critical temperature [68], while some of them involve generative neural networks such as variational autoencoders [69] or normalizing flows [70]. My task in this study is different, which is to solve the so-called inverse Ising problem [71]: given the start and end state images of the Ising lattices, how do we determine the IM interaction parameters (J, B, I)? In this paper, we will train a few different deep learning models including CNN and ViT for this task, with detailed steps to be explained in Section 4.5.
+
+There has been various machine learning research on the IM, many of which employes CNN due to the tremendous power of CNN on image recognition. These studies focus on exploring the phase transitions near a critical temperature [68], while some of them involve generative neural networks such as variational autoencoders [69] or normalizing flows [70]. My task in this study is different, which is to solve the so-called inverse Ising problem [71]: given the start and end state images of the Ising lattices, how do we determine the IM interaction parameters $(J, B, I)$? In this paper, we will train a few different deep learning models including CNN and ViT for this task, with detailed steps to be explained in Section 4.5.
 <br/>
 The key to CNN is convolutional layers, which employ a mathematical operation called convolution. A convolutional layer consists of kernels, or filters. The kernels slide along the input grid and compute the weighted sums, as shown below:
 <br/>
@@ -141,7 +146,7 @@ Where Q represents the query matrix, K the key matrix, V the value matrix; $K^T$
 </figure>
 
 
-The weights of Q, K, V are trained to learn the relationship between different parts of the inputs; the transformer outputs can be fed to various downstream task, e.g. a multi-layer perceptron (MLP) [77] for image classification.
+The weights of $Q, K, V$ are trained to learn the relationship between different parts of the inputs; the transformer outputs can be fed to various downstream task, e.g. a multi-layer perceptron (MLP) [77] for image classification.
 <br/>
 In this study, we will build three neural networks—a simple CNN from scratch, a much deeper fine-tuned ResNet, and a ViT—and apply each of them to solve the inverse Ising problem independently.
 <br/><br/>
@@ -170,15 +175,18 @@ For this research paper, we focus on studying a specific geographic region bound
 
 # 4.    Ising model and neural network setup
 <br/>
+
 The methodology of our study on sea ice dynamics is outlined as follows: we first normalize the NRSTI data to a continuous Ising lattice, carefully choose the simulation periods, and set up the Ising parameters $(J, B, I)$ to be fitted. Then given the initial lattice of each simulation period, we run the Metropolis MC simulation based on the values of $(J, B, I)$ to generate a final state of the Ising lattice for this period. The full Metropolis simulation procedure is passed into a neural network to solve the inverse Ising problem, i.e., to find the Ising parameters after training so that the simulated final Ising lattice matches the observed NRSTI data as closely as possible.
 <br/>
 <h2> 4.1	Ising model lattice </h2>
 <br/>
+
 We first transform the NRTSI data of the focus region as shown in Figure 1 (b) to Ising-style data. A simple linear mapping is applied to convert integers from 0 to 250 to real numbers from -1 to +1. -1 indicates the cell is 100% ice; +1 indicates 100% water; 0 indicates 50%/50% coverage of water/ice. Each cell covers 25km x 25km of the total 1500km x 1500km focus region, and therefore a 60x60 matrix is initialized as the 2-D IM lattice for our study. 
 <br/><br/>
 
 <h2> 4.2	Simulation periods </h2>
 <br/>
+
 Figure 2 (a) and (b) display an example of the initial and the final target states of an IM lattice simulation run. The simulation periods are chosen to be consistently half a month apart, for example, Sept 16th, 2022 in Figure 2 (a) and Oct 1st, 2022 in Figure 2 (b). This semi-monthly frequency is chosen to balance two considerations. First, the period is sufficiently long to allow for sizable differentiation in the ice/water configurations between the start and the end dates; second, the period is not excessively too long and allows the IM simulation to mimic the daily water/ice evolution on the interim dates between the start and the end, which is to be illustrated in Section 5.3. 
 <br/>
 
@@ -260,6 +268,7 @@ Training neural networks requires a substantial amount of data. In my study, the
 <br/>
 <figure>
     <img src="/images/Figure5.png" width="400" height="240">
+    
     <figcaption> Figure 5: A training sample pair. (a) is the initial observed state on Sept 16th, 2022 and (b) the final simulated state on Oct 1st, 2022 based on Ising parameters $(J = 2.31, B_0=-14.5, B_x=-6.15, B_y=0.07, I = 9.93)$. </figcaption>
 </figure>
 <br/><br/>
@@ -274,8 +283,10 @@ Thanks to the publicly accessible NRTSI data, simulation and training can be com
 <br/>
 <h2> 5.1  Simulation results for 2023 </h2>
 <br/>
+
 For illustration purposes, we focus on the results for 2023, the year with the most recent full annual data and critically setting the hottest year record on the earth. Results for certain other years can be found in Appendix A.2.
 <br/>
+
 Figure 6 shows the semi-monthly NRTSI sea ice images in the focus area from June 16th, 2023 to Jan 1st, 2024. As can be seen, the melting cycle starts from June 16th and goes until Sept 16th, and the freezing cycle from Sept 16th to year end. Prior to June 16th, the region is almost fully covered by ice, so the IM simulation will be trivial. This is why we set the simulation start date on June 16th of each year. During the period of June 16th to Dec 16th, every succeeding image shows considerable ice coverage difference from the previous date while retaining certain core features. This semi-monthly frequency choice allows our IM simulation to capture the essence of the evolution dynamics without overfitting the model.
 <br/>
 <br/>
