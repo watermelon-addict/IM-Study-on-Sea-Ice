@@ -267,9 +267,10 @@ The last network in this study is a fine-tuned ViT with weights also pretrained 
 Training neural networks requires a substantial amount of data. In my study, these data are generated following the simulation steps described in previous subsections. To be specific, we start with the Ising lattice at the initial state of a simulation period and randomly select 10,000 set of parameters $(J, B_0, B_x, B_y, I)$; for each set of parameters, we run the Metropolis simulation steps as described in section 4.4. As a result, we generate 10,000 sets of training samples corresponding to each of the initial states. An example of the training sample corresponding to the initial state of the focus area on Sept 16th, 2022 and Ising parameters $(J = 2.31, B_0=-14.5, B_x=-6.15, B_y=0.07, I = 9.93)$ is illustrated in Figure 5. Compared with Figure 2, this training sample apparently happens to correspond to a much faster freezing cycle than the actual observation.
 <br/>
 <figure>
-    <img src="/images/Figure5.png" width="400" height="240">
-    
-    <figcaption> Figure 5: A training sample pair. (a) is the initial observed state on Sept 16th, 2022 and (b) the final simulated state on Oct 1st, 2022 based on Ising parameters $(J = 2.31, B_0=-14.5, B_x=-6.15, B_y=0.07, I = 9.93)$. </figcaption>
+    <img src="/images/Figure5.png" width="400" height="240">    
+    <figcaption> Figure 5: A training sample pair. (a) is the initial observed state on Sept 16th, 2022 and (b) the final simulated state on Oct 1st, 2022 based on Ising parameters 
+        
+        $(J = 2.31, B_0=-14.5, B_x=-6.15, B_y=0.07, I = 9.93)$. </figcaption>
 </figure>
 <br/><br/>
 
