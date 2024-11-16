@@ -8,13 +8,16 @@
 
 This study models Arctic Sea Ice dynamics at a large scale by innovating on the centennial Ising model (IM). Rapid loss of the Arctic sea ice over the past four decades [1] has been an alarming phenomenon that points to drastic global warming, a pressing challenge that calls for collective actions by the entire humankind. To accurately predict the Arctic sea ice evolution, which helps prepare for the subsequent environmental and economic impact, therefore has become an urgent task for researchers across diverse disciplines. The fact that 2023 recorded the hottest year in history [2] and 2024 may break the temperature record again, adds even greater severity to such urgency. As an endeavor to fulfill this task, this study innovates upon the classical Ising Model in statistical physics and trains Convolutional Neural Network and Vision Transformer models in Deep Learning to solve for Ising interaction parameters. By delivering an excellent match between model simulations and actual observations, this study unleashes the power of coupling classical physics with deep learning technologies in climate change research and other interdisciplinary studies.
 <br/>
+
 This  research report starts with a brief review on Ising model and neural network literature, and an introduction of the significance of Arctic sea ice in Section 1; Section 2 lays out the theoretical framework of our generalized Ising model and the neural networks; Section 3 describes the Arctic sea ice data; Section 4 illustrates the computational setups; Section 5 presents the results and analysis, followed by discussions in Section 6. Appendices with additional results and analysis are included at the end. A previous paper of this research was published on Journal of Applied Physics [3] recently; this research report is an enhancement based on that paper.
 
 <br/>
 <h2> 1.1  Ising model </h2>
 <br/>
+
 The classical Ising model (IM) is the backbone of this study. It was first formalized by physicists Ernst Ising and Wilhelm Lenz to explain the equilibrium and phase transition in magnetic systems. The one-dimensional (1-D) IM was solved by Ising in his 1924 thesis [4] [5] [6], which proves the non-existence of phase transition in the 1-D IM. In 1944, Lars Onsager [7] was able to solve the two-dimensional (2-D) square-lattice IM analytically. Contradictory to the 1-D case, Onsager identified that there exists a critical temperature Tc = 2.27 J/kB when the phase transition happens in a 2-D IM. Later studies of IM in higher dimensions have been closely associated with various developments in advanced 20th-century physics and mathematical theories, including the transfer-matrix method [8] [9], quantum field theory [10], mean-field theory [11], etc.
 <br/>
+
 Over the years, the IM has found wide success beyond physics. Specifically, the Kinetic IM [11] [12] [13], built upon the equilibrium version, has been proposed to analyze biology, environmental science, machine learning [14] [15], social science, and economic and financial systems. These applications are usually implemented as a discrete time Markov chain of the spin lattice, with spin interactions bounded to finite distance. In biology and neuroscience, IM applications include but are not limited to the condensation of DNA [16], genetics [17], neural networks [18] [19], neuron spike [20], neuron activity in cell assemblies [21], and ligands to receptors binding in cells [22]. In environmental science, the IM has been employed to investigate land pattern dynamics [23] [24]. A few years ago, Ma, Sudakov, Strong and Golden have successfully used the 2-D IM to capture the essential mechanism of the ice melt ponds equilibrium configuration [25]. In social science and economics, the IM has been applied to research in urban segregation [26], crisis study [27], stability of money [28], etc.
 
 <br/><br/>
@@ -22,16 +25,20 @@ Over the years, the IM has found wide success beyond physics. Specifically, the 
 <br/>
 My study falls into a broad body of literature that employs artificial neural networks (ANNs), or neural networks (NNs), a branch of artificial intelligence and machine learning inspired by the structure and functioning of the human brain [29] [30]. Most modern deep learning models are based on multi-layered ANNs. Interestingly, Ising model is considered as the first non-learning recurrent neural network (RNN) architecture [31], which laid the foundation for the 2024 Nobel Prize winning Hopfield network [32].
 <br/>
+
 The convolutional neural network (CNN) [33] [34] [35] employed in this study is a specialized type of NNs used to analyze data with grid-like topology, which revolutionized computer vision in the 2010s [31] [33]. CNNs have gained much success in image and video recognition [36], and also been widely applied to time series analysis [37], recommender systems [38], natural language processing [39], etc. The rapid development of CNN led to a series of state-of-the-art (SOTA) models, including AlexNet in 2012 [40], VGG in 2014 [41], InceptionNet/GoogleNet in 2014 [42], ResNet in 2015 [43], DenseNet in 2016 [44], EfficientNet in 2019 [45], etc.
 <br/>
+
 Transformer is a groundbreaking deep learning architecture proposed by Google in the 2017 paper “Attention is all you need” [46]. Since then, it has rapidly surpassed RNN such as LSTM [47]/GRU [48] to become the SOTA model in Natural Language Processing (NLP). Almost all of the current Large Language Models (LLMs) are based on the transformer architecture, including Generative Pretrained Transformers (GPT) [49] [50] developed by OpenAI, Bidirectional Encoder Representations from Transformers (BERT) [51] by Google, Large Language Model Meta AI (Llama) [52] by Meta, etc. Transformers have also found wide applications besides NLP, including playing chess [53] and go [54], multi-modal processing [55], computer vision [56] [57], and many more. Specifically, a vision transformer (ViT) model was proposed in 2021 [57] and achieved excellent performance at image classification compared to CNN.
 The images of 2-D IM lattices are well-qualified candidates for CNN and ViT, which are explored in this study. The architecture of CNN and ViT models will be described in Section 4.
 <br/><br/>
 
 ## 1.3	Arctic sea ice
 <br/>
+
 The reversible phase transition between water and ice makes the IM a great tool to study the dynamics of a surface region with the co-existence of both states. In this study, we apply a 2-D IM lattice to study the dynamics of Arctic sea ice melting and freezing cycles, a major climate change indicator that is of significant environmental, economic and social significance [58].
 <br/>
+
 Sea ice is undoubtedly an integral part of the Arctic Ocean and the earth. In the dark winter months, ice covers almost the entirety of the Arctic Ocean, and the ice extent—defined as the percentage of the areas that are covered by at least 15% ice—and the ice thickness typically reaches its peak around March. Starting in late spring, ice melting gradually exceeds water freezing due to higher temperatures and longer hours of sunlight exposure. Sea ice typically reaches the minimum extent and thickness in mid-September, when ice coverage can drop to under half of the winter maximum [34]. After mid-September, sea water freezing starts to exceed ice melting, so ice coverage expands. This cycle repeats annually.
 <br/>
 
@@ -102,10 +109,13 @@ The incorporation of the continuous spins also adds to the complexity of the Mon
 
 where σ_i represents the original spin value before the change, $σ'_i$ the new attempted value, and $H_ν$ and $H_μ$ the system Hamiltonian before and after as described in Equation (1) and Section 2.1. 
 <br/>
+
 The newly added $-I|σ'_i-σ_i |$  accounts for the energy needed to overcome the inertia of the spin change, and I is an IM parameter to be fitted. Intuitively, this term represents the natural resistance to any state change and can also be thought of as an analog to the latent heat needed for the ice/water phase transition in classical thermodynamics. Motivated by the fact that the total energy change for water/ice phase transition at constant temperature and pressure is proportional to mass, we choose a linear functional form for the inertia term as the simplest and most sensible assumption. Therefore, the total energy required for a spin flip is $∆E=H_ν-H_μ+I|σ'_i-σ_i |$, which consists of two parts: the system Hamiltonian change plus the inertia term. The probability of spin value change follows the Boltzmann distribution as Equation (5). 
 <br/>
+
 Here is an example to illustrate the inertia effect. Starting with an initial spin value of 0.8, a flip to either 0.7 or 0.6 may result in the same system Hamiltonian value for the new lattice. However, we differentiate these two new states by assigning higher probability for the flip to 0.7 because the spin change is smaller. In Equation (5), $-I|σ'_i-σ_i |$ influences the distribution of new spin values, and in practice, it significantly improves the simulation results to better match the observations.
 <br/>
+
 In summary, we introduce to the classical IM the continuous spin values and a novel inertia factor. These mathematical additions prepare us to study real-world Arctic sea ice dynamics while keeping the computational complexity tractable.
 <br/><br/>
 
@@ -114,6 +124,7 @@ In summary, we introduce to the classical IM the continuous spin values and a no
 
 There has been various machine learning research on the IM, many of which employes CNN due to the tremendous power of CNN on image recognition. These studies focus on exploring the phase transitions near a critical temperature [68], while some of them involve generative neural networks such as variational autoencoders [69] or normalizing flows [70]. My task in this study is different, which is to solve the so-called inverse Ising problem [71]: given the start and end state images of the Ising lattices, how do we determine the IM interaction parameters $(J, B, I)$? In this paper, we will train a few different deep learning models including CNN and ViT for this task, with detailed steps to be explained in Section 4.5.
 <br/>
+
 The key to CNN is convolutional layers, which employ a mathematical operation called convolution. A convolutional layer consists of kernels, or filters. The kernels slide along the input grid and compute the weighted sums, as shown below:
 <br/>
 <figure>
@@ -122,18 +133,23 @@ The key to CNN is convolutional layers, which employ a mathematical operation ca
 
 Where i is the two-dimensional image; K represents the kernel; the convolution operator is typically denoted as an asterisk *. 
 <br/>
+
 In most CNNs, the convolutional layers are followed by pooling layers, which reduce the network size and generate a summary statistic from the outputs of the convolutional layers. For instance, max pooling is one of the most popularly used techniques, which calculates the maximum value within a neighboring rectangular area. 
 <br/>
+
 AlexNet [40], a CNN network comprising 5 convolutional layers, demonstrated that the depth of neural networks were essential to their performance by winning the ImageNet Large Scale Visual Recognition Challenge in 2012 [72]. Since then, deeper networks gained popularity as they outperform the shallower ones [73]. However, deeper networks are more difficult to train due to vanishing/exploding gradients [74] [75] and the degradation [76] problems, which were overcome by the breakthrough of the residual network in 2015 [43]. Specifically, for a subnetwork with input x and the underlying network function $H(x)$, instead of directly learning $H(x)$, the corresponding residual network learns a new function $F(x)$ defined as:
 <br/>
+
 <figure>
     <img src="/images/eq7.png" >
 </figure>
 <br/>
 F(x), called residual function, is implemented as short skip connections. ResNet [43], a residual network as deep as over 100 layers, achieved superior performance in  image classification than any previous models.
 <br/>
+
 Vision transformer (ViT) [57] was developed as alternatives to CNN in computer vision tasks. The core of the transformer architecture is the self-attention mechanism. Long range dependencies and relationships between the inputs, either a sequence of texts in NLP or image patches in ViT, are captured via scaled dot-product attention [46] as illustrated below, which is one of the most influential formulas in deep learning:
 <br/>
+
 <figure>
     <img src="/images/eq8.png" >
 </figure>
@@ -148,6 +164,7 @@ Where Q represents the query matrix, K the key matrix, V the value matrix; $K^T$
 
 The weights of $Q, K, V$ are trained to learn the relationship between different parts of the inputs; the transformer outputs can be fed to various downstream task, e.g. a multi-layer perceptron (MLP) [77] for image classification.
 <br/>
+
 In this study, we will build three neural networks—a simple CNN from scratch, a much deeper fine-tuned ResNet, and a ViT—and apply each of them to solve the inverse Ising problem independently.
 <br/><br/>
 
@@ -156,6 +173,7 @@ In this study, we will build three neural networks—a simple CNN from scratch, 
 
 Our study uses the “Near-Real-Time DMSP SSMIS Daily Polar Gridded Sea Ice Concentrations” (NRTSI) dataset [78] collected by the National Snow and Ice Data Center (NSIDC). It captures daily sea ice concentrations for both the Northen and Southern Hemispheres. The Special Sensor Microwave Imager/Sounder (SSMIS) on the NANA Defense Meteorological Satellite Program (DMSP) satellites acquires the near-real-time passive microwave brightness temperatures, which serve as inputs to the NRTSI dataset using the NASA Team algorithm to generate the sea ice concentrations.
 <br/>
+
 The NRTSI files are in netCDF format. Each file of the Arctic region contains a lattice of 448 rows by 304 columns, covering a large earth surface area with the north pole at the center. Each grid cell represents an area of approximately 25 kilometers by 25 kilometers. The value for each grid cell is an integer from 0 to 250 that indicates the fractional ice coverage scaled by 250. 0 indicates 0% ice concentration; 250 indicates 100% ice concentration. The image of part of the NRTSI file on Sept 16th, 2022 is illustrated in Figure 1(a). In the map, white represents ice, blue represents water, and gray represents land. The exact north pole location is covered by a gray circular mask because of the limitation of the satellite sensor measurement caused by the orbit inclination and instrument swath.
 <br/>
 
@@ -168,7 +186,8 @@ The NRTSI files are in netCDF format. Each file of the Arctic region contains a 
     <figcaption> Figure 1: (a) Arctic sea ice NRTSI image on Sept 16, 2022 and (b) the focus area of 1,500km X 1,500km </figcaption>
 </figure>
 
-<br/><br/>
+<br/>
+
 For this research paper, we focus on studying a specific geographic region bounded by the black square in Figure 1(a), ranging from the East Siberian Sea (to the top of the box) and the Beaufort Sea (to the left of the box) to near the polar point, and the red oval marks the Canadian Arctic Archipelago area to be discussed later. A zoom-in image of this focus area is shown in Figure 1(b) . This large square area is unobstructed by land or the north pole mask, making it an ideal field for the IM lattice setup. The area contains 60 rows and 60 columns in the data file, covering approximately 1500km x 1500km, or about 2.25 million square kilometers.
 
 <br/><br/>
