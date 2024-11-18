@@ -23,6 +23,7 @@ Over the years, the IM has found wide success beyond physics. Specifically, the 
 <br/><br/>
 <h2> 1.2	Deep learning with convolutional neural networks and transformers </h2>
 <br/>
+
 My study falls into a broad body of literature that employs artificial neural networks (ANNs), or neural networks (NNs), a branch of artificial intelligence and machine learning inspired by the structure and functioning of the human brain [29] [30]. Most modern deep learning models are based on multi-layered ANNs. Interestingly, Ising model is considered as the first non-learning recurrent neural network (RNN) architecture [31], which laid the foundation for the 2024 Nobel Prize winning Hopfield network [32].
 <br/>
 
