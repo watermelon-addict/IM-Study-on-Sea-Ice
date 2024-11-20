@@ -145,6 +145,7 @@ AlexNet [40], a CNN network comprising 5 convolutional layers, demonstrated that
     <img src="/images/eq7.png" >
 </figure>
 <br/>
+
 F(x), called residual function, is implemented as short skip connections. ResNet [43], a residual network as deep as over 100 layers, achieved superior performance in  image classification than any previous models.
 <br/>
 
@@ -186,7 +187,6 @@ The NRTSI files are in netCDF format. Each file of the Arctic region contains a 
     <img src="/images/Figure1.jpg" width="400" height="250">
     <figcaption> Figure 1: (a) Arctic sea ice NRTSI image on Sept 16, 2022 and (b) the focus area of 1,500km X 1,500km </figcaption>
 </figure>
-
 <br/>
 
 For this research paper, we focus on studying a specific geographic region bounded by the black square in Figure 1(a), ranging from the East Siberian Sea (to the top of the box) and the Beaufort Sea (to the left of the box) to near the polar point, and the red oval marks the Canadian Arctic Archipelago area to be discussed later. A zoom-in image of this focus area is shown in Figure 1(b) . This large square area is unobstructed by land or the north pole mask, making it an ideal field for the IM lattice setup. The area contains 60 rows and 60 columns in the data file, covering approximately 1500km x 1500km, or about 2.25 million square kilometers.
@@ -263,6 +263,7 @@ For each semi-monthly simulation period, we repeat the above MC steps 50,000 tim
 
 In this research, we apply deep neural network models to solve the inverse Ising problem; that is, to find the best-fit Ising parameters $(J, B_0, B_x, B_y, I)$  based on the initial and final states of each simulation period. Three models are implemented: a simple CNN built from scratch, a much deeper fine-tuned ResNet and ViT respectively.
 <br/>
+
 The architecture of my first simple CNN is illustrated in Figure 3, which is similar to AlexNet [40]. It starts with the input layer, which consists of two images of shape (60, 60, 2), representing the start and end state images respectively. It is followed by four convolutional layers with a kernel shape (3, 3). The kernel counts from 16 in the first convolutional layer to 32, 64, and 128 in the last layer. Zero padding and strides (1, 1) are used to ensure coverage of the entire input grid. Each of the convolutional layers applies a Leaky Rectified Linear Unit (LeakyReLU) activation function.  Every convolutional layer is followed by a max pooling layer of pool size (2, 2) that summarizes the crucial features and reduces the layer size. The outputs of the last max pooling layer are flattened and followed by a fully connected dense layer and a dropout layer to avoid overfitting. The outputs are fed to the final dense layer with 5 neurons. It is worth noting that our CNN model differs from most of the CNNs used for classification tasks, as our targets are the continuous Ising parameters instead of discrete categorical labels. Therefore, a linear activation function is chosen for the final layer, rather than other popular choices such as Sigmoid in classification tasks.  The total number of trainable parameters stays at 213,101, making this a small deep learning algorithm that can be trained very fast on an Intel i7-11700F CPU. This CNN model is implemented with the Tensorflow/Keras [80] package in IIMCNNModel.py.
 <br/>
 
@@ -274,8 +275,10 @@ The architecture of my first simple CNN is illustrated in Figure 3, which is sim
 
 Our second network is a much deeper ResNet with weights pretrained on the large ImageNet dataset [81]. The original paper by He et al. [43] developed 5 variations with different network depths: ResNet18, ResNet34, ResNet50, ResNet101, and ResNet152. My study employs ResNet50, as a balance choice between the size and performance of the network. In summary, ResNet50 consists of 49 trainable convolutional layers and 1 fully connected layer at the end. In this research, the model is tailored to receive inputs of image shape 60x60 and 2 channels, which then passes the ResNet50 network; finally, a fully connected linear layer with 5 output neurons is appended at the end to learn the 5 Ising parameters $(J, B_0, B_x, B_y, I)$. The high-level architecture of this fine-tuned network is illustrated in Figure 4(a).  Total number of trainable parameters of this network is 25,558,901, and it can be trained on a Nvidia GeForce RTX3060 GPU in approximately 35 minutes. This fine-tuned model is implemented under the PyTorch [82] framework using the built-in TorchVision ResNet package [83] as in IIMResnetFineTune.py.
 <br/>
+
 The last network in this study is a fine-tuned ViT with weights also pretrained on the ImageNet dataset. Since the original paper by Dosovitskiy et al. [57], various ViT implementations have been developed, including Data-efficient Image Transformers (DeiT) [84] by Meta, BERT Pre-training of Image Transformers (BEiT) [85] by Microsoft, etc. In this research, we fine-tune the pretrained google/vit-base-patch16-224 model [86], available in the Transformer package [87] as implemented by Hugging Face [88], a collaboration platform which warehouses a collection of open-source machine learning models. as illustrated in Figure 4(b), this base ViT network consists of 12 sequential transformer encoder blocks, each of which consists of a layer-norm (LN), a multi-head self-attention network, a multi-layer perceptron with Gaussian Error Linear Unit (GELU) activation, and residual connections. In this research, the model is customized for inputs of patches of 60x60 images with 2 channels, and the final output is converted to a 5-neuron fully connected linear layer. The total number of trainable parameters is 85,259,525; the network is more compute-heavy due to the quadratic complexity when calculating the attention matrices. It takes about 70 hours to train this transformer model on an RTX3060 GPU. This model is implemented in IIMViTFineTune.py.
 <br/>
+
 <figure>
     <img src="/images/Figure4.png" width="500" height="500">
     <figcaption> Figure 4: (a) Architecture of the customized (a) ResNet50, and (b) ViT networks used in this research. Bulk of the architecture diagrams are taken from He et al. [43] and Dosovitskiy et al. [57] </figcaption>
@@ -286,6 +289,7 @@ The last network in this study is a fine-tuned ViT with weights also pretrained 
 
 Training neural networks requires a substantial amount of data. In my study, these data are generated following the simulation steps described in previous subsections. To be specific, we start with the Ising lattice at the initial state of a simulation period and randomly select 10,000 set of parameters $(J, B_0, B_x, B_y, I)$; for each set of parameters, we run the Metropolis simulation steps as described in section 4.4. As a result, we generate 10,000 sets of training samples corresponding to each of the initial states. An example of the training sample corresponding to the initial state of the focus area on Sept 16th, 2022 and Ising parameters $(J = 2.31, B_0=-14.5, B_x=-6.15, B_y=0.07, I = 9.93)$ is illustrated in Figure 5. Compared with Figure 2, this training sample apparently happens to correspond to a much faster freezing cycle than the actual observation.
 <br/>
+
 <figure>
     <img src="/images/Figure5.png" width="400" height="240">    
     <figcaption> Figure 5: A training sample pair. (a) is the initial observed state on Sept 16th, 2022 and (b) the final simulated state on Oct 1st, 2022 based on Ising parameters $(J = 2.31, B_0=-14.5, B_x=-6.15, B_y=0.07, I = 9.93)$. </figcaption>
@@ -300,6 +304,7 @@ These generated Ising configuration pairs for all simulation periods from June 1
 <br/>
 Thanks to the publicly accessible NRTSI data, simulation and training can be completed with all three networks—the simple CNN, the much deeper ResNet50, and the ViT—for every year in the past four decades. The performance of these networks varies: ResNet50 demonstrated a slight advantage in terms of both alignment with the actual data and the balance of the computational resources required for model training. Due to space constraints, in this section we present only the results from ResNet50. A comparative analysis of the three networks is discussed in Section 6.2, and detailed results with the other two networks can be found in Appendix A.1.
 <br/>
+
 <h2> 5.1  Simulation results for 2023 </h2>
 <br/>
 
@@ -331,6 +336,7 @@ On the other hand, the external force parameters $B_0, B_x, B_y$ display large v
 
 All values of Bx are negative due to the geographic distribution of ice coverage. For our Ising lattice representing the focus area,  x coordinates corresponding to the rows in the lattice increase from top to bottom; y coordinates for the columns increase from left to right. Interestingly, ice coverage near the bottom of our area, the Canadian Arctic Archipelago marked by the red oval in Figure 1, is much thicker than elsewhere including the north pole (the gray circular mask). In fact, many scientists believe this region will have the last piece of ice standing in the Arctic if the Blue Ocean Event happens. As the lower part of the focus area tends to have greater ice coverage, Bx is all negative. Whereas By is less negative and shows positive for certain periods, implying that the impact of the geographic location along the y direction is less pronounced than that of x. This is because the ice at the north pole is thinner than in Archipelago, which mitigates the impact of the y coordinate.  In addition, the values of Bx and By exhibit greater fluctuations than other parameters, indicating that our simplified linear functional form of $B_i = B_0+B_x (x_i-x_0 )+B_y (y_i-y_0)$ is far from perfectly modeling the full effect of external fields; it can be further enriched by linking to actual geographical and environmental factors to enhance the power of the Ising model, which is left for our future research.
 <br/>
+
 The simulated sea ice images for each 2023 period are shown in Figure 7 utilizing the Ising parameters in Table 1. These images exhibit excellent similarity to Figure 6, demonstrating the strong explanatory power of our Ising model. Nevertheless, our model is not perfect. Upon close inspection, The images in Figure 6 and Figure 7 do reveal discrepancies, especially as shown in images (d) Aug 1st and (i) Oct 16th, where the actual ice configurations display significant irregularity compared to the prior period. While an IM with simple parameterization encounters difficulties in describing these local irregularities, it is feasible to include a richer set of parameters or to employ more complicated parametric functional forms at the potential cost of overfitting. In this paper, we keep our Ising model tractable and accept these local discrepancies.
 <br/>
 <br/>
@@ -411,6 +417,7 @@ Following the same steps as in Section 5.1, the IM simulations and ResNet50 trai
 </figure>
 <br/>
 <br/>
+
 Comparing Figure 9 with Figure 14 indicates that 2023 did not break the record-low Arctic sea ice extent level set in 2012, validated by both the actual measures and the IM simulations. However, 2023 sets the second lowest ice extent for our focus area, below those low levels previously achieved in 2019 and 2020  (2019 and 2020 results are not included in this paper but can be provided upon request.)  Even though 2023 does not break the historical record [89], it offers no reason for us to be optimistic about the future. In fact, in the 45-year-satellite record from 1979 to 2023, 17 of the lowest minimums have all occurred in the last 17 years [90]. Many scientists are concerned that the effect of Arctic sea ice decline on global warming will intensify as the sea ice loss continues. Although predicting the sea ice extent for the future years is beyond the scope of our current study, we will discuss the possibilities and issues in the next section.
 <br/><br/>
 
@@ -425,8 +432,10 @@ In this paper, we introduce continuous spin values and an inertia factor to a cl
 
 The extrapolation ability of our generalized model is worth discussing. In other words, how does the model perform if the Ising parameters fitted from one year are applied to the data of another year? For this purpose, we conducted projection of sea ice evolution from September to December 2023 based on the 2022 best-fit parameters for the same time periods with the initial ice image on August 16th, 2023. My projection displays larger discrepancies from the actual images, since the idiosyncratic intra-year configurations are hard to reproduce by the Ising parameters from a different year. However, the ice extent metrics calculated from our experiment accurately predicts that September 2023 would record the second lowest ice extent in history for our focus area, although the extrapolation ability of the Ising parameters is far from being perfect.   
 <br/>
+
 The impact of the inertia factor I on the performance of our model is also worth discussing. In fact, we have explored the vanilla Ising model without the inertia term; the subsequent simulation results substantially underperform the results with the inertia term incorporated. This finding validates the significant strength of the inertia factor in sea ice modeling, indicating that Arctic sea ice and water indeed display the tendency to stay unchanged. However, my finding does not confirm that the inertia factor is a must-have; it is possible to improve the Ising model performance via other routes, e.g. by further enriching the functional forms of the external force B, which is out of scope of this paper.
 <br/>
+
 Details of the methodology analysis can be found in Appendix A.3 and A.4.
 <br/>
 
@@ -541,6 +550,7 @@ From the above results, we can see that the three deep neural networks in this s
 <br/>
 <h2> A.2 Simulation results of other years </h2>
 <br/>
+
 The IM simulation results for 2012 and 2022 based on the fine-tuned ResNet50 model are included in this section. The 2024 results will be included when the full year data is available.
 <br/>
 
