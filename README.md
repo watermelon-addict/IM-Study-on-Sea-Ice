@@ -548,6 +548,7 @@ The Ising parameters $(J, B_0, B_x, B_y, I)$ for each simulation period in 2023 
 From the above results, we can see that the three deep neural networks in this study, a simple CNN, a deeper fine-tuned ResNet50, and a fine-tuned ViT, when coupled with Ising model, all demonstrated striking power explain the complex sea ice dynamics. ResNet50 marginally outperforms the other two models by delivering slightly better similarity with observations.
 <br/>
 <br/>
+
 <h2> A.2 Simulation results of other years </h2>
 <br/>
 
@@ -627,6 +628,7 @@ Figure 26 shows the semi-monthly NRTSI sea ice images in the focus area from Jun
 </figure>
 <br/>
 <br/>
+
 <h2> A.3 Methodology analysis: the effect of the inertia factor  </h2>
 <br/>
 
@@ -660,12 +662,14 @@ The impact of the inertia factor I on the performance of our model is worth inve
 <br/>
 <br/>
 <br/>
+
 <h2> A.4 Methodology analysis: extrapolation power of the model </h2>
 <br/>
 
 This section addresses the extrapolation capability of this generalized Ising model. How does the model perform if the Ising parameters fitted from one year are applied to the data of a different year? For this purpose, projection of sea ice evolution from September to December 2023 has been conducted based on the 2022 best-fit parameters (as in Table 7 which is copied from part of Table 4) for the same time periods with the initial ice image on August 16th, 2023. Figure 33 Shows the actual sea ice evolution from Aug 16th, 2023 to Jan 1st, 2024; Figure 34 shows the IM simulated evolution based on 2022 parameters from Table 4; Figure 35 Shows the ice coverage percentage and extent based on Figure 33 and Figure 34. Notably, although larger deviations are observed from the actual images, because the idiosyncratic intra-year configurations are hard to reproduce by the Ising parameters from a different year. However, the ice extent metrics calculated from my experiment accurately predict that September 2023 would record the second lowest ice extent in history for my focus area. The extrapolation ability of our model, even though far from being perfect, is strong and can offer many insights into the sea ice dynamics for the near future.
 <br/>
 <br/>
+
 <figure>
     <img src="/images/Table7.png" width="700" height="180">
     <figcaption> Table 7:  The 2022 partial year Ising parameters copied from Table 4, used for extrapolation analysis. </figcaption>
