@@ -20,7 +20,7 @@ from datetime import date
 import torch
 
 import sys
-if( "D:\\Users\\junwang\\source\\py\\ICEIsing" not in sys.path ): 
+if( "D:\\Users\\ellenwang\\source\\py\\ICEIsing" not in sys.path ): 
     sys.path.append( "D:\\Users\\junwang\\source\\py\\ICEIsing" )
 from ReadSeaIce import read_SI
 from IIMConstants import v1, v2, NX, NY, metrosteps, NumParam

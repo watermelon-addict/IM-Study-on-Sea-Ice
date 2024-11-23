@@ -24,8 +24,8 @@ import time
 import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
 import sys
-if( "D:\\Users\\junwang\\source\\py\\ICEIsing" not in sys.path ): 
-    sys.path.append( "D:\\Users\\junwang\\source\\py\\ICEIsing" )
+if( "D:\\Users\\ellenwang\\source\\py\\ICEIsing" not in sys.path ): 
+    sys.path.append( "D:\\Users\\ellenwang\\source\\py\\ICEIsing" )
 
 from ReadSeaIce import read_SI
 from IIMSimul import IIM_period_test

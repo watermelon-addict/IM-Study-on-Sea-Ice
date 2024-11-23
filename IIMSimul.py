@@ -37,8 +37,8 @@ import matplotlib.dates as mdates
 import time
 
 import sys
-if( "D:\\Users\\junwang\\source\\py\\ICEIsing" not in sys.path ): 
-    sys.path.append( "D:\\Users\\junwang\\source\\py\\ICEIsing" )
+if( "D:\\Users\\ellenwang\\source\\py\\ICEIsing" not in sys.path ): 
+    sys.path.append( "D:\\Users\\ellenwang\\source\\py\\ICEIsing" )
 import IceIsingCont as IIMC # Ice Ising Model Continuous
 from ReadSeaIce import read_SI
 from IIMConstants import v1, v2, NX, NY, metrosteps, NumParam

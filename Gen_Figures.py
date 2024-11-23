@@ -10,8 +10,8 @@ Display and plot final results which are included in the project paper
 """
 
 import sys
-if( "D:\\Users\\junwang\\source\\py\\ICEIsing" not in sys.path ): 
-    sys.path.append( "D:\\Users\\junwang\\source\\py\\ICEIsing" )
+if( "D:\\Users\\ellenwang\\source\\py\\ICEIsing" not in sys.path ): 
+    sys.path.append( "D:\\Users\\ellenwang\\source\\py\\ICEIsing" )
 
 import IIMSimul
 import datetime
