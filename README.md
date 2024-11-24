@@ -546,6 +546,7 @@ The Ising parameters $(J, B_0, B_x, B_y, I)$ for each simulation period in 2023 
 </figure>
 <br/>
 <br/>
+
 From the above results, we can see that the three deep neural networks in this study, a simple CNN, a deeper fine-tuned ResNet50, and a fine-tuned ViT, when coupled with Ising model, all demonstrated striking power explain the complex sea ice dynamics. ResNet50 marginally outperforms the other two models by delivering slightly better similarity with observations.
 <br/>
 <br/>
