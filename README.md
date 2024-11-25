@@ -285,6 +285,7 @@ The last network in this study is a fine-tuned ViT with weights also pretrained 
     <figcaption> Figure 4: (a) Architecture of the customized (a) ResNet50, and (b) ViT networks used in this research. Bulk of the architecture diagrams are taken from He et al. [43] and Dosovitskiy et al. [57] </figcaption>
 </figure>
 <br/><br/>
+
 <h2> 4.6 Training data for the neural networks </h2>
 <br/>
 
