@@ -352,6 +352,7 @@ The simulated sea ice images for each 2023 period are shown in Figure 7 utilizin
 To quantify the similarity between the IM simulated configurations and the observed images, the absolute differences in ice coverages across the entire focus area for each of the simulation period in Figure 6 and Figure 7 are calculated; the results are illustrated as the heatmaps in Figure 8(a) – (n), where light yellow color indicates that the actual and simulated images match well, whereas red patches are associated with the locations that display large discrepancy. The heatmaps are very revealing: the small red patches mostly appear around the boundaries between water and ice, implying that most of the discrepancy between the simulated and actual images happens around these border areas. This is not surprising: the IM needs improvement to perfectly model these boundary granularities, but it does have strong explanatory power to capture the overall patterns.
 <br/>
 <br/>
+
 <figure>
     <img src="/images/Figure8.png" width="600" height="400">
     <figcaption> Figure 8: Heatmaps illustrating the absolute difference in ice coverages between Figure 6 and Figure 7 for each semi-monthly period, from (a) June 16th, 2023 to (n) Jan 1st, 2024.  Yellow color indicates a good match and red a large difference, as shown by the scale on the right. </figcaption>
@@ -364,6 +365,7 @@ To quantify the similarity between the IM simulated configurations and the obser
 Furthermore, we compute two key numerical measures: the ice coverage percentage, i.e., the mean of the ice coverage across the entire lattice, and the ice extent, i.e., the percentage of areas that are covered by at least 15% ice. The comparisons between the actual observations and the simulation results for our focus area are shown in Figure 9. As anticipated, we see an excellent match in both figures as a result of the superior explanatory power of our IM, although the results do show marginal but non-trivial discrepancy. We can see that the simulated ice extent drops to nearly 30% in Sept 2023, one of the lowest in recorded history.
 <br/>
 <br/>
+
 <figure>
     <img src="/images/Figure9.png" width="600" height="300">
     <figcaption>Figure 9: (a) The ice coverage percentage in the focus area from June 16th, 2023 to Jan 1st, 2024; (b) The ice extent for the same periods. Blue curves are the actual measures from the NRTSI data; orange ones show the IM simulation results. </figcaption>
@@ -376,6 +378,7 @@ Furthermore, we compute two key numerical measures: the ice coverage percentage,
 Do these semi-monthly IM simulation results match the actual sea ice dynamics on a shorter time scale? To answer this question, we utilize the semi-monthly Ising parameters in Table 1 to simulate the daily evolution. Two periods, a melting period from Aug 1st to Aug 16th, 2023, and a freezing period from Oct 16th to Nov 1st, 2023, are simulated day-by-day for this experiment. The results, which compare the actual and the simulated daily ice evolution, are shown in Figure 10 to 13. The comparison exhibits striking similarity across the daily images, confirming that our IM preserves the more granular ice/water dynamics. 
 <br/>
 <br/>
+
 <figure>
     <img src="/images/Figure10.png" width="600" height="480">
     <figcaption> Figure 10: The actual daily sea ice evolution in the focus area during a melting cycle from (a) Aug 1st to (q) Aug 16th, 2023. </figcaption>
@@ -383,6 +386,7 @@ Do these semi-monthly IM simulation results match the actual sea ice dynamics on
 <br/>
 <br/>
 <br/>
+
 <figure>
     <img src="/images/Figure11.png" width="600" height="480">
     <figcaption> Figure 11: The simulated daily sea ice evolution, based on the semi-monthly Ising parameters, in the focus area during a melting cycle from (a) Aug 1st to (q) Aug 16th, 2023. </figcaption>
@@ -390,6 +394,7 @@ Do these semi-monthly IM simulation results match the actual sea ice dynamics on
 <br/>
 <br/>
 <br/>
+
 <figure>
     <img src="/images/Figure12.png" width="600" height="480">
     <figcaption> Figure 12: The actual daily sea ice evolution in the focus area during a freezing cycle from (a) Oct 16th to (q) Nov 1st, 2023. </figcaption>
@@ -397,6 +402,7 @@ Do these semi-monthly IM simulation results match the actual sea ice dynamics on
 <br/>
 <br/>
 <br/>
+
 <figure>
     <img src="/images/Figure13.png" width="600" height="480">
     <figcaption> Figure 13: The simulated daily sea ice evolution, based on the semi-month Ising parameters, in the focus area during a freezing cycle from (a) Oct 16th to (q) Nov 1st, 2023. </figcaption>
@@ -413,6 +419,7 @@ Do these semi-monthly IM simulation results match the actual sea ice dynamics on
 Following the same steps as in Section 5.1, the IM simulations and ResNet50 training are conducted for the period of June 16th, 2012 to Jan 1st, 2013 for the focus area.  To keep this paper concise, we will skip the semi-monthly actual and simulated images and the ResNet50 predicted parameters. The more informative ice coverage percentage and ice extent comparison charts are nevertheless included in Figure 14. The details of 2012 results can be found in Appendix A.2. 
 <br/>
 <br/>
+
 <figure>
     <img src="/images/Figure14.png" width="600" height=300">
     <figcaption>Figure 14: (a) The ice coverage percentage in the focus area from June 16th, 2012 to Jan 1st, 2013; (b) The ice extent for the same periods.  </figcaption>
@@ -429,6 +436,7 @@ Comparing Figure 9 with Figure 14 indicates that 2023 did not break the record-l
 
 In this paper, we introduce continuous spin values and an inertia factor to a classical 2-D IM, which is utilized to simulate the dynamics of the sea ice evolution in the Arctic region by employing the Metropolis-Hastings algorithm. Deep neural network models are trained to solve the inverse Ising problem and obtain the best-fit Ising parameters. My results show excellent similarity with the actual sea ice dynamics, based on the ice configuration images and the numerical measures including the ice coverage percentage and the ice extent. It is exciting and inspiring to see that combining the 100-year-old classical Ising model with the modern innovations in deep machine learning has the potential to bring enormous power towards climate change research and other interdisciplinary studies.
 <br/>
+
 <h2> 6.1	Discussions on the methodology </h2>
 <br/>
 
@@ -447,6 +455,7 @@ Details of the methodology analysis can be found in Appendix A.3 and A.4.
 The three deep neural networks in this study, a simple CNN, a deeper fine-tuned ResNet50, and a fine-tuned ViT, all demonstrated excellent power to solve for the Ising parameters that explain the complex sea ice dynamics. However, ResNet50 marginally outperforms the other two models by delivering slightly better similarity with observations due to its greater depth to capture more complex image features. As shown in Figure 15 the results of simulated sea ice configurations for Aug 16th, 2023 and the corresponding heatmaps of absolute difference using three neural networks, simulation from all three networks exhibit good match, but the heatmap  of ResNet50 showcases smallest difference from to the actual sea ice configuration. While the ViT model can capture global relationships across image patches through its attention mechanism, the localized nature of this Ising model, where each spin influences only its immediate neighbors, makes the ViT results not as good. The ViT model, which lacks the inductive biases inherent to CNN, such as translation equivariance and locality, also requires significantly more data and computational power to train effectively [91]. The hardware (using an RTX3060 GPU) and the limited training time (for only 70 hours,) may have restricted its performance. With more training data and powerful GPUs, the ViT model has the potential to achieve better results. Models that combine CNN with transformers, such as CvT (convolutional vision transformer) [92] can also be explored in future studies.
 <br/>
 <br/>
+
 <figure>
     <img src="/images/Figure15.png" width="500" height="250">
     <figcaption> Figure 15: Simulation results using three neural networks: (a) The actual sea ice configuration on Aug 16th, 2023; (b) simulation using the simple CNN; (c) simulation using ResNet50; (d) simulation using ViT; (e) heatmap illustrating the difference between the actual and the simple CNN result; (f) heatmap for ResNet50; (g) heatmap for ViT. </figcaption>
