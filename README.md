@@ -51,6 +51,7 @@ Data recorded by the National Aeronautics and Space Administration (NASA) and th
 
 # 2.	Theoretical framework
 <br/>
+
 <h2> 2.1	Classical Ising model </h2>
 <br/>
 
