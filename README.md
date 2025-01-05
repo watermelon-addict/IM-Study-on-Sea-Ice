@@ -766,8 +766,6 @@ The code files for this study include: <br/>
 • IIMSimul.py<br/>
 • Gen_Figures.py<br/>
 
-<br/>
-Detailed desription of the code is in CodeList.txt
 <br/><br/>
 
 
