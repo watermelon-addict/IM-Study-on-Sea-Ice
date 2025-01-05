@@ -752,9 +752,6 @@ This section addresses the extrapolation capability of this generalized Ising mo
 
 # Code list
 The code files for this study include: <br/>
-• download_NSIDC.py<br/>
-• ReadSeaIce.py<br/>
-• IIMConstants.py<br/>
 • IceIsingCont.py<br/>
 • IIMCNNModel.py<br/>
 • IIMCNNRun.py<br/>
@@ -765,6 +762,9 @@ The code files for this study include: <br/>
 • IIM_ViT_Results.py<br/>
 • IIMSimul.py<br/>
 • Gen_Figures.py<br/>
+• ReadSeaIce.py<br/>
+• IIMConstants.py<br/>
+• download_NSIDC.py<br/>
 
 <br/><br/>
 
