@@ -699,15 +699,15 @@ The impact of the inertia factor I on the performance of our model is worth inve
 <br/>
 <br/>
 <figure>
-    <img src="/images/Figure31.png" width="600" height="400">
-    <figcaption> Figure 31: Heatmaps illustrating the difference in the ice coverage between Figure 22 (the 2022 actual sea ice) and figure 30 (the simulation based on Ising model without the inertia factor). </figcaption>
+    <img src="/images/Figure35.png" width="600" height="400">
+    <figcaption> Figure 35: Heatmaps illustrating the difference in the ice coverage between Figure 22 (the 2022 actual sea ice) and figure 34 (the simulation based on Ising model without the inertia factor). </figcaption>
 </figure>
 <br/>
 <br/>
 <br/>
 <figure>
-    <img src="/images/Figure32.png" width="600" height="300">
-    <figcaption> Figure 32: The ice coverage percentage and the ice extent of 2022, where the simulated curves are based on the Ising model without the inertia term. </figcaption>
+    <img src="/images/Figure36.png" width="600" height="300">
+    <figcaption> Figure 36: The ice coverage percentage and the ice extent of 2022, where the simulated curves are based on the Ising model without the inertia term. </figcaption>
 </figure>
 <br/>
 <br/>
@@ -721,28 +721,28 @@ This section addresses the extrapolation capability of this generalized Ising mo
 <br/>
 
 <figure>
-    <img src="/images/Table7.png" width="700" height="180">
-    <figcaption> Table 7:  The 2022 partial year Ising parameters copied from Table 4, used for extrapolation analysis. </figcaption>
+    <img src="/images/Table8.png" width="700" height="180">
+    <figcaption> Table 8:  The 2022 partial year Ising parameters copied from Table 4, used for extrapolation analysis. </figcaption>
 </figure>
 <br/>
 <br/>
 <figure>
-    <img src="/images/Figure33.png" width="600" height="300">
-    <figcaption> Figure 33: The actual semi-monthly evolution of sea ice from (a) Aug 16th, 2023 to (j) Jan 1st, 2024.  </figcaption>
-</figure>
-<br/>
-<br/>
-<br/>
-<figure>
-    <img src="/images/Figure34.png" width="600" height="300">
-    <figcaption> Figure 34: The simulated semi-monthly evolution of sea ice in our focus area in the near future. (a) is the actual image on Aug 16th, 2023 as the start state; (b)-(j) are simulated images (based on the best-fit IM parameters in the 2022 simulations over the corresponding semi-monthly periods) from (b) Sept 1st, 2023 to (j) Jan 1st, 2024. </figcaption>
+    <img src="/images/Figure37.png" width="600" height="300">
+    <figcaption> Figure 37: The actual semi-monthly evolution of sea ice from (a) Aug 16th, 2023 to (j) Jan 1st, 2024.  </figcaption>
 </figure>
 <br/>
 <br/>
 <br/>
 <figure>
-    <img src="/images/Figure35.png" width="600" height="300">
-    <figcaption> Figure 35: (a) The ice coverage percentage and (b) the sea ice extent for our focus area in 2023. The predicted (orange) curves before Sept 1st, 2023 are based on 2023 best-fit parameters; from Sept 1st, 2023 onwards are based on 2022 best-fit parameters. </figcaption>
+    <img src="/images/Figure38.png" width="600" height="300">
+    <figcaption> Figure 38: The simulated semi-monthly evolution of sea ice in our focus area in the near future. (a) is the actual image on Aug 16th, 2023 as the start state; (b)-(j) are simulated images (based on the best-fit IM parameters in the 2022 simulations over the corresponding semi-monthly periods) from (b) Sept 1st, 2023 to (j) Jan 1st, 2024. </figcaption>
+</figure>
+<br/>
+<br/>
+<br/>
+<figure>
+    <img src="/images/Figure39.png" width="600" height="300">
+    <figcaption> Figure 39: (a) The ice coverage percentage and (b) the sea ice extent for our focus area in 2023. The predicted (orange) curves before Sept 1st, 2023 are based on 2023 best-fit parameters; from Sept 1st, 2023 onwards are based on 2022 best-fit parameters. </figcaption>
 </figure>
 <br/>
 
