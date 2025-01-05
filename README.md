@@ -727,14 +727,14 @@ This section addresses the extrapolation capability of this generalized Ising mo
 <br/>
 <br/>
 <figure>
-    <img src="/images/Figure37.png" width="600" height="300">
+    <img src="/images/Figure37.png" width="600" height="240">
     <figcaption> Figure 37: The actual semi-monthly evolution of sea ice from (a) Aug 16th, 2023 to (j) Jan 1st, 2024.  </figcaption>
 </figure>
 <br/>
 <br/>
 <br/>
 <figure>
-    <img src="/images/Figure38.png" width="600" height="300">
+    <img src="/images/Figure38.png" width="600" height="240">
     <figcaption> Figure 38: The simulated semi-monthly evolution of sea ice in our focus area in the near future. (a) is the actual image on Aug 16th, 2023 as the start state; (b)-(j) are simulated images (based on the best-fit IM parameters in the 2022 simulations over the corresponding semi-monthly periods) from (b) Sept 1st, 2023 to (j) Jan 1st, 2024. </figcaption>
 </figure>
 <br/>
