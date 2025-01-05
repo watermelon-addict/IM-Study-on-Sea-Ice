@@ -565,7 +565,7 @@ From the above results, we can see that the three deep neural networks in this s
 <h2> A.2 Simulation results of other years </h2>
 <br/>
 
-The IM simulation results for 2012 and 2022 based on the fine-tuned ResNet50 model are included in this section. The 2024 results will be included when the full year data is available.
+The IM simulation results for 2012 and 2022 based on the fine-tuned ResNet50 model are included in this section. The 2024 results will be included when the full year data is available. The more recent 2024 full year results are available now and have also been included.
 <br/>
 
 Figure 22 shows the semi-monthly NRTSI sea ice images in the focus area from June 16th, 2022 to Jan 1st, 2023. The Ising parameters $(J, B_0, B_x, B_y, I)$ for each simulation period in 2022 predicted by the ResNet50 model are shown in Table 4. The simulated sea ice images for each 2022 period are shown in Figure 23 utilizing the Ising parameters in Table 4. The absolute differences in ice coverages for each of the simulation period in Figure 22 and Figure 23 are calculated; the results are illustrated as the heatmaps in Figure 24. The ice coverage percentage and ice extent comparison charts based on the simple CNN model are illustrated in Figure 25.
@@ -641,6 +641,43 @@ Figure 26 shows the semi-monthly NRTSI sea ice images in the focus area from Jun
 </figure>
 <br/>
 <br/>
+The latest results of the semi-monthly NRTSI sea ice images in the focus area from June 16th, 2024 to Jan 1st, 2025 are shown in Figure 30. The Ising parameters (J, B_0,〖 B〗_x 〖,B〗_y, I) for each simulation period in 2024 predicted by the ResNet50 model are shown in Table 6. The simulated sea ice images for each 2012 period are shown in Figure 27 utilizing the Ising parameters in Table 6. The absolute differences in ice coverages for each of the simulation period in Figure 30 and Figure 31are calculated; the results are illustrated as the heatmaps in Figure 32. The ice coverage percentage and ice extent comparison charts based on the simple CNN model are illustrated in Figure 33.
+<br/>
+<br/>
+<figure>
+    <img src="/images/Figure30.png" width="600" height="400">
+    <figcaption> Figure 30: The actual semi-monthly sea ice evolution in the focus area in 2024: (a) June 16th, (b) July 1st, (c) July 16th, (d) Aug 1st, (e) Aug 16th, (f) Sept 1st, (g) Sept 16th, (h) Oct 1st, (i) Oct 16th, (j) Nov 1st, (k) Nov 16th, (l) Dec 1st, (m) Dec 16th, 2024, and (n) Jan 1st, 2025. </figcaption>
+</figure>
+<br/>
+<br/>
+<figure>
+    <img src="/images/Table6.png" width="1000" height="180">
+    <figcaption> Table 6: The fine-tuned ResNet50 model predicted Ising parameters for the 2025 sea ice evolution </figcaption>
+</figure>
+<br/>
+<br/>
+<br/>
+<figure>
+    <img src="/images/Figure31.png" width="600" height="400">
+    <figcaption> Figure 31: The fine-tuned ResNet50 model simulated semi-monthly sea ice evolution in the focus area in 2024. (a) is the actual image on June 16th, 2024; (b) - (n) are simulated images on (b) July 1st, (c) July 16th, (d) Aug 1st, (e) Aug 16th, (f) Sept 1st, (g) Sept 16th, (h) Oct 1st, (i) Oct 16th, (j) Nov 1st, (k) Nov 16th, (l) Dec 1st, (m) Dec 16th, 2024, and (n) Jan 1st, 2025. </figcaption>
+</figure>
+<br/>
+<br/>
+<br/>
+<figure>
+    <img src="/images/Figure32.png" width="600" height="400">
+    <figcaption> Figure 32: Heatmaps illustrating the absolute difference in ice coverages between Figure 30 (the actual sea ice) and 31 (the fine-tuned ResNet50 model simulated configuration) for each semi-monthly period, from (a) June 16th, 2024 to (n) Jan 1st, 2025.  Yellow color indicates a good match and red a large difference, as shown by the scale on the right. </figcaption>
+</figure>
+<br/>
+<br/>
+<br/>
+<figure>
+    <img src="/images/Figure33.png" width="600" height="300">
+    <figcaption> Figure 33: (a) The ice coverage percentage in the focus area from June 16th, 2024 to Jan 1st, 2025; (b) The ice extent for the same periods. Blue curves are the actual measures from the NRTSI data; orange ones show the IM simulation results from the fine-tuned ResNet50 model. </figcaption>
+</figure>
+<br/>
+<br/>
+
 
 <h2> A.3 Methodology analysis: the effect of the inertia factor  </h2>
 <br/>
