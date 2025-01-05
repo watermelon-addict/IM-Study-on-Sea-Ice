@@ -686,14 +686,14 @@ The impact of the inertia factor I on the performance of our model is worth inve
 <br/>
 <br/>
 <figure>
-    <img src="/images/Table6.png" width="900" height="140">
-    <figcaption> Table 6: The predicted Ising parameters for the 2012 sea ice evolution without the inertia factor I. </figcaption>
+    <img src="/images/Table7.png" width="900" height="140">
+    <figcaption> Table 7: The predicted Ising parameters for the 2012 sea ice evolution without the inertia factor I. </figcaption>
 </figure>
 <br/>
 <br/>
 <figure>
-    <img src="/images/Figure30.png" width="600" height="400">
-    <figcaption> Figure 30: The simulated semi-monthly evolution of sea ice for our focus area in 2022, using the Ising model without the inertia factor. </figcaption>
+    <img src="/images/Figure34.png" width="600" height="400">
+    <figcaption> Figure 34: The simulated semi-monthly evolution of sea ice for our focus area in 2022, using the Ising model without the inertia factor. </figcaption>
 </figure>
 <br/>
 <br/>
