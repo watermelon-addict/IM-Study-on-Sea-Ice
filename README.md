@@ -641,7 +641,8 @@ Figure 26 shows the semi-monthly NRTSI sea ice images in the focus area from Jun
 </figure>
 <br/>
 <br/>
-The latest results of the semi-monthly NRTSI sea ice images in the focus area from June 16th, 2024 to Jan 1st, 2025 are shown in Figure 30. The Ising parameters $(J, B_0, B_x, B_y, I)$ for each simulation period in 2024 predicted by the ResNet50 model are shown in Table 6. The simulated sea ice images for each 2012 period are shown in Figure 27 utilizing the Ising parameters in Table 6. The absolute differences in ice coverages for each of the simulation period in Figure 30 and Figure 31are calculated; the results are illustrated as the heatmaps in Figure 32. The ice coverage percentage and ice extent comparison charts based on the simple CNN model are illustrated in Figure 33.
+
+The latest results of the semi-monthly NRTSI sea ice images in the focus area from June 16th, 2024 to Jan 1st, 2025 are shown in Figure 30. The Ising parameters $(J, B_0, B_x, B_y, I)$ for each simulation period in 2024 predicted by the ResNet50 model are shown in Table 6. The simulated sea ice images for each 2012 period are shown in Figure 31 utilizing the Ising parameters in Table 6. The absolute differences in ice coverages for each of the simulation period in Figure 30 and Figure 31are calculated; the results are illustrated as the heatmaps in Figure 32. The ice coverage percentage and ice extent comparison charts based on the simple CNN model are illustrated in Figure 33.
 <br/>
 <br/>
 <figure>
