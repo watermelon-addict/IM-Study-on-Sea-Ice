@@ -773,7 +773,8 @@ The code files for this study include: <br/>
 
 # Bibliography <br/>
 [1] 	National Snow and Ice Data Center, "Sea Ice Today," 2024. [Online]. Available: https://nsidc.org/sea-ice-today. <br/>
-[2] 	NASA, "Temperatures Rising: NASA Confirms 2024 Warmest Year on Record," Januray 2025. [Online]. Available: https://www.climate.gov/news-features/featured-images/2023-was-warmest-year-modern-temperature-record#:~:text=The%20year%202023%20was%20the,decade%20(2014%E2%80%932023).<br/>
+[2] 	NASA, "Temperatures Rising: NASA Confirms 2024 Warmest Year on Record," Januray 2025. [Online]. Available: https://english.news.cn/northamerica/20250115/ef0493369b9a4a1d82c48fedd681fbc2/c.html#:~:text=LOS%20ANGELES%2C%20Jan.,baseline%20(1951%2D1980).
+<br/>
 [3] 	E. Wang, "A study on Arctic sea ice dynamics using the continuous spin Ising model," Journal of Applied Physics, vol. 135, p. 194901, 2024. <br/>
 [4] 	E. Ising, "Beitrag zur Theorie des Ferromagnetismus," Z. Phys, vol. 31, no. 1, p. 2530258, 1925. <br/>
 [5] 	E. Ising, Contribution to the Theory of Ferromagnetism, 1924. <br/>
