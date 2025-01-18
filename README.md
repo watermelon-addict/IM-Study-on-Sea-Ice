@@ -680,7 +680,6 @@ The latest results of the semi-monthly NRTSI sea ice images in the focus area fr
 <br/>
 <br/>
 
-
 <h2> A.3 Methodology analysis: the effect of the inertia factor  </h2>
 <br/>
 
