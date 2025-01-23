@@ -868,7 +868,6 @@ The code files for this study include: <br/>
 
 
 
-
 <br/><br/>
 # Copyright from NSIDC on using their sea ice data and code:
 
